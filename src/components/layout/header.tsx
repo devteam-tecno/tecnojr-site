@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { TecnoJrLogo } from "../ui/tecnojr-logo";
 
 const navigationLinks = [
   { url: "/", text: "Início" },
@@ -59,16 +60,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-between lg:h-20">
           {/* Logo */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/assets/logo/tecnojr-logo-white.png"
-                alt="Logo TecnoJr"
-                width={200}
-                height={40}
-                className="h-8 w-auto lg:h-10"
-                priority
-              />
-            </Link>
+            <TecnoJrLogo />
           </motion.div>
 
           {/* Desktop Navigation */}

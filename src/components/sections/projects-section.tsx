@@ -1,0 +1,124 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Briefcase, Heart } from "lucide-react";
+import { ProjectCard } from "@/components/ui/project-card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { externalProjects, internalProjects } from "@/lib/projects";
+
+export function ProjectsSection() {
+  return (
+    <section className="py-32">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="mb-20 text-center">
+          {/* Badge */}
+          <div className="mb-8 inline-flex items-center rounded-full border border-tecno-purple/20 bg-gradient-to-r from-tecno-purple/10 to-tecno-blue/10 px-6 py-3 text-sm text-gray-300 backdrop-blur-sm">
+            <svg
+              role="img"
+              aria-label="Portfolio icon"
+              className="mr-2 h-4 w-4 text-tecno-purple"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+            </svg>
+            Portfolio
+          </div>
+
+          {/* Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-6"
+          >
+            <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="text-white"
+              >
+                Projetos que fazem{" "}
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                viewport={{ once: true }}
+                className="text-gradient-tecno"
+              >
+                a diferença
+              </motion.span>
+            </h2>
+          </motion.div>
+        </div>
+
+        {/* Projects Tabs */}
+        <Tabs defaultValue="external" className="w-full">
+          <TabsList className="mb-12 grid w-full max-w-2xl mx-auto grid-cols-2 gap-4 bg-transparent p-0">
+            <TabsTrigger
+              value="external"
+              className="rounded-full border border-gray-700/50 bg-gray-900/50 px-6 py-3 font-medium text-gray-300 backdrop-blur-sm transition-all data-[state=active]:border-transparent data-[state=active]:bg-gradient-to-r data-[state=active]:from-tecno-blue data-[state=active]:to-tecno-purple data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-tecno-blue/20 hover:border-tecno-blue/40 hover:bg-gray-800/60 hover:text-white"
+            >
+              <Briefcase className="mr-2 h-4 w-4" />
+              Projetos Externos
+            </TabsTrigger>
+            <TabsTrigger
+              value="internal"
+              className="rounded-full border border-gray-700/50 bg-gray-900/50 px-6 py-3 font-medium text-gray-300 backdrop-blur-sm transition-all data-[state=active]:border-transparent data-[state=active]:bg-gradient-to-r data-[state=active]:from-tecno-purple data-[state=active]:to-tecno-blue data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-tecno-purple/20 hover:border-tecno-purple/40 hover:bg-gray-800/60 hover:text-white"
+            >
+              <Heart className="mr-2 h-4 w-4" />
+              Projetos Internos
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="external" className="mt-0">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {externalProjects.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                >
+                  <ProjectCard
+                    title={project.title}
+                    description={project.description}
+                    imageSrc={`/assets/img/projects/${project.img || "placeholder.png"}`}
+                    link={project.link}
+                    isInternal={false}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="internal" className="mt-0">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {internalProjects.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                >
+                  <ProjectCard
+                    title={project.title}
+                    description={`Desenvolvido por: ${project.author}`}
+                    imageSrc={`/assets/img/projects/${project.img || "placeholder.png"}`}
+                    link={project.link}
+                    isInternal={true}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </section>
+  );
+}

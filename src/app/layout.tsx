@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "TecnoJr - Empresa Júnior de Computação UESC",
+    default: "TecnoJr | Empresa Júnior de Computação UESC",
     template: "%s | TecnoJr",
   },
   description:
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     url: "https://tecnojr.com.br",
-    title: "TecnoJr - Empresa Júnior de Computação UESC",
+    title: "TecnoJr | Empresa Júnior de Computação UESC",
     description:
       "A TecnoJr é a empresa júnior do curso de Ciência da Computação da UESC. Desenvolvemos soluções tecnológicas inovadoras.",
     siteName: "TecnoJr",
@@ -51,9 +51,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="dark">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body
+        className={`${montserrat.variable} bg-tecno-black font-sans text-white antialiased`}
+      >
         <Header />
-        <main className="min-h-screen">{children}</main>
+        {children}
         <Footer />
       </body>
     </html>
