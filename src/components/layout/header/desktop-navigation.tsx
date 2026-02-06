@@ -13,10 +13,16 @@ export function DesktopNavigation({
   pathname,
 }: DesktopNavigationProps) {
   // Filter links by alignment
-  const centerLinks = navigationLinks.filter(
-    (link) => !link.align || link.align === "center",
-  );
-  const rightLinks = navigationLinks.filter((link) => link.align === "right");
+  const links = {
+    left: [] as NavigationLink[],
+    center: [] as NavigationLink[],
+    right: [] as NavigationLink[],
+  };
+  navigationLinks.forEach((link) => {
+    const align = link.align || "center";
+    links[align].push(link);
+  });
+  const { center: centerLinks, right: rightLinks } = links;
 
   return (
     <div className="ml-8 hidden flex-1 items-center justify-between lg:flex">
