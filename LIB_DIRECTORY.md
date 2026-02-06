@@ -2,7 +2,24 @@
 
 Pasta centralizada de utilitários, constantes, tipos e dados compartilhados do projeto.
 
-## 📁 Estrutura
+## 📁 Estrutura dos Arquivos
+
+| Arquivo | Descrição | Status |
+|---------|-----------|--------|
+| [navigation.ts](src/lib/navigation.ts) | Sistema de navegação centralizado | ✅ Usado |
+| [services.ts](src/lib/services.ts) | Serviços oferecidos pela TecnoJr | ✅ Usado |
+| [features.ts](src/lib/features.ts) | Diferenciais e benefícios da TecnoJr | ✅ Usado |
+| [projects.ts](src/lib/projects.ts) | Projetos externos e internos | ✅ Usado |
+| [utils.ts](src/lib/utils.ts) | Funções utilitárias (cn) | ✅ Usado |
+| [members.ts](src/lib/members.ts) | Dados dos membros da equipe | 🚧 Página "/sobre" |
+| [icons.ts](src/lib/icons.ts) | Mapeamento de ícones sociais | 🚧 Página "/sobre" |
+| [types.ts](src/lib/types.ts) | Interfaces TypeScript | ✅ Usado |
+| [constants.ts](src/lib/constants.ts) | Enums e constantes | ✅ Usado |
+| [metadata.ts](src/lib/metadata.ts) | Helper de metadata (não usado) | ⚠️ Avaliar |
+
+---
+
+## 📖 Documentação por Arquivo
 
 ### **🗺️ navigation.ts** - Sistema de Navegação
 Centraliza todos os links de navegação e rotas da aplicação.

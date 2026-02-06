@@ -1,29 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, Palette, Smartphone } from "lucide-react";
 import { ServiceCard } from "@/components/ui/service-card";
-
-const services = [
-  {
-    icon: Code,
-    title: "Desenvolvimento Web",
-    description:
-      "Criamos sites modernos, responsivos e otimizados para oferecer a melhor experiência aos seus usuários.",
-  },
-  {
-    icon: Smartphone,
-    title: "Aplicativos Mobile",
-    description:
-      "Desenvolvemos aplicações móveis nativas e híbridas para iOS e Android com foco na usabilidade.",
-  },
-  {
-    icon: Palette,
-    title: "UI/UX Design",
-    description:
-      "Criamos interfaces intuitivas e experiências memoráveis que conectam sua marca aos usuários.",
-  },
-];
+import { services } from "@/lib/services";
 
 export function ServicesSection() {
   return (
