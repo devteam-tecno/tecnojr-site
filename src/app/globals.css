@@ -2,9 +2,69 @@
 @import "tw-animate-css";
 
 @theme {
-  --color-tecno-purple: #9155eb;
-  --color-tecno-blue: #4275f9;
-  --color-tecno-black: #232323;
+  /* ===================================
+   * Tecno JR Brand Color System
+   * Using OKLCH for perceptual uniformity
+   * ===================================
+   */
+
+  /* Tecno Purple Scale - Primary Brand Color (#9155EB base) */
+  --color-tecno-purple-50: oklch(0.97 0.04 295);
+  --color-tecno-purple-100: oklch(0.94 0.08 295);
+  --color-tecno-purple-200: oklch(0.88 0.12 295);
+  --color-tecno-purple-300: oklch(0.78 0.18 295);
+  --color-tecno-purple-400: oklch(0.68 0.24 295);
+  --color-tecno-purple-500: oklch(0.6 0.26 295); /* #9155EB */
+  --color-tecno-purple-600: oklch(0.52 0.25 295);
+  --color-tecno-purple-700: oklch(0.44 0.22 295);
+  --color-tecno-purple-800: oklch(0.36 0.18 295);
+  --color-tecno-purple-900: oklch(0.28 0.14 295);
+  --color-tecno-purple-950: oklch(0.2 0.1 295);
+
+  /* Tecno Blue Scale - Secondary Brand Color (#4275F9 base) */
+  --color-tecno-blue-50: oklch(0.97 0.03 260);
+  --color-tecno-blue-100: oklch(0.94 0.06 260);
+  --color-tecno-blue-200: oklch(0.88 0.1 260);
+  --color-tecno-blue-300: oklch(0.78 0.16 260);
+  --color-tecno-blue-400: oklch(0.68 0.21 260);
+  --color-tecno-blue-500: oklch(0.6 0.23 260); /* #4275F9 */
+  --color-tecno-blue-600: oklch(0.52 0.22 260);
+  --color-tecno-blue-700: oklch(0.44 0.2 260);
+  --color-tecno-blue-800: oklch(0.36 0.16 260);
+  --color-tecno-blue-900: oklch(0.28 0.12 260);
+  --color-tecno-blue-950: oklch(0.2 0.08 260);
+
+  /* Tecno Black Scale - Dark Brand Color (#232323 base) */
+  --color-tecno-black-50: oklch(0.95 0 0);
+  --color-tecno-black-100: oklch(0.88 0 0);
+  --color-tecno-black-200: oklch(0.78 0 0);
+  --color-tecno-black-300: oklch(0.65 0 0);
+  --color-tecno-black-400: oklch(0.5 0 0);
+  --color-tecno-black-500: oklch(0.35 0 0);
+  --color-tecno-black-600: oklch(0.27 0 0);
+  --color-tecno-black-700: oklch(0.2 0 0);
+  --color-tecno-black-800: oklch(0.15 0 0); /* #232323 */
+  --color-tecno-black-900: oklch(0.11 0 0);
+  --color-tecno-black-950: oklch(0.08 0 0);
+
+  /* Tecno White - For consistency */
+  --color-tecno-white: oklch(1 0 0);
+
+  /* =================================== 
+   * Semantic Brand Tokens
+   * Use these for component design
+   * ===================================
+   */
+  --color-brand-primary: var(--color-tecno-purple-500);
+  --color-brand-primary-hover: var(--color-tecno-purple-600);
+  --color-brand-primary-light: var(--color-tecno-purple-400);
+
+  --color-brand-secondary: var(--color-tecno-blue-500);
+  --color-brand-secondary-hover: var(--color-tecno-blue-600);
+  --color-brand-secondary-light: var(--color-tecno-blue-400);
+
+  --color-brand-accent: var(--color-tecno-purple-400);
+  --color-brand-dark: var(--color-tecno-black-800);
 }
 
 :root {
@@ -40,11 +100,6 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-
-  /* Tecno Brand Colors */
-  --tecno-purple: #9155eb;
-  --tecno-blue: #4275f9;
-  --tecno-black: #232323;
 }
 
 .dark {
@@ -96,22 +151,22 @@
     scroll-behavior: smooth;
   }
 
-  /* Custom Scrollbar */
+  /* Custom Scrollbar - Uses brand purple */
   ::-webkit-scrollbar {
     width: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    background: oklch(0.145 0 0);
+    background: var(--color-tecno-black-900);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: oklch(0.488 0.243 264.376);
+    background: var(--color-brand-primary);
     border-radius: 5px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.6 0.25 264.376);
+    background: var(--color-brand-primary-light);
   }
 }
 
@@ -130,11 +185,13 @@
   0%,
   100% {
     opacity: 0.6;
-    box-shadow: 0 0 20px rgba(145, 85, 235, 0.4);
+    box-shadow: 0 0 20px
+      color-mix(in oklch, var(--color-brand-primary) 40%, transparent);
   }
   50% {
     opacity: 1;
-    box-shadow: 0 0 40px rgba(145, 85, 235, 0.8);
+    box-shadow: 0 0 40px
+      color-mix(in oklch, var(--color-brand-primary) 80%, transparent);
   }
 }
 
@@ -151,16 +208,79 @@
 
 /* Custom Gradient Classes */
 @layer utilities {
-  .gradient-primary {
+  /* ===================================
+   * Gradient Utilities
+   * Reusable gradient patterns
+   * ===================================
+   */
+
+  /* Primary Brand Gradient - Purple to Blue (horizontal) */
+  .gradient-tecno-primary {
     background: linear-gradient(
       90deg,
-      oklch(0.488 0.243 264.376),
-      oklch(0.6 0.118 184.704)
+      var(--color-brand-primary),
+      var(--color-brand-secondary)
     );
   }
 
+  /* Secondary Brand Gradient - Blue to Purple (horizontal) */
+  .gradient-tecno-secondary {
+    background: linear-gradient(
+      90deg,
+      var(--color-brand-secondary),
+      var(--color-brand-primary)
+    );
+  }
+
+  /* Diagonal Brand Gradient - Purple to Blue (135deg) */
+  .gradient-tecno-diagonal {
+    background: linear-gradient(
+      135deg,
+      var(--color-brand-primary),
+      var(--color-brand-secondary)
+    );
+  }
+
+  /* Animated Gradient - Purple via Blue back to Purple */
+  .gradient-tecno-animated {
+    background: linear-gradient(
+      90deg,
+      var(--color-brand-primary),
+      var(--color-brand-secondary),
+      var(--color-brand-primary)
+    );
+    background-size: 200%;
+  }
+
+  /* Vertical Brand Gradient */
+  .gradient-tecno-vertical {
+    background: linear-gradient(
+      180deg,
+      var(--color-brand-primary),
+      var(--color-brand-secondary)
+    );
+  }
+
+  /* Legacy gradient-primary (for backward compatibility during migration) */
+  .gradient-primary {
+    background: linear-gradient(
+      90deg,
+      var(--color-brand-primary),
+      var(--color-brand-secondary)
+    );
+  }
+
+  /* ===================================
+   * Text Gradient Utilities
+   * ===================================
+   */
+
   .text-gradient-primary {
-    background: linear-gradient(to right, rgb(168 85 247), rgb(59 130 246));
+    background: linear-gradient(
+      to right,
+      var(--color-brand-primary),
+      var(--color-brand-secondary)
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -169,21 +289,48 @@
   .text-gradient-tecno {
     background: linear-gradient(
       135deg,
-      var(--tecno-purple) 0%,
-      var(--tecno-blue) 100%
+      var(--color-brand-primary),
+      var(--color-brand-secondary)
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
+  /* ===================================
+   * Border Gradient Utilities
+   * ===================================
+   */
+
   .border-gradient {
     position: relative;
     background:
       linear-gradient(var(--background), var(--background)) padding-box,
-      linear-gradient(135deg, var(--tecno-purple), var(--tecno-blue)) border-box;
+      linear-gradient(
+        135deg,
+        var(--color-brand-primary),
+        var(--color-brand-secondary)
+      )
+      border-box;
     border: 2px solid transparent;
   }
+
+  .border-gradient-primary {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(var(--background), var(--background)) padding-box,
+      linear-gradient(
+        90deg,
+        var(--color-brand-primary),
+        var(--color-brand-secondary)
+      )
+      border-box;
+  }
+
+  /* ===================================
+   * Effect Utilities
+   * ===================================
+   */
 
   .hover-glow {
     transition: box-shadow 0.3s ease;
@@ -191,9 +338,33 @@
 
   .hover-glow:hover {
     box-shadow:
-      0 0 30px rgba(145, 85, 235, 0.5),
-      0 0 60px rgba(66, 117, 249, 0.3);
+      0 0 30px color-mix(in oklch, var(--color-brand-primary) 50%, transparent),
+      0 0 60px
+      color-mix(in oklch, var(--color-brand-secondary) 30%, transparent);
   }
+
+  .hover-glow-purple {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .hover-glow-purple:hover {
+    box-shadow: 0 0 40px
+      color-mix(in oklch, var(--color-brand-primary) 50%, transparent);
+  }
+
+  .hover-glow-blue {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .hover-glow-blue:hover {
+    box-shadow: 0 0 40px
+      color-mix(in oklch, var(--color-brand-secondary) 50%, transparent);
+  }
+
+  /* ===================================
+   * Animation Utilities
+   * ===================================
+   */
 
   .animate-float {
     animation: float 8s ease-in-out infinite;
@@ -207,6 +378,11 @@
     animation: fadeInUp 0.6s ease-out;
   }
 
+  /* ===================================
+   * Background Utilities
+   * ===================================
+   */
+
   /* Animated Gradient Background */
   .bg-size-200 {
     background-size: 200%;
@@ -218,5 +394,20 @@
 
   .hover\:bg-pos-100:hover {
     background-position: 100%;
+  }
+
+  /* Glass morphism effect with brand colors */
+  .glass-card {
+    background: color-mix(in oklch, var(--card) 50%, transparent);
+    backdrop-filter: blur(12px);
+    border: 1px solid
+      color-mix(in oklch, var(--color-brand-primary) 10%, transparent);
+  }
+
+  .glass-card-strong {
+    background: color-mix(in oklch, var(--card) 80%, transparent);
+    backdrop-filter: blur(16px);
+    border: 1px solid
+      color-mix(in oklch, var(--color-brand-primary) 20%, transparent);
   }
 }

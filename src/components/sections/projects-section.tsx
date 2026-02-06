@@ -13,11 +13,11 @@ export function ProjectsSection() {
         {/* Section Header */}
         <div className="mb-20 text-center">
           {/* Badge */}
-          <div className="mb-8 inline-flex items-center rounded-full border border-tecno-purple/20 bg-gradient-to-r from-tecno-purple/10 to-tecno-blue/10 px-6 py-3 text-sm text-gray-300 backdrop-blur-sm">
+          <div className="mb-8 inline-flex items-center rounded-full border border-brand-primary/20 bg-gradient-to-r from-brand-primary/10 to-brand-secondary/10 px-6 py-3 text-sm text-gray-300 backdrop-blur-sm">
             <svg
               role="img"
               aria-label="Portfolio icon"
-              className="mr-2 h-4 w-4 text-tecno-purple"
+              className="mr-2 h-4 w-4 text-brand-primary"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -62,14 +62,14 @@ export function ProjectsSection() {
           <TabsList className="mb-12 grid w-full max-w-2xl mx-auto grid-cols-2 gap-4 bg-transparent p-0">
             <TabsTrigger
               value="external"
-              className="rounded-full border border-gray-700/50 bg-gray-900/50 px-6 py-3 font-medium text-gray-300 backdrop-blur-sm transition-all data-[state=active]:border-transparent data-[state=active]:bg-gradient-to-r data-[state=active]:from-tecno-blue data-[state=active]:to-tecno-purple data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-tecno-blue/20 hover:border-tecno-blue/40 hover:bg-gray-800/60 hover:text-white"
+              className="rounded-full border border-gray-700/50 bg-gray-900/50 px-6 py-3 font-medium text-gray-300 backdrop-blur-sm transition-all data-[state=active]:border-transparent data-[state=active]:gradient-tecno-secondary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-brand-secondary/20 hover:border-brand-secondary/40 hover:bg-gray-800/60 hover:text-white"
             >
               <Briefcase className="mr-2 h-4 w-4" />
               Projetos Externos
             </TabsTrigger>
             <TabsTrigger
               value="internal"
-              className="rounded-full border border-gray-700/50 bg-gray-900/50 px-6 py-3 font-medium text-gray-300 backdrop-blur-sm transition-all data-[state=active]:border-transparent data-[state=active]:bg-gradient-to-r data-[state=active]:from-tecno-purple data-[state=active]:to-tecno-blue data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-tecno-purple/20 hover:border-tecno-purple/40 hover:bg-gray-800/60 hover:text-white"
+              className="rounded-full border border-gray-700/50 bg-gray-900/50 px-6 py-3 font-medium text-gray-300 backdrop-blur-sm transition-all data-[state=active]:border-transparent data-[state=active]:gradient-tecno-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-brand-primary/20 hover:border-brand-primary/40 hover:bg-gray-800/60 hover:text-white"
             >
               <Heart className="mr-2 h-4 w-4" />
               Projetos Internos

@@ -52,7 +52,7 @@ export function Header() {
       className={cn(
         "fixed left-0 right-0 top-0 z-50 transition-all duration-300",
         scrollY > 50
-          ? "border-b border-purple-500/20 bg-zinc-900/95 backdrop-blur-md"
+          ? "border-b border-brand-primary/20 bg-zinc-900/95 backdrop-blur-md"
           : "bg-zinc-900/80 backdrop-blur-sm lg:bg-transparent lg:backdrop-blur-none",
       )}
     >
@@ -83,7 +83,7 @@ export function Header() {
                     {pathname === link.url && (
                       <motion.div
                         layoutId="underline"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 gradient-tecno-primary"
                         initial={false}
                         transition={{
                           type: "spring",
@@ -126,8 +126,8 @@ export function Header() {
             className={cn(
               "rounded-lg p-2 transition-all duration-200 lg:hidden",
               scrollY > 50
-                ? "text-white hover:bg-purple-500/10 hover:text-purple-500"
-                : "bg-zinc-900/40 text-white backdrop-blur-sm hover:bg-purple-500/20 hover:text-purple-500",
+                ? "text-white hover:bg-brand-primary/10 hover:text-brand-primary"
+                : "bg-zinc-900/40 text-white backdrop-blur-sm hover:bg-brand-primary/20 hover:text-brand-primary",
             )}
             aria-label="Toggle menu"
           >
@@ -159,11 +159,11 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="fixed right-0 top-0 z-50 h-screen w-80 max-w-[90vw] border-l border-purple-500/20 bg-zinc-900/95 backdrop-blur-md lg:hidden"
+              className="fixed right-0 top-0 z-50 h-screen w-80 max-w-[90vw] border-l border-brand-primary/20 bg-zinc-900/95 backdrop-blur-md lg:hidden"
             >
               <div className="flex h-screen flex-col bg-zinc-900">
                 {/* Mobile Menu Header */}
-                <div className="flex items-center justify-between border-b border-purple-500/20 bg-zinc-900 p-6">
+                <div className="flex items-center justify-between border-b border-brand-primary/20 bg-zinc-900 p-6">
                   <Image
                     src="/assets/logo/tecnojr-logo-white.png"
                     alt="Logo TecnoJr"
@@ -174,7 +174,7 @@ export function Header() {
                   <button
                     type="button"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-2 text-white transition-colors hover:text-purple-500"
+                    className="p-2 text-white transition-colors hover:text-brand-primary"
                     aria-label="Close menu"
                   >
                     <X className="h-6 w-6" />
@@ -207,7 +207,7 @@ export function Header() {
                                 isDisabled
                                   ? "cursor-not-allowed text-gray-500"
                                   : pathname === link.url
-                                    ? "text-purple-500"
+                                    ? "text-brand-primary"
                                     : "text-gray-300 hover:text-white",
                               )}
                             >

@@ -19,9 +19,9 @@ export function ScrollIndicator() {
           repeat: Number.POSITIVE_INFINITY,
           ease: "easeInOut",
         }}
-        className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-tecno-purple/50"
+        className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-tecno-purple-500/50"
       >
-        <ChevronDown className="h-5 w-5 text-tecno-purple" />
+        <ChevronDown className="h-5 w-5 text-tecno-purple-500" />
       </motion.div>
     </motion.div>
   );

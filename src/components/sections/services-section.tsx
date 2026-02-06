@@ -29,14 +29,14 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-gradient-to-b from-tecno-black to-tecno-black/95 py-32"
+      className="relative overflow-hidden bg-gradient-to-b from-brand-dark to-tecno-black-900 py-32"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, #9155EB 1px, transparent 1px), radial-gradient(circle at 75% 75%, #4275F9 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(circle at 25% 25%, oklch(0.6 0.26 295) 1px, transparent 1px), radial-gradient(circle at 75% 75%, oklch(0.6 0.23 260) 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         />

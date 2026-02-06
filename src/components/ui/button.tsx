@@ -13,19 +13,19 @@ const buttonVariants = cva(
           "bg-primary text-primary-foreground hover:bg-primary/90 rounded-md",
 
         "gradient-primary":
-          "relative overflow-hidden rounded-full bg-gradient-to-r from-[#9155eb] via-[#4275f9] to-[#9155eb] text-white font-semibold shadow-lg shadow-[#9155eb]/25 hover:shadow-[#4275f9]/25 transition-all duration-500 hover:scale-[1.02] [&>*]:relative [&>*]:z-10 before:absolute before:inset-0 before:z-0 before:bg-gradient-to-r before:from-[#4275f9] before:to-[#9155eb] before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300",
+          "relative overflow-hidden rounded-full gradient-tecno-animated text-white font-semibold shadow-lg shadow-brand-primary/25 hover:shadow-brand-secondary/25 transition-all duration-500 hover:scale-[1.02] hover:bg-pos-100 [&>*]:relative [&>*]:z-10",
 
         "gradient-whatsapp":
           "rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white font-medium hover:from-green-600 hover:to-green-700 shadow-md hover:shadow-lg transition-all duration-300",
 
         "gradient-secondary":
-          "rounded-lg bg-gradient-to-r from-tecno-blue to-blue-600 text-white font-medium hover:from-blue-600 hover:to-blue-700 shadow-md hover:shadow-lg transition-all duration-300",
+          "rounded-lg bg-gradient-to-r from-brand-secondary to-tecno-blue-600 text-white font-medium hover:from-tecno-blue-600 hover:to-tecno-blue-700 shadow-md hover:shadow-lg transition-all duration-300",
 
         "outline-gradient":
-          "rounded-full border-2 border-gray-700/50 bg-gray-900/50 text-gray-300 font-medium backdrop-blur-sm hover:border-tecno-purple/40 hover:bg-gray-800/60 hover:text-white transition-all duration-300",
+          "rounded-full border-2 border-gray-700/50 bg-gray-900/50 text-gray-300 font-medium backdrop-blur-sm hover:border-brand-primary/40 hover:bg-gray-800/60 hover:text-white transition-all duration-300",
 
         "ghost-gradient":
-          "rounded-md text-gray-300 hover:bg-gradient-to-r hover:from-tecno-purple/10 hover:to-tecno-blue/10 hover:text-white transition-all duration-300",
+          "rounded-md text-gray-300 hover:bg-gradient-to-r hover:from-brand-primary/10 hover:to-brand-secondary/10 hover:text-white transition-all duration-300",
 
         destructive:
           "rounded-md bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",

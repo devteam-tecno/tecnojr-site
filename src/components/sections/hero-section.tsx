@@ -12,7 +12,7 @@ export function HeroSection() {
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20 lg:pt-0">
       {/* Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 z-10 bg-gradient-to-br from-tecno-black via-tecno-black/90 to-tecno-purple/20" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-br from-brand-dark via-tecno-black-800 to-brand-primary/20" />
         <div
           className="h-full w-full bg-cover bg-center opacity-40"
           style={{
@@ -108,11 +108,11 @@ export function HeroSection() {
                   ?.scrollIntoView({ behavior: "smooth" })
               }
             >
-              <div className="w-6 h-10 border-2 border-purple-500/20 rounded-full flex items-center justify-center group-hover:border-blue-500/40 transition-colors duration-300">
+              <div className="w-6 h-10 border-2 border-brand-primary/20 rounded-full flex items-center justify-center group-hover:border-brand-secondary/40 transition-colors duration-300">
                 <motion.div
                   animate={{ y: [0, 8, 0] }}
                   transition={{ repeat: Infinity, duration: 1.5 }}
-                  className="w-1 h-3 bg-gradient-to-b from-purple-500 to-blue-500 rounded-full"
+                  className="w-1 h-3 gradient-tecno-vertical rounded-full"
                 />
               </div>
               <p className="text-sm text-gray-400 mt-3 group-hover:text-white transition-colors duration-300">

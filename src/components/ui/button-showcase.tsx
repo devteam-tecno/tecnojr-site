@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
  */
 export function ButtonShowcase() {
   return (
-    <div className="space-y-12 rounded-xl bg-gradient-to-br from-tecno-black via-gray-900 to-tecno-black p-12">
+    <div className="space-y-12 rounded-xl bg-gradient-to-br from-tecno-black-800 via-gray-900 to-tecno-black-800 p-12">
       <div>
         <h2 className="mb-6 text-3xl font-bold text-white">
           Variantes de Botões TecnoJr

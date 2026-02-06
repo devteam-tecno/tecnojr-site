@@ -33,7 +33,7 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-gray-900/50 to-tecno-black py-32">
+    <section className="relative overflow-hidden bg-gradient-to-b from-gray-900/50 to-tecno-black-800 py-32">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div

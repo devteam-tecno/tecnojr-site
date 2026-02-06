@@ -6,7 +6,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-gradient-to-b from-tecno-black to-gray-900/50 py-32"
+      className="relative overflow-hidden bg-gradient-to-b from-tecno-black-800 to-gray-900/50 py-32"
     >
       {/* Background Effects */}
       <div className="absolute inset-0">
@@ -21,7 +21,7 @@ export function AboutSection() {
             repeat: Number.POSITIVE_INFINITY,
             ease: "easeInOut",
           }}
-          className="absolute right-0 top-1/4 h-96 w-96 rounded-full bg-gradient-to-br from-tecno-purple/10 to-tecno-blue/10 blur-3xl"
+          className="absolute right-0 top-1/4 h-96 w-96 rounded-full bg-gradient-to-br from-tecno-purple-500/10 to-tecno-blue-500/10 blur-3xl"
         />
       </div>
 
@@ -36,13 +36,13 @@ export function AboutSection() {
             className="relative"
           >
             {/* Placeholder for image */}
-            <div className="relative aspect-[4/3] flex items-center justify-center overflow-hidden rounded-3xl border border-gray-700/30 bg-gradient-to-br from-tecno-purple/20 via-gray-800/40 to-tecno-blue/20 backdrop-blur-sm">
+            <div className="relative aspect-[4/3] flex items-center justify-center overflow-hidden rounded-3xl border border-gray-700/30 bg-gradient-to-br from-tecno-purple-500/20 via-gray-800/40 to-tecno-blue-500/20 backdrop-blur-sm">
               <div className="p-8 text-center">
                 <p className="text-lg text-gray-400">Imagem da TecnoJr</p>
               </div>
 
               {/* Overlay Effect */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-tecno-purple/5 via-transparent to-tecno-blue/5" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-tecno-purple-500/5 via-transparent to-tecno-blue-500/5" />
             </div>
           </motion.div>
 
@@ -55,9 +55,9 @@ export function AboutSection() {
             className="relative z-20 lg:-ml-16"
           >
             {/* Card Background */}
-            <div className="relative rounded-3xl p-8 transition-all duration-500 hover:border-tecno-purple/30 lg:p-12">
+            <div className="relative rounded-3xl p-8 transition-all duration-500 hover:border-tecno-purple-500/30 lg:p-12">
               {/* Glow Effect */}
-              <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-tecno-purple/20 via-tecno-blue/20 to-tecno-purple/20 opacity-0 blur transition duration-500 group-hover:opacity-50" />
+              <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-tecno-purple-500/20 via-tecno-blue-500/20 to-tecno-purple-500/20 opacity-0 blur transition duration-500 group-hover:opacity-50" />
 
               <div className="relative">
                 <h2 className="text-3xl font-bold !leading-tight sm:text-3xl lg:text-3xl xl:text-3xl">

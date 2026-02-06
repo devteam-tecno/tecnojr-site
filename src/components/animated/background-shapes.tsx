@@ -39,7 +39,7 @@ export function BackgroundShapes() {
 
       {/* Geometric shapes */}
       <motion.div
-        className="absolute left-[15%] top-[20%] h-32 w-32 rounded-lg border-2 border-tecno-purple/20"
+        className="absolute left-[15%] top-[20%] h-32 w-32 rounded-lg border-2 border-tecno-purple-500/20"
         animate={{ rotate: 360 }}
         transition={{
           duration: 20,

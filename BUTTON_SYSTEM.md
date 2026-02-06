@@ -1,5 +1,8 @@
 # 🎨 Customização do Sistema de Botões TecnoJr
 
+> **📘 For complete color system documentation, see [STYLE_GUIDE.md](./STYLE_GUIDE.md)**  
+> This document covers button-specific implementations using the TecnoJR design system.
+
 ## ✅ O que foi feito?
 
 ### 1. **Criação de Variantes Personalizadas**
@@ -306,13 +309,43 @@ export default function TestPage() {
 
 ### Cores da Marca
 
+> **Note:** The color system has been modernized! See [STYLE_GUIDE.md](./STYLE_GUIDE.md) for complete documentation.
+
+**Legacy (CSS variables):**
+
 ```css
 --tecno-purple: #9155eb --tecno-blue: #4275f9 --tecno-black: #232323;
 ```
 
+**Current (Tailwind V4 with OKLCH & semantic tokens):**
+
+```tsx
+// Semantic tokens (recommended)
+brand-primary          // tecno-purple-500
+brand-secondary        // tecno-blue-500
+brand-primary-hover    // tecno-purple-600
+
+// Direct color scales
+tecno-purple-50  to  tecno-purple-950
+tecno-blue-50    to  tecno-blue-950
+tecno-black-50   to  tecno-black-950
+
+// Gradient utilities
+.gradient-tecno-primary     // Purple → Blue horizontal
+.gradient-tecno-secondary   // Blue → Purple horizontal
+.gradient-tecno-diagonal    // 135deg diagonal
+.gradient-tecno-animated    // Animated gradient for buttons
+```
+
+**Button variants now use:**
+
+- `gradient-tecno-animated` for primary gradient buttons
+- `brand-primary`, `brand-secondary` for semantic colors
+- Full OKLCH color scales for precise control
+
 ### Z-Index Automático
 
-A variante `gradient-primary` aplica automaticamente `position: relative` e `z-index: 10` aos elementos filhos através da classe `[&>*]:relative [&>*]:z-10`, eliminando a necessidade de adicionar manualmente.
+The `gradient-primary` variant has been simplified and now uses utility classes directly instead of complex z-index manipulation. The gradient utility handles positioning automatically.
 
 ---
 
