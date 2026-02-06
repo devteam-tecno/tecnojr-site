@@ -77,12 +77,3 @@ export const internalProjects: InternalProject[] = [
     img: "pokedex.jpg",
   },
 ];
-
-// Helper functions
-export function getAllProjects() {
-  return {
-    external: externalProjects,
-    internal: internalProjects,
-    total: externalProjects.length + internalProjects.length,
-  };
-}

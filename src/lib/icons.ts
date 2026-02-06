@@ -1,3 +1,8 @@
+/**
+ * Social media icon mapping
+ * Used to render social links for team members
+ * Will be utilized in the "/sobre" page (currently under development)
+ */
 import {
   FileText,
   Github,

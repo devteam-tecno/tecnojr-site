@@ -2,15 +2,12 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-
-const quickLinks = [
-  { name: "Início", path: "/" },
-  { name: "Sobre", path: "/sobre" },
-  { name: "Projetos", path: "/sonhos" },
-  { name: "Press Kit", path: "/press-kit" },
-];
+import { navigationLinks } from "@/lib/navigation";
 
 export function QuickLinks() {
+  // Filter out right-aligned links (like Processo Seletivo) for footer
+  const footerLinks = navigationLinks.filter((link) => link.align !== "right");
+
   return (
     <div className="hidden lg:col-span-1 lg:block">
       <motion.div
@@ -21,13 +18,15 @@ export function QuickLinks() {
       >
         <h4 className="mb-6 text-lg font-semibold text-white">Links Rápidos</h4>
         <ul className="space-y-3">
-          {quickLinks.map((link) => (
-            <li key={link.path}>
+          {footerLinks.map((link) => (
+            <li key={link.url}>
               <Link
-                href={link.path}
-                className="text-gray-300 transition-colors duration-300 hover:text-purple-500"
+                href={link.url}
+                onClick={(e) => link.disabled && e.preventDefault()}
+                className="text-gray-300 transition-colors duration-300 hover:text-purple-500 aria-disabled:cursor-not-allowed aria-disabled:text-gray-500 aria-disabled:hover:text-gray-500"
+                aria-disabled={link.disabled}
               >
-                {link.name}
+                {link.text}
               </Link>
             </li>
           ))}

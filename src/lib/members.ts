@@ -1,3 +1,8 @@
+/**
+ * Team members data
+ * This file will be used in the "/sobre" page (currently under development)
+ * Do not remove - the page is linked in header and footer navigation
+ */
 import { ROLE_ID } from "./constants";
 import type { Member } from "./types";
 

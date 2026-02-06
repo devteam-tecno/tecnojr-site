@@ -6,21 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { navigationLinks, ROUTES_WITHOUT_HEADER } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
-import { TecnoJrLogo } from "../ui/tecnojr-logo";
-
-const navigationLinks = [
-  { url: "/", text: "Início" },
-  { url: "/sobre", text: "Sobre" },
-  { url: "/sonhos", text: "Projetos" },
-  { url: "/press-kit", text: "Press Kit" },
-] as const;
-
-const processoSeletivoLink = {
-  url: "#",
-  text: "Processo Seletivo",
-  disabled: true,
-};
+import { TecnoJrLogo } from "../../ui/tecnojr-logo";
+import { DesktopNavigation } from "./desktop-navigation";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -28,7 +17,9 @@ export function Header() {
   const pathname = usePathname();
 
   // Don't show header on specific pages
-  const shouldHideHeader = ["/links", "/login", "/wp-admin"].includes(pathname);
+  const shouldHideHeader = ROUTES_WITHOUT_HEADER.includes(
+    pathname as (typeof ROUTES_WITHOUT_HEADER)[number],
+  );
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -58,66 +49,15 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between lg:h-20">
-          {/* Logo */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <TecnoJrLogo />
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="ml-8 hidden flex-1 items-center justify-between lg:flex">
-            {/* Center Navigation */}
-            <div className="flex flex-1 justify-center">
-              <nav className="flex items-center space-x-8">
-                {navigationLinks.map((link) => (
-                  <Link
-                    key={link.url}
-                    href={link.url}
-                    className={cn(
-                      "relative px-3 py-2 text-sm font-medium transition-all duration-300",
-                      pathname === link.url
-                        ? "text-white"
-                        : "text-gray-300 hover:text-white",
-                    )}
-                  >
-                    {link.text}
-                    {pathname === link.url && (
-                      <motion.div
-                        layoutId="underline"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 gradient-tecno-primary"
-                        initial={false}
-                        transition={{
-                          type: "spring",
-                          stiffness: 500,
-                          damping: 30,
-                        }}
-                      />
-                    )}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-
-            {/* Right Navigation - Processo Seletivo */}
-            <nav className="flex items-center">
-              <Link
-                href={processoSeletivoLink.url}
-                className={cn(
-                  "relative px-3 py-2 text-sm font-medium transition-all duration-300",
-                  processoSeletivoLink.disabled
-                    ? "cursor-not-allowed text-gray-500"
-                    : pathname === processoSeletivoLink.url
-                      ? "text-white"
-                      : "text-gray-300 hover:text-white",
-                )}
-                aria-disabled={processoSeletivoLink.disabled}
-                onClick={(e) =>
-                  processoSeletivoLink.disabled && e.preventDefault()
-                }
-              >
-                {processoSeletivoLink.text}
-              </Link>
-            </nav>
-          </div>
+          <DesktopNavigation
+            navigationLinks={navigationLinks}
+            pathname={pathname}
+          />
 
           {/* Mobile Menu Button */}
           <motion.button
@@ -184,39 +124,37 @@ export function Header() {
                 {/* Mobile Menu Items */}
                 <nav className="flex-1 bg-zinc-900 px-6 py-8">
                   <div className="space-y-6">
-                    {[...navigationLinks, processoSeletivoLink].map(
-                      (link, index) => {
-                        const isDisabled = "disabled" in link && link.disabled;
-                        return (
-                          <motion.div
-                            key={link.url}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
+                    {navigationLinks.map((link, index) => {
+                      const isDisabled = "disabled" in link && link.disabled;
+                      return (
+                        <motion.div
+                          key={link.url}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                        >
+                          <Link
+                            href={link.url}
+                            onClick={(e) => {
+                              if (isDisabled) {
+                                e.preventDefault();
+                              }
+                              setMobileMenuOpen(false);
+                            }}
+                            className={cn(
+                              "block text-lg font-medium transition-all duration-300",
+                              isDisabled
+                                ? "cursor-not-allowed text-gray-500"
+                                : pathname === link.url
+                                  ? "text-brand-primary"
+                                  : "text-gray-300 hover:text-white",
+                            )}
                           >
-                            <Link
-                              href={link.url}
-                              onClick={(e) => {
-                                if (isDisabled) {
-                                  e.preventDefault();
-                                }
-                                setMobileMenuOpen(false);
-                              }}
-                              className={cn(
-                                "block text-lg font-medium transition-all duration-300",
-                                isDisabled
-                                  ? "cursor-not-allowed text-gray-500"
-                                  : pathname === link.url
-                                    ? "text-brand-primary"
-                                    : "text-gray-300 hover:text-white",
-                              )}
-                            >
-                              {link.text}
-                            </Link>
-                          </motion.div>
-                        );
-                      },
-                    )}
+                            {link.text}
+                          </Link>
+                        </motion.div>
+                      );
+                    })}
                   </div>
                 </nav>
               </div>
