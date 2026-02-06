@@ -51,7 +51,7 @@ export function SocialLinks() {
             aria-label={link.label}
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.9 }}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-purple-500/20 bg-gradient-to-br from-zinc-800 to-zinc-900 text-gray-300 transition-all duration-300 hover:border-purple-500/40 hover:text-white"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-purple-500/20 bg-linear-to-br from-zinc-800 to-zinc-900 text-gray-300 transition-all duration-300 hover:border-purple-500/40 hover:text-white"
           >
             <IconComponent className="h-4 w-4" />
           </motion.a>

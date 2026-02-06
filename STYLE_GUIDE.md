@@ -379,7 +379,7 @@ TecnoJR provides reusable gradient utility classes for consistent visual effects
   {/* Gradient glow border on hover */}
   <div className="absolute -inset-0.5 rounded-2xl gradient-tecno-animated opacity-0 blur transition duration-500 group-hover:opacity-50" />
 
-  <Card className="relative h-full overflow-hidden border-gray-700/50 !bg-gradient-to-br !from-gray-900/90 !via-gray-800/80 !to-gray-900/90 backdrop-blur-xl transition-all duration-500 group-hover:scale-105">
+  <Card className="relative h-full overflow-hidden border-gray-700/50 bg-linear-to-br! from-gray-900/90! via-gray-800/80! to-gray-900/90! backdrop-blur-xl transition-all duration-500 group-hover:scale-105">
     <CardHeader className="space-y-4">
       <div className="flex h-14 w-14 items-center justify-center rounded-lg gradient-tecno-diagonal text-white shadow-lg shadow-brand-primary/25">
         <Icon className="h-7 w-7" />
@@ -391,7 +391,7 @@ TecnoJR provides reusable gradient utility classes for consistent visual effects
     </CardContent>
 
     {/* Hover overlay */}
-    <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-br from-brand-primary/5 to-brand-secondary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+    <div className="pointer-events-none absolute inset-0 rounded-xl bg-linear-to-br from-brand-primary/5 to-brand-secondary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
   </Card>
 </div>
 ```
@@ -589,7 +589,7 @@ import { cn } from "@/lib/utils";
 **Before:**
 
 ```tsx
-<div className="bg-gradient-to-r from-[#9155eb] via-[#4275f9] to-[#9155eb]" />
+<div className="bg-linear-to-r from-[#9155eb] via-[#4275f9] to-[#9155eb]" />
 ```
 
 **After:**

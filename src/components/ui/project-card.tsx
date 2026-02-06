@@ -31,7 +31,7 @@ export function ProjectCard({
       {/* Gradient Glow Border Effect on Hover */}
       <div className="absolute -inset-px rounded-2xl gradient-tecno-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-      <Card className="relative pt-0 h-full overflow-hidden border-gray-800/50 !bg-gradient-to-b !from-gray-900/80 !to-gray-900/60 backdrop-blur-sm transition-all duration-300 group-hover:scale-105 group-hover:border-brand-primary/30">
+      <Card className="relative pt-0 h-full overflow-hidden border-gray-800/50 bg-linear-to-b! from-gray-900/80! to-gray-900/60! backdrop-blur-sm transition-all duration-300 group-hover:scale-105 group-hover:border-brand-primary/30">
         {/* Project Image */}
         <div className="relative h-48 w-full overflow-hidden">
           <Image
@@ -40,7 +40,7 @@ export function ProjectCard({
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-gray-900/60 via-transparent to-transparent" />
 
           {/* Project Type Badge */}
           {link && (
@@ -57,10 +57,10 @@ export function ProjectCard({
         </div>
 
         <CardHeader>
-          <CardTitle className="flex items-center justify-between text-white transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-brand-primary group-hover:to-brand-secondary group-hover:bg-clip-text group-hover:text-transparent">
+          <CardTitle className="flex items-center justify-between text-white transition-all duration-300 group-hover:bg-linear-to-r group-hover:from-brand-primary group-hover:to-brand-secondary group-hover:bg-clip-text group-hover:text-transparent">
             <span>{title}</span>
             {link && !isInternal && (
-              <ExternalLink className="h-4 w-4 flex-shrink-0 text-gray-400 transition-colors group-hover:text-brand-primary" />
+              <ExternalLink className="h-4 w-4 shrink-0 text-gray-400 transition-colors group-hover:text-brand-primary" />
             )}
           </CardTitle>
         </CardHeader>

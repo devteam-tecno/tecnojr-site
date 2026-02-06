@@ -341,24 +341,41 @@ export const memberList: Member[] = [
   },
 ];
 
-// Role statistics
-export const roles = {
-  coordenadores: memberList.filter(
-    (member) => member.roleId === ROLE_ID.Coordenador,
-  ).length,
-  conselheiros: memberList.filter(
-    (member) => member.roleId === ROLE_ID.Conselheiro,
-  ).length,
-  diretores: memberList.filter((member) => member.roleId === ROLE_ID.Diretor)
-    .length,
-  assessores: memberList.filter((member) => member.roleId === ROLE_ID.Assessor)
-    .length,
-  membros: memberList.filter((member) => member.roleId === ROLE_ID.Membro)
-    .length,
-  trainee: memberList.filter((member) => member.roleId === ROLE_ID.Trainee)
-    .length,
-  total: memberList.length,
-};
+// Role statistics - optimized with single-pass reduce instead of 6 separate filters
+export const roles = memberList.reduce(
+  (acc, member) => {
+    switch (member.roleId) {
+      case ROLE_ID.Coordenador:
+        acc.coordenadores++;
+        break;
+      case ROLE_ID.Conselheiro:
+        acc.conselheiros++;
+        break;
+      case ROLE_ID.Diretor:
+        acc.diretores++;
+        break;
+      case ROLE_ID.Assessor:
+        acc.assessores++;
+        break;
+      case ROLE_ID.Membro:
+        acc.membros++;
+        break;
+      case ROLE_ID.Trainee:
+        acc.trainee++;
+        break;
+    }
+    return acc;
+  },
+  {
+    coordenadores: 0,
+    conselheiros: 0,
+    diretores: 0,
+    assessores: 0,
+    membros: 0,
+    trainee: 0,
+    total: memberList.length,
+  },
+);
 
 // Helper functions
 export function getMembersByRole(roleId: ROLE_ID): Member[] {

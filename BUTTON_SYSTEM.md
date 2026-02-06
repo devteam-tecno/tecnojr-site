@@ -162,11 +162,11 @@ Componente visual demonstrando:
 ```tsx
 <Link
   href="/contato"
-  className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-tecno-purple via-tecno-blue to-tecno-purple bg-size-200 bg-pos-0 hover:bg-pos-100 text-white font-semibold rounded-full shadow-lg shadow-tecno-purple/25 hover:shadow-tecno-blue/25 transition-all duration-500 group relative overflow-hidden"
+  className="inline-flex items-center px-8 py-4 bg-linear-to-r from-tecno-purple via-tecno-blue to-tecno-purple bg-size-200 bg-pos-0 hover:bg-pos-100 text-white font-semibold rounded-full shadow-lg shadow-tecno-purple/25 hover:shadow-tecno-blue/25 transition-all duration-500 group relative overflow-hidden"
 >
   <span className="relative z-10">Contate-nos</span>
   <ArrowRight className="ml-3 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
-  <div className="absolute inset-0 bg-gradient-to-r from-tecno-blue to-tecno-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+  <div className="absolute inset-0 bg-linear-to-r from-tecno-blue to-tecno-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 </Link>
 ```
 
