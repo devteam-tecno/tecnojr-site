@@ -1,46 +1,24 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "./card";
+import type { IconComponentProps } from "@/lib/types";
+import { BaseCard } from "./base-card";
 
-interface FeatureCardProps {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-}
-
-export function FeatureCard({
-  icon: Icon,
-  title,
-  description,
-}: FeatureCardProps) {
+/**
+ * Feature card component - refactored to use BaseCard
+ * Displays a feature with icon, title, and description
+ */
+export function FeatureCard({ icon, title, description }: IconComponentProps) {
   return (
-    <div className="group relative h-full">
-      {/* Gradient Glow Border Effect on Hover */}
-      <div className="absolute -inset-0.5 rounded-2xl gradient-tecno-animated opacity-0 blur transition duration-500 group-hover:opacity-50" />
-
-      <Card className="relative h-full overflow-hidden border-gray-700/50 !bg-gradient-to-br !from-gray-900/90 !via-gray-800/80 !to-gray-900/90 backdrop-blur-xl transition-all duration-500 group-hover:scale-105 group-hover:border-transparent">
-        <CardHeader className="space-y-4">
-          <div className="flex h-14 w-14 items-center justify-center rounded-lg gradient-tecno-diagonal text-white shadow-lg shadow-brand-primary/25 transition-all duration-300 group-hover:scale-110 group-hover:shadow-brand-primary/40">
-            <Icon className="h-7 w-7" />
-          </div>
-          <CardTitle className="text-xl text-white">{title}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <CardDescription className="text-base text-gray-300 transition-colors duration-300 group-hover:text-gray-200">
-            {description}
-          </CardDescription>
-        </CardContent>
-
-        {/* Hover Gradient Overlay */}
-        <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-br from-brand-primary/5 to-brand-secondary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-      </Card>
-    </div>
+    <BaseCard
+      icon={icon}
+      title={title}
+      description={description}
+      variant="default"
+      iconSize="md"
+      iconGradient="diagonal"
+      glowEffect={true}
+      glowVariant="primary"
+      iconRotate={false}
+    />
   );
 }

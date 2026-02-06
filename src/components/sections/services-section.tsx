@@ -1,14 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { StaggerFadeUp } from "@/components/animated/motion-wrappers";
 import { ServiceCard } from "@/components/ui/service-card";
 import { services } from "@/lib/services";
+import { SectionTitle } from "./section-title";
 
 export function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-gradient-to-b from-brand-dark to-tecno-black-900 py-32"
+      className="relative overflow-hidden bg-linear-to-b from-brand-dark to-tecno-black-900 py-32"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -22,68 +23,23 @@ export function ServicesSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-20 text-center"
-        >
-          <h2 className="mb-6 text-3xl font-bold sm:text-4xl lg:text-5xl">
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="block text-white"
-            >
-              Nossos
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="block text-gradient-tecno"
-            >
-              Serviços
-            </motion.span>
-          </h2>
+        {/* Section Header - Refactored */}
+        <SectionTitle
+          firstLine="Nossos"
+          secondLine="Serviços"
+          subtitle="Oferecemos uma gama completa de serviços tecnológicos para transformar sua visão em realidade digital"
+        />
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true }}
-            className="mx-auto max-w-2xl text-lg text-gray-300"
-          >
-            Oferecemos uma gama completa de serviços tecnológicos para
-            transformar sua visão em realidade digital
-          </motion.p>
-        </motion.div>
-
-        {/* Services Grid */}
+        {/* Services Grid - Refactored */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.1,
-                type: "spring",
-                stiffness: 100,
-              }}
-              viewport={{ once: true }}
-            >
+            <StaggerFadeUp key={service.title} index={index}>
               <ServiceCard
                 icon={service.icon}
                 title={service.title}
                 description={service.description}
               />
-            </motion.div>
+            </StaggerFadeUp>
           ))}
         </div>
       </div>

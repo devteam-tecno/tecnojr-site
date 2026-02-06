@@ -12,7 +12,7 @@ export function HeroSection() {
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20 lg:pt-0">
       {/* Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 z-10 bg-gradient-to-br from-brand-dark via-tecno-black-800 to-brand-primary/20" />
+        <div className="absolute inset-0 z-10 bg-linear-to-br from-brand-dark via-tecno-black-800 to-brand-primary/20" />
         <div
           className="h-full w-full bg-cover bg-center opacity-40"
           style={{
@@ -33,7 +33,7 @@ export function HeroSection() {
           className="space-y-8"
         >
           {/* Main Heading */}
-          <h1 className="text-4xl font-bold !leading-tight sm:text-5xl lg:text-7xl xl:text-7xl">
+          <h1 className="text-4xl font-bold leading-tight! sm:text-5xl lg:text-7xl xl:text-7xl">
             <motion.span
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}

@@ -5,15 +5,16 @@ import { Briefcase, Heart } from "lucide-react";
 import { ProjectCard } from "@/components/ui/project-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { externalProjects, internalProjects } from "@/lib/projects";
+import { SectionTitle } from "./section-title";
 
 export function ProjectsSection() {
   return (
     <section className="py-32">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header - Refactored */}
         <div className="mb-20 text-center">
           {/* Badge */}
-          <div className="mb-8 inline-flex items-center rounded-full border border-brand-primary/20 bg-gradient-to-r from-brand-primary/10 to-brand-secondary/10 px-6 py-3 text-sm text-gray-300 backdrop-blur-sm">
+          <div className="mb-8 inline-flex items-center rounded-full border border-brand-primary/20 bg-linear-to-r from-brand-primary/10 to-brand-secondary/10 px-6 py-3 text-sm text-gray-300 backdrop-blur-sm">
             <svg
               role="img"
               aria-label="Portfolio icon"
@@ -26,35 +27,11 @@ export function ProjectsSection() {
             Portfolio
           </div>
 
-          {/* Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+          <SectionTitle
+            firstLine="Projetos que fazem"
+            secondLine="a diferença"
             className="mb-6"
-          >
-            <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-              <motion.span
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="text-white"
-              >
-                Projetos que fazem{" "}
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                viewport={{ once: true }}
-                className="text-gradient-tecno"
-              >
-                a diferença
-              </motion.span>
-            </h2>
-          </motion.div>
+          />
         </div>
 
         {/* Projects Tabs */}
