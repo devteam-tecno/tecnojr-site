@@ -9,7 +9,7 @@ import { SectionTitle } from "./section-title";
 
 export function ProjectsSection() {
   return (
-    <section className="py-32">
+    <section id="projects" className="py-32">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header - Refactored */}
         <div className="mb-20 text-center">
