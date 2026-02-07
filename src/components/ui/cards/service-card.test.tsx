@@ -4,9 +4,9 @@
  * Note: Uses real lucide-react icons. Tree-shaking is handled by Next.js optimizePackageImports.
  */
 
+import { render, screen } from "@tests/test-utils";
 import { Code, Palette, Smartphone } from "lucide-react";
 import { describe, expect, it } from "vitest";
-import { render, screen } from "../../../tests/test-utils";
 import { ServiceCard } from "./service-card";
 
 describe("ServiceCard Component", () => {

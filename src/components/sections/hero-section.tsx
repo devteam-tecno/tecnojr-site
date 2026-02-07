@@ -4,9 +4,42 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { BackgroundShapes } from "@/components/animated/background-shapes";
-import { Button } from "@/components/ui/button";
-import mainBg from "../../assets/img/backgroundHome.webp";
+import { Button } from "@/components/ui/buttons/button";
 
+const mainBg = "/assets/images/backgroundHome.webp";
+
+/**
+ * Hero section component for homepage with full-screen layout and animations.
+ *
+ * Features:
+ * - Full viewport height (min-h-screen) with centered content
+ * - Layered background: gradient overlay + image + animated shapes
+ * - Staggered text animations (fade + slide from left/right)
+ * - Gradient-styled heading text with tecno colors
+ * - CTA button with hover scale animation
+ * - Responsive typography (4xl → 7xl on large screens)
+ *
+ * Background layers (bottom to top):
+ * 1. Background image (backgroundHome.webp) at 40% opacity
+ * 2. Gradient overlay (brand-dark → tecno-black-800 → brand-primary/20)
+ * 3. Animated background shapes (BackgroundShapes component)
+ * 4. Content (z-20)
+ *
+ * @example
+ * // Usage in homepage
+ * export default function HomePage() {
+ *   return (
+ *     <>
+ *       <HeroSection />
+ *       <FeaturesSection />
+ *       {/* other sections *\/}
+ *     </>
+ *   );
+ * }
+ *
+ * @see {@link BackgroundShapes} - Animated background decoration
+ * @see {@link Button} - CTA button with gradient-primary variant
+ */
 export function HeroSection() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20 lg:pt-0">
@@ -16,7 +49,7 @@ export function HeroSection() {
         <div
           className="h-full w-full bg-cover bg-center opacity-40"
           style={{
-            backgroundImage: `url(${mainBg.src})`,
+            backgroundImage: `url(${mainBg})`,
           }}
         />
       </div>

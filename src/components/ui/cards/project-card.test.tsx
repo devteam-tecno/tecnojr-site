@@ -3,8 +3,8 @@
  * @description Tests for ProjectCard component
  */
 
+import { render, screen } from "@tests/test-utils";
 import { describe, expect, it } from "vitest";
-import { render, screen } from "../../../tests/test-utils";
 import { ProjectCard } from "./project-card";
 
 describe("ProjectCard Component", () => {

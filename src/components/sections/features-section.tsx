@@ -1,10 +1,38 @@
 "use client";
 
 import { StaggerFadeUp } from "@/components/animated/motion-wrappers";
-import { FeatureCard } from "@/components/ui/feature-card";
+import { FeatureCard } from "@/components/ui/cards/feature-card";
 import { features } from "@/lib/features";
 import { SectionTitle } from "./section-title";
 
+/**
+ * Features section showcasing company differentiators.
+ *
+ * Displays a 2-column responsive grid of FeatureCards with staggered fade-up animations.
+ * Features data from @/lib/features (icon, title, description).
+ *
+ * Design:
+ * - Background: Gradient from gray-900/50 to tecno-black-800
+ * - Pattern overlay: Radial gradient dots (purple/blue) at 5% opacity
+ * - Section padding: py-32
+ * - Grid: 1 column mobile, 2 columns tablet+
+ *
+ * @example
+ * // Used in homepage
+ * export default function HomePage() {
+ *   return (
+ *     <>
+ *       <HeroSection />
+ *       <FeaturesSection />
+ *       <ServicesSection />
+ *     </>
+ *   );
+ * }
+ *
+ * @see {@link features} - Centralized features data from @/lib/features
+ * @see {@link FeatureCard} - Individual feature card component
+ * @see {@link SectionTitle} - Reusable section heading with two-line text
+ */
 export function FeaturesSection() {
   return (
     <section className="relative overflow-hidden bg-linear-to-b from-gray-900/50 to-tecno-black-800 py-32">

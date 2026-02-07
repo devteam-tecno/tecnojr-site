@@ -1,6 +1,14 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
+/**
+ * Props for the SectionWrapper component.
+ *
+ * @property children - Section content
+ * @property className - Optional additional CSS classes
+ * @property id - Optional ID for anchor navigation (e.g., "about", "services")
+ * @property as - HTML element to render ("section" for semantic sections, "div" for layout-only)
+ */
 interface SectionWrapperProps {
   children: ReactNode;
   className?: string;
@@ -8,6 +16,25 @@ interface SectionWrapperProps {
   as?: "section" | "div";
 }
 
+/**
+ * Semantic section wrapper with responsive vertical spacing.
+ *
+ * Provides consistent vertical padding across breakpoints (py-16 on mobile, py-20 on tablet,
+ * py-24 on desktop). Use to wrap major page sections for consistent spacing between sections.
+ * Defaults to `<section>` for semantic HTML but can render as `<div>` when nesting sections.
+ *
+ * @example
+ * Basic section with ID: SectionWrapper with id="services"
+ *
+ * @example
+ * Reduced padding: SectionWrapper with className="py-12"
+ *
+ * @example
+ * As div for nested sections: SectionWrapper with as="div"
+ *
+ * @example
+ * Full-screen hero: SectionWrapper with className="min-h-screen py-0"
+ */
 export function SectionWrapper({
   children,
   className,

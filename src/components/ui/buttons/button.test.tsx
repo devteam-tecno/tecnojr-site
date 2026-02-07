@@ -1,5 +1,5 @@
+import { render, screen, userEvent } from "@tests/test-utils";
 import { describe, expect, it, vi } from "vitest";
-import { render, screen, userEvent } from "../../../tests/test-utils";
 import { Button } from "./button";
 
 describe("Button Component", () => {

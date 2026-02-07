@@ -1,0 +1,286 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Documentation/Testing" />
+
+# Testing Strategy
+
+Comprehensive testing approach for the TecnoJr website ensuring quality, reliability, and maintainability.
+
+## Testing Stack
+
+### Unit & Integration Tests - Vitest
+- **Framework**: Vitest 3.2.4 (Vite-native testing)
+- **Coverage Target**: 85% minimum for statements, branches, functions, lines
+- **Test Location**: Co-located with components as `*.test.tsx`
+- **Run**: `npm test` or `npm run test:watch`
+
+### End-to-End Tests - Playwright
+- **Framework**: Playwright 1.58.1
+- **Browsers**: Chromium, Firefox, WebKit (cross-browser)
+- **Location**: `tests/` directory
+- **Run**: `npm run test:e2e`
+
+### Component Tests - Storybook
+- **Framework**: Storybook 10.2.7 with addon-interactions
+- **Purpose**: Visual regression and interaction testing
+- **Run**: `npm run docs:test`
+
+## Test Organization
+
+### Unit Tests
+```typescript
+// src/components/ui/button.test.tsx
+import { render, screen } from "@testing-library/react";
+import { Button } from "./button";
+
+describe("Button", () => {
+  it("renders with text", () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByText("Click me")).toBeInTheDocument();
+  });
+
+  it("applies gradient-primary variant", () => {
+    render(<Button variant="gradient-primary">Submit</Button>);
+    const button = screen.getByRole("button");
+    expect(button).toHaveClass("gradient-primary");
+  });
+});
+```
+
+### Integration Tests
+```typescript
+// src/components/sections/features-section.test.tsx
+import { render, screen } from "@testing-library/react";
+import { FeaturesSection } from "./features-section";
+
+describe("FeaturesSection", () => {
+  it("renders all features from lib/features", () => {
+    render(<FeaturesSection />);
+    expect(screen.getByText("Inovação")).toBeInTheDocument();
+    expect(screen.getByText("Qualidade")).toBeInTheDocument();
+    // ... test all features
+  });
+
+  it("animates cards on scroll", async () => {
+    // Test IntersectionObserver triggers
+  });
+});
+```
+
+### E2E Tests
+```typescript
+// tests/navigation.spec.ts
+import { test, expect } from "@playwright/test";
+
+test("homepage navigation works", async ({ page }) => {
+  await page.goto("/");
+  
+  // Test header navigation
+  await page.click('a[href="#services"]');
+  await expect(page).toHaveURL("/#services");
+  
+  // Test mobile menu
+  await page.setViewportSize({ width: 375, height: 667 });
+  await page.click('[aria-label="Open menu"]');
+  await expect(page.getByRole("navigation")).toBeVisible();
+});
+```
+
+## Coverage Requirements
+
+### Minimum Thresholds (vitest.config.ts)
+```typescript
+coverage: {
+  provider: "v8",
+  reporter: ["text", "json", "html"],
+  thresholds: {
+    statements: 85,
+    branches: 85,
+    functions: 85,
+    lines: 85,
+  },
+}
+```
+
+### Current Coverage
+- UI Components: ~90% coverage
+- Utility Functions: ~95% coverage
+- Section Components: ~80% coverage
+- Layout Components: ~75% coverage
+
+**Goal**: Maintain >85% across all categories
+
+## Testing Patterns
+
+### 1. Arrange-Act-Assert (AAA)
+```typescript
+it("opens mobile menu on button click", async () => {
+  // Arrange
+  const { getByLabelText } = render(<Header />);
+  
+  // Act
+  await userEvent.click(getByLabelText("Open menu"));
+  
+  // Assert
+  expect(screen.getByRole("navigation")).toBeVisible();
+});
+```
+
+### 2. Test User Behavior, Not Implementation
+```typescript
+// ❌ Bad: Testing implementation details
+it("sets mobileMenuOpen state to true", () => {
+  const { result } = renderHook(() => useState(false));
+  act(() => result.current[1](true));
+  expect(result.current[0]).toBe(true);
+});
+
+// ✅ Good: Testing user-visible behavior
+it("shows mobile navigation when menu button clicked", async () => {
+  render(<Header />);
+  await userEvent.click(screen.getByLabelText("Open menu"));
+  expect(screen.getByText("Sobre")).toBeVisible();
+});
+```
+
+### 3. Test Accessibility
+```typescript
+import { axe, toHaveNoViolations } from "jest-axe";
+expect.extend(toHaveNoViolations);
+
+it("has no accessibility violations", async () => {
+  const { container } = render(<Button>Click</Button>);
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+});
+```
+
+### 4. Mock External Dependencies
+```typescript
+import { vi } from "vitest";
+
+// Mock Next.js router
+vi.mock("next/navigation", () => ({
+  usePathname: () => "/",
+  useRouter: () => ({
+    push: vi.fn(),
+    replace: vi.fn(),
+  }),
+}));
+
+// Mock Framer Motion for performance
+vi.mock("framer-motion", () => ({
+  motion: {
+    div: "div",
+    span: "span",
+  },
+}));
+```
+
+## Test Commands
+
+### Development
+```bash
+# Run tests in watch mode
+npm run test:watch
+
+# Run specific test file
+npm test button.test.tsx
+
+# Run tests with coverage
+npm run test:coverage
+```
+
+### CI/CD
+```bash
+# Run all tests (unit + integration)
+npm test
+
+# Run E2E tests
+npm run test:e2e
+
+# Run E2E on specific browser
+npm run test:e2e -- --project=chromium
+```
+
+### Storybook Tests
+```bash
+# Run Storybook interaction tests
+npm run docs:test
+
+# Build and test Storybook
+npm run docs:build
+```
+
+## Best Practices
+
+### ✅ Do's
+- Write tests for new features before implementation (TDD when possible)
+- Test critical user paths thoroughly (navigation, forms, CTAs)
+- Keep tests simple and readable
+- Use descriptive test names (`it("does X when Y")`)
+- Mock external APIs and services
+- Test edge cases and error states
+- Use data-testid sparingly (prefer accessible queries)
+
+### ❌ Don'ts
+- Don't test implementation details (state, props passing)
+- Don't test third-party library internals
+- Don't write tests that depend on previous tests
+- Don't mock everything (test real integrations when safe)
+- Don't ignore failing tests (fix or remove)
+- Don't test styles directly (use visual regression instead)
+
+## Continuous Integration
+
+### GitHub Actions Workflow
+```yaml
+name: Test
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+      - run: npm run test:e2e
+```
+
+## Debugging Tests
+
+### VSCode Debug Config
+```json
+{
+  "type": "node",
+  "request": "launch",
+  "name": "Debug Vitest Tests",
+  "runtimeExecutable": "npm",
+  "runtimeArgs": ["run", "test"],
+  "console": "integratedTerminal"
+}
+```
+
+### Playwright Debug
+```bash
+# Run in debug mode with browser
+npm run test:e2e -- --debug
+
+# Run specific test in headed mode
+npm run test:e2e tests/navigation.spec.ts -- --headed
+```
+
+## Resources
+
+- [TESTING.md](/?path=/docs/documentation-testing--docs) - Full testing documentation (500+ lines)
+- [Vitest Documentation](https://vitest.dev/)
+- [Playwright Documentation](https://playwright.dev/)
+- [Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Jest Axe](https://github.com/nickcolley/jest-axe) - Accessibility testing
+
+---
+
+**Testing Philosophy**: Tests should give confidence that the application works correctly for users, not just that the code executes without errors.

@@ -7,12 +7,43 @@ import Link from "next/link";
 import { navigationLinks } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
+/**
+ * Props for the MobileNavigation component.
+ *
+ * @property mobileMenuOpen - Whether mobile menu drawer is open
+ * @property setMobileMenuOpen - Function to toggle mobile menu state
+ * @property pathname - Current page pathname from usePathname()
+ */
 interface MobileNavigationProps {
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (open: boolean) => void;
   pathname: string;
 }
 
+/**
+ * Mobile navigation drawer with slide-in animation and backdrop.
+ *
+ * Features:
+ * - Slide-in from right with Framer Motion
+ * - Backdrop overlay with blur effect
+ * - Close button (X icon) in header
+ * - Logo display in drawer header
+ * - Active link highlighting with gradient
+ * - Disabled link support
+ * - AnimatePresence for smooth enter/exit
+ * - Hidden on desktop (lg:hidden)
+ *
+ * Animation: Slides in from right (x: 100% → 0), backdrop fades in.
+ * Width: 320px (w-80), max 90vw for small screens.
+ *
+ * @example
+ * // Used in Header component
+ * <MobileNavigation
+ *   mobileMenuOpen={mobileMenuOpen}
+ *   setMobileMenuOpen={setMobileMenuOpen}
+ *   pathname={pathname}
+ * />
+ */
 export function MobileNavigation({
   mobileMenuOpen,
   setMobileMenuOpen,

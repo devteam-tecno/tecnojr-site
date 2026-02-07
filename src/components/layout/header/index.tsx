@@ -6,10 +6,37 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navigationLinks, ROUTES_WITHOUT_HEADER } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
-import { TecnoJrLogo } from "../../ui/tecnojr-logo";
+import { TecnoJrLogo } from "../../ui/primitives/tecnojr-logo";
 import { DesktopNavigation } from "./desktop-navigation";
 import { MobileNavigation } from "./mobile-navigation";
 
+/**
+ * Main header component with sticky positioning and scroll-based styling.
+ *
+ * Features:
+ * - Slide-down animation on mount
+ * - Scroll detection (background blur/border after 50px scroll)
+ * - Mobile menu toggle state management
+ * - Desktop navigation (hidden on mobile)
+ * - Mobile navigation drawer (hamburger menu)
+ * - Auto-hide on specific routes (ROUTES_WITHOUT_HEADER)
+ * - Auto-close mobile menu on route change
+ * - Logo with scale animation on hover
+ *
+ * The header becomes more opaque with a border when scrolled past 50px for
+ * better readability. On mobile, it always has a background; on desktop (lg+),
+ * it starts transparent.
+ *
+ * @example
+ * // Usage in root layout
+ * <Header />
+ * <main>{children}</main>
+ * <Footer />
+ *
+ * @see {@link @/lib/navigation} - For navigation links and route configuration
+ * @see {@link DesktopNavigation} - Desktop nav implementation
+ * @see {@link MobileNavigation} - Mobile drawer nav implementation
+ */
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);

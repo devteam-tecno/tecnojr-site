@@ -1,0 +1,428 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Documentation/Components" />
+
+# Component Catalog
+
+Complete reference of all components in the TecnoJr design system.
+
+## Component Architecture
+
+### Organization Structure
+```
+src/components/
+├── ui/              # Reusable UI primitives
+├── layout/          # Layout components (Header, Footer)
+├── sections/        # Page sections (Hero, Features, etc.)
+└── animated/        # Animation wrappers and effects
+```
+
+### Design Principles
+1. **Single Responsibility** - Each component does one thing well
+2. **Composability** - Components build on primitives
+3. **Consistency** - Shared design tokens and patterns
+4. **Accessibility** - WCAG 2.1 AA compliance
+5. **Performance** - Optimized rendering and animations
+
+---
+
+## UI Components
+
+### Buttons
+**Location**: `src/components/ui/button.tsx`
+
+8 variants for different use cases:
+- `gradient-primary` - Hero CTAs, primary actions
+- `gradient-whatsapp` - WhatsApp contact only
+- `gradient-secondary` - Secondary CTAs, email links
+- `outline-gradient` - Filters, tabs, toggles
+- `ghost-gradient` - Navigation, subtle actions
+- `default`, `outline`, `secondary`, `ghost`, `destructive`, `link`
+
+5 sizes: `xs`, `sm`, `default`, `lg`, `xl`
+
+[View Button Stories →](/?path=/story/ui-button--gradient-primary)
+
+### Cards
+
+#### BaseCard
+**Location**: `src/components/ui/base-card.tsx`
+
+Foundation for FeatureCard, ServiceCard, StatItem. Features:
+- Configurable icon with gradients
+- Glow effects on hover
+- Icon rotation animations
+- Two layouts: default, centered
+
+#### FeatureCard
+**Location**: `src/components/ui/feature-card.tsx`
+
+For features section. Data from `@/lib/features`.
+- Left-aligned layout
+- Icon in gradient circle
+- Title + description
+
+[View FeatureCard Stories →](/?path=/story/ui-featurecard--default)
+
+#### ServiceCard
+**Location**: `src/components/ui/service-card.tsx`
+
+For services section. Data from `@/lib/services`.
+- Centered layout
+- Icon rotation on hover
+- Title + description
+
+[View ServiceCard Stories →](/?path=/story/ui-servicecard--default)
+
+#### ProjectCard
+**Location**: `src/components/ui/project-card.tsx`
+
+For projects showcase. Data from `@/lib/projects`.
+- Image with gradient overlay
+- External/Internal badge
+- Hover lift effect
+
+[View ProjectCard Stories →](/?path=/story/ui-projectcard--external-project)
+
+### Form Components
+
+#### Input
+**Location**: `src/components/ui/input.tsx`
+
+Text input with validation states.
+- Focus rings with brand colors
+- aria-invalid styling
+- React Hook Form integration
+
+[View Input Stories →](/?path=/story/ui-input--default)
+
+#### Textarea
+**Location**: `src/components/ui/textarea.tsx`
+
+Multi-line input with auto-expand.
+- field-sizing-content
+- Same validation states as Input
+
+[View Textarea Stories →](/?path=/story/ui-textarea--default)
+
+### Navigation
+
+#### Tabs
+**Location**: `src/components/ui/tabs.tsx`
+
+Radix UI-based tabs with 2 variants.
+- `default` - Solid background pill
+- `line` - Underline indicator
+
+Supports horizontal/vertical orientation.
+
+[View Tabs Stories →](/?path=/story/ui-tabs--default)
+
+#### FilterPill
+**Location**: `src/components/ui/filter-pill.tsx`
+
+For category filters and tags.
+- Active state with gradient
+- Outline variant for reset
+- Click handler for state management
+
+[View FilterPill Stories →](/?path=/story/ui-filterpill--filter-group)
+
+### Typography
+
+#### SectionTitle
+**Location**: `src/components/ui/section-title.tsx`
+
+Responsive section headings.
+- 3 sizes: sm, md, lg
+- 3 alignments: left, center, right
+- Semantic HTML: h1-h4
+- text-balance for optimal wrapping
+
+[View SectionTitle Stories →](/?path=/story/ui-sectiontitle--default)
+
+#### CodeText
+**Location**: `src/components/ui/code-text.tsx`
+
+Inline code snippets.
+- Monospace font
+- Muted background
+- Rounded corners
+
+[View CodeText Stories →](/?path=/story/ui-codetext--default)
+
+### Primitives
+
+#### Card
+**Location**: `src/components/ui/card.tsx`
+
+Base card with sub-components:
+- `Card` - Container
+- `CardHeader` - Header section
+- `CardTitle` - Title text
+- `CardDescription` - Subtitle
+- `CardContent` - Body content
+- `CardAction` - Action button area
+
+#### Separator
+**Location**: `src/components/ui/separator.tsx`
+
+Radix UI separator.
+- Horizontal/vertical orientation
+- Decorative or semantic
+
+#### StatItem
+**Location**: `src/components/ui/stat-item.tsx`
+
+For stats/benefits display.
+- Icon in gradient circle
+- Label + optional value
+- Fade-in animation
+
+---
+
+## Layout Components
+
+### Header
+**Location**: `src/components/layout/header/`
+
+Fixed header with scroll detection.
+- Desktop: Center/right navigation
+- Mobile: Hamburger menu + drawer
+- Active link indicators
+- Backdrop blur on scroll
+
+**Sub-components**:
+- `DesktopNavigation` - Desktop nav links
+- `MobileNavigation` - Mobile drawer
+
+[View Header Stories →](/?path=/story/layout-header--default)
+
+### Footer
+**Location**: `src/components/layout/footer/`
+
+4-column footer (responsive).
+- Logo + description + social
+- Quick links
+- Contact info
+- Copyright
+
+**Sub-components**:
+- `Description` - Logo, mission, social
+- `QuickLinks` - Navigation links
+- `ContactInfo` - Email, address, phone
+- `Copyright` - Dynamic year
+
+[View Footer Stories →](/?path=/story/layout-footer--default)
+
+### Wrappers
+
+#### MaxWidthWrapper
+**Location**: `src/components/layout/max-width-wrapper.tsx`
+
+Centers content with max-width.
+- Responsive padding
+- 6 max-width options
+
+#### SectionWrapper
+**Location**: `src/components/layout/section-wrapper.tsx`
+
+Consistent section spacing.
+- Responsive vertical padding
+- Optional section ID for anchors
+
+---
+
+## Section Components
+
+### HeroSection
+**Location**: `src/components/sections/hero-section.tsx`
+
+Full-screen hero with animations.
+- Background image + gradient overlay
+- Staggered text animations
+- Gradient heading text
+- CTA button
+- Background shapes
+
+### FeaturesSection
+**Location**: `src/components/sections/features-section.tsx`
+
+2-column features grid.
+- Data from `@/lib/features`
+- Staggered fade-up animations
+- Pattern overlay
+
+### ServicesSection
+**Location**: `src/components/sections/services-section.tsx`
+
+3-column services grid.
+- Data from `@/lib/services`
+- Centered cards
+- Section ID: #services
+
+### AboutSection
+**Location**: `src/components/sections/about-section.tsx`
+
+Two-column about layout.
+- Image placeholder
+- Overlapping text card
+- Floating orb animation
+
+### ProjectsSection
+**Location**: `src/components/sections/projects-section.tsx`
+
+Projects with tabs.
+- External/Internal tabs
+- 3-column grid
+- Section ID: #projects
+
+### BudgetSection
+**Location**: `src/components/sections/budget-section.tsx`
+
+Contact CTA with form.
+- Benefits list
+- WhatsApp CTA
+- Contact form
+- Animated gradient orbs
+
+---
+
+## Animated Components
+
+### Motion Wrappers
+**Location**: `src/components/animated/motion-wrappers.tsx`
+
+Reusable Framer Motion wrappers:
+- `FadeUp` - Fade + slide up
+- `FadeDown` - Fade + slide down
+- `FadeLeft` - Fade + slide left
+- `FadeRight` - Fade + slide right
+- `FadeIn` - Simple fade
+- `ScaleIn` - Scale + fade
+- `StaggerFadeUp` - Progressive fade-up with index
+
+### FloatingOrb
+**Location**: `src/components/animated/floating-orb.tsx`
+
+Floating background decoration.
+- Smooth looping animation
+- Configurable size, color, duration
+- Blur effect
+
+### BackgroundShapes
+**Location**: `src/components/animated/background-shapes.tsx`
+
+Multiple orbs + geometric shapes.
+- 4 animated orbs
+- 1 rotating square
+- Used in HeroSection
+
+### ScrollIndicator
+**Location**: `src/components/animated/scroll-indicator.tsx`
+
+Bouncing scroll hint.
+- ChevronDown icon
+- "Role para baixo" text
+- Fade in after delay
+
+### PageTransition
+**Location**: `src/components/animated/page-transition.tsx`
+
+Page transition wrapper.
+- Fade + slide animation
+- For Next.js page components
+
+---
+
+## Usage Patterns
+
+### Composing Sections
+```tsx
+export default function HomePage() {
+  return (
+    <>
+      <HeroSection />
+      <FeaturesSection />
+      <ServicesSection />
+      <AboutSection />
+      <ProjectsSection />
+      <BudgetSection />
+    </>
+  );
+}
+```
+
+### Building Forms
+```tsx
+<form onSubmit={handleSubmit}>
+  <Input
+    type="email"
+    placeholder="Email"
+    {...register("email")}
+    aria-invalid={!!errors.email}
+  />
+  <Textarea
+    placeholder="Message"
+    {...register("message")}
+  />
+  <Button type="submit" variant="gradient-primary">
+    Send
+  </Button>
+</form>
+```
+
+### Adding Animations
+```tsx
+import { FadeUp, StaggerFadeUp } from "@/components/animated/motion-wrappers";
+
+<FadeUp>
+  <SectionTitle>Heading</SectionTitle>
+</FadeUp>
+
+{items.map((item, index) => (
+  <StaggerFadeUp key={item.id} index={index}>
+    <Card>{item.content}</Card>
+  </StaggerFadeUp>
+))}
+```
+
+---
+
+## Component Guidelines
+
+### When to Create a New Component
+- Code is reused in 2+ places
+- Logic is complex enough to deserve isolation
+- Component serves a clear, single purpose
+- Variations can be controlled via props
+
+### Component Checklist
+- [ ] TypeScript types for props
+- [ ] JSDoc documentation with examples
+- [ ] Storybook story with variants
+- [ ] Unit tests (if logic is complex)
+- [ ] Accessibility attributes (ARIA)
+- [ ] Responsive design (mobile-first)
+- [ ] Performance optimizations (memo if needed)
+
+### Naming Conventions
+- **PascalCase** for component files: `Button.tsx`
+- **kebab-case** for utility files: `create-fade-up.ts`
+- **camelCase** for functions: `getFeaturesData()`
+- **SCREAMING_SNAKE_CASE** for constants: `ANIMATION_DURATION`
+
+---
+
+## Resources
+
+- [Colors Documentation →](/?path=/docs/documentation-colors--docs)
+- [Gradients Documentation →](/?path=/docs/documentation-gradients--docs)
+- [Animations Documentation →](/?path=/docs/documentation-animations--docs)
+- [Testing Documentation →](/?path=/docs/documentation-testing--docs)
+- [STYLE_GUIDE.md](https://github.com/tecnojr/website/blob/main/STYLE_GUIDE.md) - Complete style guide
+- [BUTTON_SYSTEM.md](https://github.com/tecnojr/website/blob/main/BUTTON_SYSTEM.md) - Button variants deep dive
+
+---
+
+**Component Philosophy**: Build once, use everywhere. Keep components focused, composable, and well-documented.

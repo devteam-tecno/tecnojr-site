@@ -3,6 +3,14 @@
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone } from "lucide-react";
 
+/**
+ * Static contact information data with icons and links.
+ *
+ * @property icon - Lucide icon component
+ * @property title - Contact type label (EMAIL, LOCAL, TELEFONE)
+ * @property content - Display text (email, address, phone number)
+ * @property link - Clickable link (mailto:, tel:, Google Maps URL)
+ */
 const contactInfo = [
   {
     icon: Mail,
@@ -25,6 +33,19 @@ const contactInfo = [
   },
 ];
 
+/**
+ * Footer contact information section with animated display.
+ *
+ * Displays company contact details (email, address, phone) with icons and clickable links.
+ * Each item has a gradient icon circle, title, and linked content text.
+ * Spans 2 columns on large screens (lg:col-span-2).
+ *
+ * Animation: Fade up on scroll into view with 0.2s delay.
+ *
+ * @example
+ * // Used in Footer component
+ * <ContactInfo />
+ */
 export function ContactInfo() {
   return (
     <div className="lg:col-span-2">
@@ -51,7 +72,7 @@ export function ContactInfo() {
                 whileHover={{ x: 5 }}
                 className="group flex items-start space-x-4"
               >
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-blue-500 transition-transform duration-300 group-hover:scale-110">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-purple-500 to-blue-500 transition-transform duration-300 group-hover:scale-110">
                   <IconComponent className="h-5 w-5 text-white" />
                 </div>
                 <div>

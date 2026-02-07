@@ -3,6 +3,24 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
+/**
+ * Animated scroll indicator with bouncing chevron icon.
+ *
+ * Features:
+ * - "Role para baixo" (Scroll down) label text
+ * - ChevronDown icon in circular border (tecno-purple)
+ * - Bouncing animation (y: 0 → 10 → 0, 1.5s loop)
+ * - Fade in after 1s delay
+ * - Centered at bottom of viewport (absolute bottom-8 left-1/2)
+ * - Hidden on mobile, visible on tablet+ (md:flex)
+ *
+ * Animation timing:
+ * - Initial fade in: 1s delay, 0.5s duration
+ * - Bounce loop: 1.5s infinite with easeInOut
+ *
+ * @example
+ * Used in HeroSection at the bottom to indicate scroll action.
+ */
 export function ScrollIndicator() {
   return (
     <motion.div

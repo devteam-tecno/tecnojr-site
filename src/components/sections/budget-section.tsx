@@ -3,21 +3,68 @@
 import { motion } from "framer-motion";
 import { Clock, Handshake, MessageCircle, Rocket, Shield } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { StatItem } from "@/components/ui/stat-item";
+import { Button } from "@/components/ui/buttons/button";
+import { StatItem } from "@/components/ui/feedback/stat-item";
 
+/**
+ * Benefits/value propositions for budget request.
+ *
+ * @property icon - Lucide icon component
+ * @property label - Benefit description text
+ */
 const benefits = [
   { icon: Rocket, label: "Orçamento 100% Gratuito" },
   { icon: Clock, label: "Resposta em até 24h" },
   { icon: Handshake, label: "Consultoria Especializada" },
 ];
 
+/**
+ * Budget/Contact CTA section with benefits showcase.
+ *
+ * Two-column layout (stacked on mobile):
+ * - Left: Heading, benefits list (StatItem), WhatsApp CTA button
+ * - Right: Contact form card with Name, Email, Message inputs
+ *
+ * Design features:
+ * - Background: Gradient tecno-black-800 → gray-900/50 → tecno-black-800
+ * - Animated gradient orbs (rotating, scaling, pulsing)
+ * - "Contato" badge with pulsing dot
+ * - Gradient text on heading ("próximo parceiro")
+ * - WhatsApp button with gradient-whatsapp variant
+ * - Form with validation states (aria-invalid support)
+ *
+ * Benefits displayed:
+ * 1. Orçamento 100% Gratuito (Rocket icon)
+ * 2. Resposta em até 24h (Clock icon)
+ * 3. Consultoria Especializada (Handshake icon)
+ *
+ * Form fields:
+ * - Nome (text input)
+ * - Email (email input)
+ * - Mensagem (textarea)
+ * - Submit button with Shield icon
+ *
+ * @example
+ * // Used in homepage (last section before footer)
+ * export default function HomePage() {
+ *   return (
+ *     <>
+ *       <ProjectsSection />
+ *       <BudgetSection />
+ *       <Footer />
+ *     </>
+ *   );
+ * }
+ *
+ * @see {@link StatItem} - Animated benefit item with icon
+ * @see {@link Button} - CTA button with gradient-whatsapp variant
+ */
 export function BudgetSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-tecno-black-800 via-gray-900/50 to-tecno-black-800 py-32">
+    <section className="relative overflow-hidden bg-linear-to-br from-tecno-black-800 via-gray-900/50 to-tecno-black-800 py-32">
       {/* Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-br from-brand-primary/5 via-transparent to-brand-secondary/5" />
+        <div className="absolute left-0 top-0 h-full w-full bg-linear-to-br from-brand-primary/5 via-transparent to-brand-secondary/5" />
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
@@ -29,7 +76,7 @@ export function BudgetSection() {
             repeat: Number.POSITIVE_INFINITY,
             ease: "easeInOut",
           }}
-          className="absolute -right-40 -top-40 h-80 w-80 rounded-full bg-gradient-to-br from-brand-primary/20 to-brand-secondary/20 blur-3xl"
+          className="absolute -right-40 -top-40 h-80 w-80 rounded-full bg-linear-to-br from-brand-primary/20 to-brand-secondary/20 blur-3xl"
         />
         <motion.div
           animate={{
@@ -43,7 +90,7 @@ export function BudgetSection() {
             ease: "easeInOut",
             delay: 3,
           }}
-          className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-gradient-to-br from-brand-secondary/20 to-brand-primary/20 blur-3xl"
+          className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-linear-to-br from-brand-secondary/20 to-brand-primary/20 blur-3xl"
         />
       </div>
 
@@ -61,7 +108,7 @@ export function BudgetSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="mb-6 inline-flex items-center rounded-full border border-brand-primary/20 bg-gradient-to-r from-brand-secondary/10 to-brand-secondary/10 px-4 py-2 text-sm text-gray-300 backdrop-blur-sm"
+              className="mb-6 inline-flex items-center rounded-full border border-brand-primary/20 bg-linear-to-r from-brand-secondary/10 to-brand-secondary/10 px-4 py-2 text-sm text-gray-300 backdrop-blur-sm"
             >
               <span className="mr-2 h-2 w-2 animate-pulse rounded-full bg-brand-secondary" />
               Contato
@@ -114,7 +161,7 @@ export function BudgetSection() {
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div
                     key={i}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-tecno-black-800 bg-gradient-to-br from-tecno-purple-500 to-tecno-blue-500 text-sm font-bold text-white"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-tecno-black-800 bg-linear-to-br from-tecno-purple-500 to-tecno-blue-500 text-sm font-bold text-white"
                   >
                     {i}
                   </div>
@@ -137,9 +184,9 @@ export function BudgetSection() {
             className="relative"
           >
             {/* Card Glow Effect */}
-            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-tecno-purple-500 via-tecno-blue-500 to-tecno-purple-500 opacity-20 blur" />
+            <div className="absolute -inset-1 rounded-3xl bg-linear-to-r from-tecno-purple-500 via-tecno-blue-500 to-tecno-purple-500 opacity-20 blur" />
 
-            <div className="relative rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 p-8 backdrop-blur-xl transition-all duration-500 hover:border-tecno-purple-500/50 lg:p-12">
+            <div className="relative rounded-3xl border border-gray-700/50 bg-linear-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 p-8 backdrop-blur-xl transition-all duration-500 hover:border-tecno-purple-500/50 lg:p-12">
               {/* Header */}
               <div className="mb-8">
                 <motion.div
@@ -147,7 +194,7 @@ export function BudgetSection() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                   viewport={{ once: true }}
-                  className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-tecno-purple-500 to-tecno-blue-500 shadow-lg shadow-tecno-purple-500/25"
+                  className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br from-tecno-purple-500 to-tecno-blue-500 shadow-lg shadow-tecno-purple-500/25"
                 >
                   <MessageCircle className="h-8 w-8 text-white" />
                 </motion.div>

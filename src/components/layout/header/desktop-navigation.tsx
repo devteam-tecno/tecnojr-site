@@ -3,11 +3,36 @@ import Link from "next/link";
 import type { NavigationLink } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
+/**
+ * Props for the DesktopNavigation component.
+ *
+ * @property navigationLinks - Array of navigation links from @/lib/navigation
+ * @property pathname - Current page pathname from usePathname()
+ */
 interface DesktopNavigationProps {
   navigationLinks: readonly NavigationLink[];
   pathname: string;
 }
 
+/**
+ * Desktop navigation component with center/right aligned links and active indicators.
+ *
+ * Features:
+ * - Filters links by alignment (center, right)
+ * - Active link indicator with animated underline
+ * - Disabled link support (cursor-not-allowed, greyed out)
+ * - Smooth transitions and hover states
+ * - Hidden on mobile (lg:flex)
+ *
+ * Active indicator: Purple gradient underline with scale animation on active link.
+ *
+ * @example
+ * // Used in Header component
+ * <DesktopNavigation
+ *   navigationLinks={navigationLinks}
+ *   pathname={pathname}
+ * />
+ */
 export function DesktopNavigation({
   navigationLinks,
   pathname,

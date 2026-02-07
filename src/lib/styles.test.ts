@@ -48,7 +48,7 @@ describe("getCardBackgroundClass", () => {
   it("returns default card background classes", () => {
     const result = getCardBackgroundClass();
     expect(result).toContain("border-gray-700/50");
-    expect(result).toContain("!bg-gradient-to-br");
+    expect(result).toContain("!bg-linear-to-br");
     expect(result).toContain("backdrop-blur-xl");
     expect(result).toContain("transition-all");
     expect(result).toContain("hover:scale-[1.02]");

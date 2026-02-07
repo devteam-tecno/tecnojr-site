@@ -8,6 +8,41 @@ import {
 } from "@/components/animated/motion-wrappers";
 import { infiniteAnimations } from "@/lib/animations";
 
+/**
+ * About section with two-column layout and overlapping card design.
+ *
+ * Layout:
+ * - Left: Image placeholder with gradient background and overlay
+ * - Right: Text content card with negative margin (-ml-16) for overlap effect
+ * - Responsive: Stacked on mobile, side-by-side on large screens
+ * - Section ID: #about for anchor navigation
+ *
+ * Design features:
+ * - Background gradient: tecno-black-800 to gray-900/50
+ * - Floating orb animation (20s duration, right side)
+ * - Glow effect on text card hover
+ * - Staggered animations: Left fades from left, right fades from right
+ *
+ * Content:
+ * - Company founding (2002)
+ * - Mission statement
+ * - Services overview
+ * - UESC connection
+ *
+ * @example
+ * // Used in homepage
+ * export default function HomePage() {
+ *   return (
+ *     <>
+ *       <ServicesSection />
+ *       <AboutSection />
+ *       <ProjectsSection />
+ *     </>
+ *   );
+ * }
+ *
+ * @see {@link infiniteAnimations} - Floating orb animation from @/lib/animations
+ */
 export function AboutSection() {
   return (
     <section

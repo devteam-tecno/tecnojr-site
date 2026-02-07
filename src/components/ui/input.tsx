@@ -2,6 +2,55 @@ import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Input component with consistent styling and validation states.
+ *
+ * Form input field with focus rings, validation states (aria-invalid),
+ * file upload support, and accessibility features. Follows shadcn/ui patterns
+ * with TecnoJR's design system integration.
+ *
+ * @param type - Input type (text, email, password, file, etc.)
+ * @param className - Additional classes
+ * @param props - Standard HTML input attributes
+ *
+ * @returns Styled input element
+ *
+ * @example
+ * ```tsx
+ * import { Input } from '@/components/ui/input';
+ *
+ * // Basic text input
+ * <Input type="text" placeholder="Enter your name" />
+ *
+ * // Email input with validation
+ * <Input
+ *   type="email"
+ *   placeholder="email@example.com"
+ *   aria-invalid={errors.email ? true : false}
+ * />
+ *
+ * // Disabled input
+ * <Input type="text" disabled value="Read only" />
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // With React Hook Form
+ * import { useForm } from 'react-hook-form';
+ * import { Input } from '@/components/ui/input';
+ *
+ * const { register, formState: { errors } } = useForm();
+ *
+ * <Input
+ *   {...register('email', { required: true })}
+ *   type="email"
+ *   placeholder="Email"
+ *   aria-invalid={errors.email ? true : false}
+ * />
+ * ```
+ *
+ * @see {@link https://react-hook-form.com/|React Hook Form docs}
+ */
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (
     <input

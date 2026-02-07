@@ -13,8 +13,39 @@ import { cn } from "@/lib/utils";
 export type GradientVariant = "diagonal" | "animated" | "primary" | "text";
 
 /**
- * Returns gradient class based on variant (15+ usages consolidated)
- * Used in: feature-card, service-card, stat-item, project-card, buttons, tabs
+ * Returns gradient class based on variant (15+ usages consolidated).
+ *
+ * Provides consistent gradient styling across the TecnoJR design system.
+ * All gradients use OKLCH color space for superior perceptual uniformity.
+ *
+ * @param variant - Gradient style variant
+ *   - `diagonal`: Purple-to-blue diagonal gradient (feature cards, icons)
+ *   - `animated`: Animated moving gradient (primary CTAs, hero elements)
+ *   - `primary`: Primary brand gradient (buttons, highlights)
+ *   - `text`: Text gradient for headings and emphasis
+ *
+ * @returns Tailwind utility class for the gradient
+ *
+ * @example
+ * ```tsx
+ * // Icon wrapper with diagonal gradient
+ * <div className={getGradientClass('diagonal')}>
+ *   <Icon />
+ * </div>
+ *
+ * // Animated button background
+ * <button className={getGradientClass('animated')}>
+ *   Get Started
+ * </button>
+ *
+ * // Gradient text heading
+ * <h1 className={getGradientClass('text')}>
+ *   TecnoJR
+ * </h1>
+ * ```
+ *
+ * @see {@link ../../app/globals.css|globals.css} for gradient class definitions
+ * @see {@link ../../STYLE_GUIDE.md|STYLE_GUIDE.md} for design system documentation
  */
 export function getGradientClass(variant: GradientVariant): string {
   const gradients = {
@@ -41,15 +72,48 @@ export interface CardStyleOptions {
 }
 
 /**
- * Returns standard card background classes (4+ usages consolidated)
- * Used in: feature-card, project-card, budget-section, about-section
+ * Returns standard card background classes with consistent styling.
+ *
+ * Creates glassmorphic card backgrounds with gradient overlays,
+ * blur effects, and interactive hover states. Ensures visual
+ * consistency across feature cards, project cards, and sections.
+ *
+ * @param options - Configuration options for card styling
+ * @param options.hoverScale - Enable scale-up on hover (default: true)
+ * @param options.blur - Backdrop blur strength: 'sm'|'md'|'xl' (default: 'xl')
+ * @param options.borderOpacity - Border opacity 0-100 (default: 50)
+ *
+ * @returns Combined class string for card background
+ *
+ * @example
+ * ```tsx
+ * // Standard card with all defaults
+ * <div className={getCardBackgroundClass()}>
+ *   Content
+ * </div>
+ *
+ * // Card with custom blur and no hover scale
+ * <div className={getCardBackgroundClass({
+ *   blur: 'md',
+ *   hoverScale: false
+ * })}>
+ *   Static content
+ * </div>
+ *
+ * // Subtle card with low border opacity
+ * <div className={getCardBackgroundClass({
+ *   borderOpacity: 30
+ * })}>
+ *   Less prominent
+ * </div>
+ * ```
  */
 export function getCardBackgroundClass(options: CardStyleOptions = {}): string {
   const { hoverScale = true, blur = "xl", borderOpacity = 50 } = options;
 
   return cn(
     `border-gray-700/${borderOpacity}`,
-    "!bg-gradient-to-br !from-gray-900/90 !via-gray-800/80 !to-gray-900/90",
+    "!bg-linear-to-br !from-gray-900/90 !via-gray-800/80 !to-gray-900/90",
     `backdrop-blur-${blur}`,
     "transition-all duration-500",
     hoverScale && "hover:scale-[1.02]",
@@ -81,8 +145,23 @@ export interface GlowEffectOptions {
 }
 
 /**
- * Returns glow effect classes (3+ usages consolidated)
- * Used in: feature-card, project-card, budget-section cards
+ * Returns glow effect classes for premium card aesthetics.
+ *
+ * Creates an animated gradient glow effect that appears on hover.
+ * Uses absolute positioning to create an inset border glow.
+ * Works best when applied to a wrapper with `position: relative`.
+ *
+ * @param options - Glow effect configuration
+ * @param options.variant - Color scheme: 'primary'|'secondary'|'accent'|'success'
+ * @param options.hoverOpacity - Glow opacity on hover, 0-100 (default: 50)
+ * @param options.blur - Apply blur filter for softer glow (default: true)
+ * @param options.rounded - Border radius: 'lg'|'xl'|'2xl'|'3xl' (default: '2xl')
+ *
+ * @returns Class string for glow effect element
+ *
+ * @example
+ * Wrap card with relative positioning and add glow effect layer.
+ * Use 'group' class on wrapper for hover interaction.
  */
 export function getGlowEffectClass(options: GlowEffectOptions): string {
   const { variant, hoverOpacity = 50, blur = true, rounded = "2xl" } = options;
@@ -94,14 +173,28 @@ export function getGlowEffectClass(options: GlowEffectOptions): string {
     success: "gradient-tecno-success",
   };
 
+  const roundedMap = {
+    lg: "rounded-lg",
+    xl: "rounded-xl",
+    "2xl": "rounded-2xl",
+    "3xl": "rounded-3xl",
+  };
+
+  const opacityClasses: Record<number, string> = {
+    25: "group-hover:opacity-25",
+    50: "group-hover:opacity-50",
+    75: "group-hover:opacity-75",
+    100: "group-hover:opacity-100",
+  };
+
   return cn(
     "absolute -inset-[0.5px]",
-    `rounded-${rounded}`,
+    roundedMap[rounded],
     gradientMap[variant],
     "opacity-0",
     blur && "blur",
     "transition duration-300",
-    `group-hover:opacity-${hoverOpacity}`,
+    opacityClasses[hoverOpacity] || "group-hover:opacity-50",
   );
 }
 
@@ -117,21 +210,38 @@ export interface PillBadgeOptions {
 }
 
 /**
- * Returns pill/badge classes (8+ usages consolidated)
- * Used in: project badges, filters, section tags, status indicators
+ * Returns styled pill/badge classes for labels and tags.
+ *
+ * Creates consistent badge styling for technology tags, project labels,
+ * status indicators, and filter pills throughout the site.
+ *
+ * @param options - Badge styling options
+ * @param options.color - Color scheme (default: 'gray')
+ * @param options.size - Size variant: 'sm'|'md'|'lg' (default: 'md')
+ *
+ * @returns Class string for pill badge
+ *
+ * @example
+ * Technology badge: span with color 'blue' for React label.
+ *
+ * @example
+ * Small status: span with color 'green' and size 'sm' for Active indicator.
+ *
+ * @example
+ * Filter pills: Use in map function with button elements for interactive filters.
  */
 export function getPillBadgeClass(options: PillBadgeOptions = {}): string {
   const { color = "gray", size = "md" } = options;
 
   const colorClasses = {
-    gray: "border-gray-400/20 bg-gradient-to-r from-gray-500/10 to-gray-600/10 text-gray-300",
-    blue: "border-blue-400/20 bg-gradient-to-r from-blue-500/10 to-blue-600/10 text-blue-300",
+    gray: "border-gray-400/20 bg-linear-to-r from-gray-500/10 to-gray-600/10 text-gray-300",
+    blue: "border-blue-400/20 bg-linear-to-r from-blue-500/10 to-blue-600/10 text-blue-300",
     purple:
-      "border-purple-400/20 bg-gradient-to-r from-purple-500/10 to-purple-600/10 text-purple-300",
+      "border-purple-400/20 bg-linear-to-r from-purple-500/10 to-purple-600/10 text-purple-300",
     green:
-      "border-green-400/20 bg-gradient-to-r from-green-500/10 to-green-600/10 text-green-300",
+      "border-green-400/20 bg-linear-to-r from-green-500/10 to-green-600/10 text-green-300",
     orange:
-      "border-orange-400/20 bg-gradient-to-r from-orange-500/10 to-orange-600/10 text-orange-300",
+      "border-orange-400/20 bg-linear-to-r from-orange-500/10 to-orange-600/10 text-orange-300",
   };
 
   const sizeClasses = {
@@ -166,8 +276,28 @@ export interface IconWrapperOptions {
 }
 
 /**
- * Returns animated icon wrapper classes (5+ usages consolidated)
- * Used in: feature-card, service-card, stat-item, benefit items
+ * Returns animated icon wrapper classes with gradient backgrounds.
+ *
+ * Creates consistent icon containers with gradient backgrounds,
+ * interactive hover effects, and size variants. Used across
+ * feature cards, service cards, and benefit items.
+ *
+ * @param options - Icon wrapper configuration
+ * @param options.size - Container size: 'sm'|'md'|'lg'|'xl' (default: 'md')
+ * @param options.hoverScale - Scale up on hover (default: true)
+ * @param options.hoverRotate - Rotate on hover (default: false)
+ * @param options.gradient - Gradient variant (default: 'diagonal')
+ *
+ * @returns Class string for icon container
+ *
+ * @example
+ * Standard icon wrapper: Use with group class on parent for hover effects.
+ *
+ * @example
+ * Large icon with rotation: size 'lg', hoverRotate true, gradient 'primary'.
+ *
+ * @example
+ * Small static icon: size 'sm', hoverScale false.
  */
 export function getIconWrapperClass(options: IconWrapperOptions = {}): string {
   const {
@@ -206,13 +336,13 @@ export function getIconWrapperClass(options: IconWrapperOptions = {}): string {
 export function getBackdropBlurClass(
   strength: "sm" | "md" | "xl" = "md",
 ): string {
-  const opacityMap = {
-    sm: "bg-gray-900/50",
-    md: "bg-gray-900/70",
-    xl: "bg-gray-900/90",
+  const classMap = {
+    sm: "backdrop-blur-sm bg-gray-900/50",
+    md: "backdrop-blur-md bg-gray-900/70",
+    xl: "backdrop-blur-xl bg-gray-900/90",
   };
 
-  return cn(`backdrop-blur-${strength}`, opacityMap[strength]);
+  return classMap[strength];
 }
 
 // ============================================================================
@@ -228,13 +358,30 @@ export function getTransitionClass(
   speed: TransitionSpeed = "normal",
   properties: "all" | "colors" | "transform" | "opacity" = "all",
 ): string {
-  const durationMap = {
-    fast: "duration-300",
-    normal: "duration-500",
-    slow: "duration-700",
+  const transitionMap = {
+    all: {
+      fast: "transition-all duration-300",
+      normal: "transition-all duration-500",
+      slow: "transition-all duration-700",
+    },
+    colors: {
+      fast: "transition-colors duration-300",
+      normal: "transition-colors duration-500",
+      slow: "transition-colors duration-700",
+    },
+    transform: {
+      fast: "transition-transform duration-300",
+      normal: "transition-transform duration-500",
+      slow: "transition-transform duration-700",
+    },
+    opacity: {
+      fast: "transition-opacity duration-300",
+      normal: "transition-opacity duration-500",
+      slow: "transition-opacity duration-700",
+    },
   };
 
-  return cn(`transition-${properties}`, durationMap[speed]);
+  return transitionMap[properties][speed];
 }
 
 // ============================================================================

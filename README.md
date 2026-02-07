@@ -34,7 +34,54 @@ cp .env.example .env.local
 # Edit .env.local with your values
 ```
 
-## 🛠️ Development
+## � Documentation
+
+Comprehensive documentation for developers working on the TecnoJR website:
+
+### Interactive Component Documentation
+- **[Storybook](http://localhost:6006)**: Visual component library with live examples
+  ```bash
+  npm run storybook  # Start Storybook on port 6006
+  ```
+
+### Design System
+- **[Style Guide](./docs/development/style-guide.md)**: Complete design system documentation
+  - OKLCH color system (tecno-purple, tecno-blue, tecno-black)
+  - Gradient utilities and applications
+  - Component styling patterns
+  - Tailwind CSS v4 conventions
+
+- **[Button System](./docs/development/button-system.md)**: Button component deep dive
+  - 8 variants (gradient-primary, gradient-whatsapp, outline-gradient, etc.)
+  - Size specifications
+  - Usage guidelines and examples
+
+### Development Guides
+- **[Testing Guide](./docs/development/testing.md)**: Testing strategy and patterns
+  - Unit testing with Vitest
+  - E2E testing with Playwright
+  - Coverage requirements
+  - Best practices
+
+- **[Library Directory](./docs/development/lib-directory.md)**: Lib folder organization
+  - Data modules (projects, services, features, members)
+  - Utility functions (styles, animations, utils)
+  - Type definitions
+
+### AI Assistant Context
+- **[.github/copilot-instructions.md](./.github/copilot-instructions.md)**: GitHub Copilot instructions
+  - Code patterns and conventions
+  - Design system usage
+  - Common tasks and examples
+  - Do's and don'ts
+
+### Architecture
+- **App Router**: Next.js 16 with React Server Components
+- **Server-first**: Components are server-rendered by default
+- **Dynamic imports**: Client components loaded only when needed
+- **API Routes**: RESTful endpoints in `src/app/api/`
+
+## �🛠️ Development
 
 ```bash
 # Start development server
@@ -252,10 +299,11 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
 ## 📚 Documentation
 
-- [Testing Guide](./TESTING.md) - Complete testing documentation
-- [Style Guide](./STYLE_GUIDE.md) - Code style and conventions
-- [Button System](./BUTTON_SYSTEM.md) - Button component documentation
-- [Lib Directory](./LIB_DIRECTORY.md) - Utilities reference
+- [Documentation Index](./docs/README.md) - Full documentation index
+- [Testing Guide](./docs/development/testing.md) - Complete testing documentation
+- [Style Guide](./docs/development/style-guide.md) - Code style and conventions
+- [Button System](./docs/development/button-system.md) - Button component documentation
+- [Lib Directory](./docs/development/lib-directory.md) - Utilities reference
 
 ## 📄 License
 

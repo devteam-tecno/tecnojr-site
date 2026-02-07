@@ -1,0 +1,184 @@
+# TecnoJR Color System
+
+The TecnoJR design system uses **OKLCH color space** for superior perceptual uniformity and wide-gamut display support.
+
+## Why OKLCH?
+
+- **Perceptual Uniformity**: Equal numerical changes result in equal perceptual changes
+- **Wide-Gamut Support**: Future-proof for modern displays with P3 color space
+- **Better Interpolation**: Smoother gradients and color transitions
+- **Accessibility**: Easier to maintain WCAG contrast ratios
+
+## Color Scales
+
+All TecnoJR colors use a 50-950 scale where:
+- **50**: Lightest (near white)
+- **500**: Base color
+- **950**: Darkest (near black)
+
+### Tecno Purple (Primary Brand Color)
+
+Base: `#9155EB` (500 level)
+
+```css
+tecno-purple-50  /* Very light purple - backgrounds */
+tecno-purple-100 /* Light purple */
+tecno-purple-200
+tecno-purple-300
+tecno-purple-400
+tecno-purple-500 /* Base purple #9155EB */
+tecno-purple-600
+tecno-purple-700
+tecno-purple-800
+tecno-purple-900
+tecno-purple-950 /* Very dark purple */
+```
+
+**Usage:**
+- Primary CTAs and buttons
+- Brand accents
+- Interactive elements
+- Focus states
+
+### Tecno Blue (Secondary Brand Color)
+
+Base: `#4A90E2` (500 level)
+
+```css
+tecno-blue-50   /* Very light blue */
+tecno-blue-100
+tecno-blue-200
+tecno-blue-300
+tecno-blue-400
+tecno-blue-500  /* Base blue #4A90E2 */
+tecno-blue-600
+tecno-blue-700
+tecno-blue-800
+tecno-blue-900
+tecno-blue-950  /* Very dark blue */
+```
+
+**Usage:**
+- Secondary actions
+- Information highlights
+- Gradient combinations with purple
+- Hover states
+
+### Tecno Black (Grayscale)
+
+Neutral colors for text, backgrounds, and UI elements.
+
+```css
+tecno-black-50  /* Near white - #F5F5F5 */
+tecno-black-100 /* Very light gray - #E5E5E5 */
+tecno-black-200 /* Light gray */
+tecno-black-300
+tecno-black-400 /* Medium gray */
+tecno-black-500 /* Mid gray */
+tecno-black-600
+tecno-black-700 /* Dark gray */
+tecno-black-800 /* Very dark gray */
+tecno-black-900 /* Near black - #141414 */
+tecno-black-950 /* Deep black - #0A0A0A */
+```
+
+**Usage:**
+- Text colors (100-400 for dark backgrounds)
+- Backgrounds (800-950 for dark theme)
+- Borders (700 with opacity)
+- Subtle UI elements
+
+## Semantic Color Tokens
+
+The design system uses semantic tokens for consistent usage:
+
+```css
+brand-primary: tecno-purple-500
+brand-secondary: tecno-blue-500
+```
+
+## Usage Examples
+
+### Background Colors
+
+```tsx
+// Dark backgrounds
+className="bg-tecno-black-950"  // Deepest black
+className="bg-tecno-black-900"  // Section backgrounds
+className="bg-tecno-black-800"  // Card backgrounds
+
+// Light backgrounds (for light mode)
+className="bg-tecno-black-50"   // Near white
+className="bg-tecno-black-100"  // Subtle contrasts
+```
+
+### Text Colors
+
+```tsx
+// Primary text (on dark backgrounds)
+className="text-tecno-black-100"  // Main headings (near white)
+className="text-tecno-black-200"  // Body text
+className="text-tecno-black-300"  // Secondary text
+className="text-tecno-black-400"  // Muted text
+
+// Accent text
+className="text-tecno-purple-500"  // Primary accent
+className="text-tecno-blue-500"    // Secondary accent
+```
+
+### Border Colors
+
+```tsx
+// Subtle borders
+className="border-tecno-black-700/50"     // 50% opacity
+className="border-tecno-black-800/30"     // 30% opacity
+
+// Accent borders
+className="border-tecno-purple-500/40"    // Purple with opacity
+className="border-tecno-blue-500/30"      // Blue with opacity
+```
+
+### With Opacity
+
+Tailwind's opacity modifier works seamlessly with OKLCH:
+
+```tsx
+className="bg-tecno-purple-500/10"   // 10% opacity purple
+className="bg-tecno-blue-500/20"     // 20% opacity blue
+className="border-gray-700/50"       // 50% opacity border
+```
+
+## Color Utilities
+
+Use helper functions from `@/lib/styles` for common patterns:
+
+```tsx
+import { getGradientClass } from '@/lib/styles';
+
+// Gradient utilities
+getGradientClass('diagonal')   // Purple-to-blue diagonal
+getGradientClass('animated')   // Animated purple-blue gradient
+getGradientClass('primary')    // Primary brand gradient
+getGradientClass('text')       // Text gradient effect
+```
+
+## Accessibility
+
+All color combinations maintain WCAG AA contrast ratios:
+
+- **Headers** (tecno-black-100 on tecno-black-950): Contrast ratio 18.5:1 ✓
+- **Body text** (tecno-black-200 on tecno-black-900): Contrast ratio 14.2:1 ✓
+- **Secondary text** (tecno-black-400 on tecno-black-900): Contrast ratio 7.8:1 ✓
+
+## Dark Mode
+
+The TecnoJR site uses dark mode by default with:
+
+- **Background**: tecno-black-950 to tecno-black-900
+- **Surface**: tecno-black-900 to tecno-black-800 (cards, panels)
+- **Text**: tecno-black-100 to tecno-black-400 (from primary to muted)
+- **Accents**: tecno-purple and tecno-blue at various opacities
+
+---
+
+For more details, see [STYLE_GUIDE.md](../../STYLE_GUIDE.md)

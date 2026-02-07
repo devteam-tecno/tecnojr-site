@@ -11,14 +11,82 @@ import {
   CardTitle,
 } from "./card";
 
+/**
+ * Project card component properties.
+ */
 interface ProjectCardProps {
+  /** Project title */
   title: string;
+  /** Project description */
   description: string;
+  /** Path to project image in /public/assets/img/projects/ */
   imageSrc: string;
+  /** Optional link to project (external URL or internal route) */
   link?: string;
+  /** Whether project is internal (TecnoJR member project) or external (client project) */
   isInternal?: boolean;
 }
 
+/**
+ * Project card component displaying portfolio projects.
+ *
+ * Shows project thumbnail, title, description, and type badge (Client/Internal).
+ * For external projects with links, renders as clickable link opening in new tab.
+ * Features gradient glow on hover and smooth scale animation.
+ *
+ * @param title - Project name
+ * @param description - Brief project description
+ * @param imageSrc - Image filename (loads from /public/assets/img/projects/)
+ * @param link - Project URL (optional)
+ * @param isInternal - True for internal projects, false for client projects (default: false)
+ *
+ * @returns Rendered project card, wrapped in Link if external project
+ *
+ * @example
+ * ```tsx
+ * import { ProjectCard } from '@/components/ui/project-card';
+ *
+ * // External client project
+ * <ProjectCard
+ *   title="NASA Space Apps"
+ *   description="Website for NASA Space Apps Challenge"
+ *   imageSrc="/assets/img/projects/nasaapps.png"
+ *   link="https://nasa.spaceterra.org/"
+ *   isInternal={false}
+ * />
+ *
+ * // Internal project (no external link)
+ * <ProjectCard
+ *   title="COLCIC UESC"
+ *   description="Internal tool for university"
+ *   imageSrc="/assets/img/projects/colcic.png"
+ *   link="https://colcic.vercel.app"
+ *   isInternal={true}
+ * />
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // Using with data from lib/projects.ts
+ * import { externalProjects } from '@/lib/projects';
+ *
+ * <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+ *   {externalProjects.map((project) => (
+ *     <ProjectCard
+ *       key={project.title}
+ *       title={project.title}
+ *       description={project.description}
+ *       imageSrc={`/assets/img/projects/${project.img}`}
+ *       link={project.link}
+ *       isInternal={false}
+ *     />
+ *   ))}
+ * </div>
+ * ```
+ *
+ * @see {@link ../../../lib/projects.ts} for project data
+ * @see {@link ../../../lib/types.ts} for ExternalProject and InternalProject types
+ */
 export function ProjectCard({
   title,
   description,

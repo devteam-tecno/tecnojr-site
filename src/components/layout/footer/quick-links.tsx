@@ -4,6 +4,21 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { navigationLinks } from "@/lib/navigation";
 
+/**
+ * Footer quick links section with site navigation.
+ *
+ * Displays vertical list of navigation links (filtered to exclude right-aligned links
+ * like "Processo Seletivo"). Includes hover effects and disabled link support.
+ *
+ * Hidden on mobile, visible on large screens (lg:col-span-1 lg:block).
+ * Animation: Fade up on scroll with 0.1s delay.
+ *
+ * @example
+ * // Used in Footer component
+ * <QuickLinks />
+ *
+ * @see {@link navigationLinks} - Centralized navigation data from @/lib/navigation
+ */
 export function QuickLinks() {
   // Filter out right-aligned links (like Processo Seletivo) for footer
   const footerLinks = navigationLinks.filter(

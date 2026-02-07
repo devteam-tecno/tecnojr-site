@@ -1,0 +1,121 @@
+# TecnoJR Component Library
+
+Welcome to the TecnoJR component documentation! This Storybook showcases our design system, component library, and implementation patterns for the TecnoJR Next.js website.
+
+## 🎨 Design System
+
+Our design system is built on modern principles:
+
+- **OKLCH Color Space**: Superior perceptual uniformity and wide-gamut support
+- **Gradient-First**: Animated gradients using `tecno-purple` → `tecno-blue` 
+- **Glassmorphism**: Backdrop blur effects with semi-transparent backgrounds
+- **Responsive**: Mobile-first design with consistent breakpoints
+- **Accessible**: WCAG compliant with keyboard navigation support
+
+### Color Palette
+
+- **tecno-purple** (50-950): Primary brand color - `#9155EB` at 500 level
+- **tecno-blue** (50-950): Secondary brand color - `#4A90E2` at 500 level
+- **tecno-black** (50-950): Grayscale from white to deep black
+
+## 📚 Documentation Structure
+
+### Component Stories
+Browse components by category in the sidebar:
+- **UI**: Reusable UI components (buttons, cards, inputs)
+- **Sections**: Page sections (hero, features, projects)
+- **Layout**: Layout components (header, footer, wrappers)
+- **Animated**: Framer Motion animated components
+
+### Design Docs
+- **Colors**: OKLCH color system and semantic tokens
+- **Gradients**: Gradient utilities and applications
+- **Animations**: Framer Motion configurations
+
+## 🚀 Quick Start
+
+### Using Components
+
+All components are fully typed and documented. Import from the appropriate module and use with TypeScript for full autocomplete support.
+
+### Style Utilities
+
+Use centralized style functions from `@/lib/styles` for consistent theming across components.
+
+### Animations
+
+All animations use Framer Motion with centralized configs from `@/lib/animations`.
+
+## 📖 Additional Resources
+
+- **[README.md](../../README.md)**: Setup instructions and project overview
+- **[STYLE_GUIDE.md](../../STYLE_GUIDE.md)**: Complete design system documentation (700+ lines)
+- **[BUTTON_SYSTEM.md](../../BUTTON_SYSTEM.md)**: Button variant specifications
+- **[TESTING.md](../../TESTING.md)**: Testing patterns and best practices
+- **[GitHub Copilot Instructions](../../.github/copilot-instructions.md)**: AI coding assistance context
+
+## 🛠️ Development
+
+### Running Storybook
+
+Run `npm run storybook` to start the dev server on port 6006, or `npm run build-storybook` to build a static version.
+
+### Creating New Components
+
+1. Create component in appropriate directory
+2. Add comprehensive JSDoc with examples
+3. Create stories file with variants
+4. Add test file for unit tests
+5. Update documentation if introducing new patterns
+
+## 🎯 Component Status
+
+### Completed ✅
+- Button (8 variants, all sizes)
+- Cards (Base, Feature, Service, Project)
+- Layout components (Header, Footer)
+- Animation utilities
+- Style utilities
+
+### In Progress 🚧
+- Form components (Input, Textarea, Form)
+- Tabs component
+- Modal/Dialog components
+
+### Planned 📋
+- Toast notifications
+- Dropdown menus
+- Accordion components
+
+## 🤝 Contributing
+
+When adding new components:
+
+1. **Follow naming conventions**: kebab-case files, PascalCase components
+2. **Document with JSDoc**: Include description, params, returns, and examples
+3. **Create stories**: Show all variants and use cases
+4. **Write tests**: Minimum 85% coverage required
+5. **Use TypeScript strict**: No `any` types allowed
+6. **Maintain consistency**: Check existing patterns in `lib/styles.ts` and `lib/animations.ts`
+
+## 📝 Notes
+
+- All components are server components by default - add `'use client'` only when necessary
+- Use `@/` path alias for all imports from `src/`
+- Prefer Tailwind utilities over inline styles
+- Check for existing utility functions before creating new ones
+- All gradients use OKLCH color space for better perceptual uniformity
+
+## 🔗 Links
+
+- [GitHub Repository](https://github.com/tecnojr)
+- [TecnoJR Website](https://tecnojr.com.br)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [Framer Motion](https://www.framer.com/motion)
+
+---
+
+**Last Updated**: February 6, 2026  
+**Storybook Version**: 10.2.7  
+**Framework**: Next.js 16.1.6 + React 19.2.3

@@ -2,11 +2,52 @@
 
 import { motion } from "framer-motion";
 import { Briefcase, Heart } from "lucide-react";
-import { ProjectCard } from "@/components/ui/project-card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ProjectCard } from "@/components/ui/cards/project-card";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/navigation/tabs";
 import { externalProjects, internalProjects } from "@/lib/projects";
 import { SectionTitle } from "./section-title";
 
+/**
+ * Projects section with tabs for External/Internal project categories.
+ *
+ * Features:
+ * - Two-tab interface (External Projects / Internal Projects)
+ * - 3-column responsive grid of ProjectCards
+ * - Staggered fade-in animations on tab change
+ * - Badge icon with "Portfolio" label
+ * - Section ID: #projects for anchor navigation
+ *
+ * Tab specifics:
+ * - External: Briefcase icon, secondary gradient, external client projects
+ * - Internal: Heart icon, primary gradient, TecnoJr internal projects
+ * - Custom styled TabsTriggers with rounded-full borders and gradients on active
+ *
+ * Grid layout:
+ * - 1 column on mobile
+ * - 2 columns on tablet (md:)
+ * - 3 columns on desktop (lg:)
+ *
+ * @example
+ * // Used in homepage
+ * export default function HomePage() {
+ *   return (
+ *     <>
+ *       <AboutSection />
+ *       <ProjectsSection />
+ *       <BudgetSection />
+ *     </>
+ *   );
+ * }
+ *
+ * @see {@link externalProjects} - External client projects from @/lib/projects
+ * @see {@link internalProjects} - TecnoJr internal projects from @/lib/projects
+ * @see {@link ProjectCard} - Individual project card with image and link
+ */
 export function ProjectsSection() {
   return (
     <section id="projects" className="py-32">

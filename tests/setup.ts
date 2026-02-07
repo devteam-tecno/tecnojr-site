@@ -36,27 +36,27 @@ vi.mock("next/navigation", () => ({
 
 // Mock Next.js Image component
 vi.mock("next/image", () => ({
-  default: vi.fn((props: React.ComponentProps<"img">) => {
-    const React = require("react");
-    return React.createElement("img", props);
+  default: ({ src, alt, ...props }: Record<string, unknown>) => ({
+    type: "img",
+    props: { src, alt, ...props },
   }),
 }));
 
 // Mock Framer Motion with reduced motion (React 19+ compatible - no forwardRef needed)
 vi.mock("framer-motion", () => {
-  const React = require("react");
+  const mockComponent = (props: Record<string, unknown>) => ({
+    type: "div",
+    props,
+  });
+
   return {
     motion: new Proxy(
       {},
       {
-        get: (_, prop) => {
-          // React 19+ automatically forwards refs - no need for forwardRef
-          return (props: Record<string, unknown>) =>
-            React.createElement(prop as string, props);
-        },
+        get: (_, prop) => mockComponent,
       },
     ),
-    AnimatePresence: ({ children }: { children: React.ReactNode }) => children,
+    AnimatePresence: ({ children }: { children: unknown }) => children,
     useInView: () => true,
     useAnimation: () => ({
       start: vi.fn(),
@@ -68,16 +68,12 @@ vi.mock("framer-motion", () => {
       scrollYProgress: { current: 0 },
     }),
     useTransform: (value: unknown) => value,
-    LazyMotion: ({ children }: { children: React.ReactNode }) => children,
+    LazyMotion: ({ children }: { children: unknown }) => children,
     domAnimation: {},
     m: new Proxy(
       {},
       {
-        get: (_, prop) => {
-          // React 19+ automatically forwards refs - no need for forwardRef
-          return (props: Record<string, unknown>) =>
-            React.createElement(prop as string, props);
-        },
+        get: (_, prop) => mockComponent,
       },
     ),
   };
@@ -99,7 +95,7 @@ Object.defineProperty(window, "matchMedia", {
 });
 
 // Mock IntersectionObserver (with proper typing instead of 'any')
-global.IntersectionObserver = class IntersectionObserver {
+globalThis.IntersectionObserver = class IntersectionObserver {
   disconnect() {}
   observe() {}
   takeRecords(): IntersectionObserverEntry[] {
@@ -109,7 +105,7 @@ global.IntersectionObserver = class IntersectionObserver {
 } as unknown as typeof IntersectionObserver;
 
 // Mock ResizeObserver (with proper typing instead of 'any')
-global.ResizeObserver = class ResizeObserver {
+globalThis.ResizeObserver = class ResizeObserver {
   disconnect() {}
   observe() {}
   unobserve() {}
