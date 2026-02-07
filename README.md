@@ -13,7 +13,7 @@
 - **Language**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **UI Components**: [Radix UI](https://www.radix-ui.com/)
+- **UI Components**: [Shadcn UI](https://ui.shadcn.com/)
 - **Forms**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
 - **Email**: [Resend](https://resend.com/)
 - **Linting**: [Biome](https://biomejs.dev/)
@@ -23,7 +23,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_ORG/tecnojr-site.git
+git clone https://github.com/ORG/tecnojr-site.git
 cd tecnojr-site/tecnojr-site
 
 # Install dependencies

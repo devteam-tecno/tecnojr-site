@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Briefcase, Heart } from "lucide-react";
+import { memo } from "react";
 import { ProjectCard } from "@/components/ui/cards/project-card";
 import {
   Tabs,
@@ -48,7 +49,7 @@ import { SectionTitle } from "./section-title";
  * @see {@link internalProjects} - TecnoJr internal projects from @/lib/projects
  * @see {@link ProjectCard} - Individual project card with image and link
  */
-export function ProjectsSection() {
+export const ProjectsSection = memo(function ProjectsSection() {
   return (
     <section id="projects" className="py-32">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -139,4 +140,4 @@ export function ProjectsSection() {
       </div>
     </section>
   );
-}
+});

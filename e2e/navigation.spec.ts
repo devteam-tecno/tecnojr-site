@@ -14,16 +14,17 @@ test.describe("Site Navigation", () => {
     // Start at home
     await expect(page).toHaveURL("/");
 
-    // Disabled links should have aria-disabled attribute
-    const sobreLink = page
-      .getByRole("banner")
-      .getByRole("link", { name: /sobre/i });
-    await expect(sobreLink).toHaveAttribute("aria-disabled", "true");
-
+    // Only Projetos link should be disabled
     const projetosLink = page
       .getByRole("banner")
       .getByRole("link", { name: /projetos/i });
     await expect(projetosLink).toHaveAttribute("aria-disabled", "true");
+
+    // Sobre link should be enabled
+    const sobreLink = page
+      .getByRole("banner")
+      .getByRole("link", { name: /sobre/i });
+    await expect(sobreLink).not.toHaveAttribute("aria-disabled", "true");
   });
 
   test("should keep header visible on scroll", async ({ page }) => {

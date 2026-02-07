@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { memo } from "react";
 import { BackgroundShapes } from "@/components/animated/background-shapes";
 import { Button } from "@/components/ui/buttons/button";
 
@@ -40,7 +41,7 @@ const mainBg = "/assets/images/backgroundHome.webp";
  * @see {@link BackgroundShapes} - Animated background decoration
  * @see {@link Button} - CTA button with gradient-primary variant
  */
-export function HeroSection() {
+export const HeroSection = memo(function HeroSection() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20 lg:pt-0">
       {/* Background */}
@@ -157,4 +158,4 @@ export function HeroSection() {
       </div>
     </section>
   );
-}
+});

@@ -1,7 +1,7 @@
 "use client";
 
 import type { IconComponentProps } from "@/lib/types";
-import { BaseCard } from "./base-card";
+import { BaseCard } from "./cards/base-card";
 
 /**
  * Service card component displaying TecnoJR's service offerings.

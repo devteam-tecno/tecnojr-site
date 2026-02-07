@@ -3,20 +3,22 @@
 import { motion } from "framer-motion";
 import { Clock, Handshake, MessageCircle, Rocket, Shield } from "lucide-react";
 import Link from "next/link";
+import { memo } from "react";
 import { Button } from "@/components/ui/buttons/button";
 import { StatItem } from "@/components/ui/feedback/stat-item";
 
 /**
  * Benefits/value propositions for budget request.
+ * Extracted as const to prevent recreation on each render.
  *
  * @property icon - Lucide icon component
  * @property label - Benefit description text
  */
-const benefits = [
+const BENEFITS = [
   { icon: Rocket, label: "Orçamento 100% Gratuito" },
   { icon: Clock, label: "Resposta em até 24h" },
   { icon: Handshake, label: "Consultoria Especializada" },
-];
+] as const;
 
 /**
  * Budget/Contact CTA section with benefits showcase.
@@ -59,7 +61,7 @@ const benefits = [
  * @see {@link StatItem} - Animated benefit item with icon
  * @see {@link Button} - CTA button with gradient-whatsapp variant
  */
-export function BudgetSection() {
+export const BudgetSection = memo(function BudgetSection() {
   return (
     <section className="relative overflow-hidden bg-linear-to-br from-tecno-black-800 via-gray-900/50 to-tecno-black-800 py-32">
       {/* Background Effects */}
@@ -76,6 +78,7 @@ export function BudgetSection() {
             repeat: Number.POSITIVE_INFINITY,
             ease: "easeInOut",
           }}
+          style={{ willChange: "transform, opacity" }}
           className="absolute -right-40 -top-40 h-80 w-80 rounded-full bg-linear-to-br from-brand-primary/20 to-brand-secondary/20 blur-3xl"
         />
         <motion.div
@@ -90,6 +93,7 @@ export function BudgetSection() {
             ease: "easeInOut",
             delay: 3,
           }}
+          style={{ willChange: "transform, opacity" }}
           className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-linear-to-br from-brand-secondary/20 to-brand-primary/20 blur-3xl"
         />
       </div>
@@ -136,7 +140,7 @@ export function BudgetSection() {
             </h2>
 
             <div className="mb-10 space-y-6">
-              {benefits.map((benefit, index) => (
+              {BENEFITS.map((benefit, index) => (
                 <motion.div
                   key={benefit.label}
                   initial={{ opacity: 0, x: -20 }}
@@ -280,4 +284,4 @@ export function BudgetSection() {
       </div>
     </section>
   );
-}
+});

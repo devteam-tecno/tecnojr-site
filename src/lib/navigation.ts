@@ -12,7 +12,7 @@ export interface NavigationLink {
 
 export const navigationLinks = [
   { url: "/", text: "Início" },
-  { url: "/sobre", text: "Sobre", disabled: true },
+  { url: "/sobre", text: "Sobre" },
   { url: "/projetos", text: "Projetos", disabled: true },
   { url: "/press-kit", text: "Press Kit", disabled: true },
   { url: "/prosel", text: "Processo Seletivo", align: "right", disabled: true },

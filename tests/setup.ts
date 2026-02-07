@@ -1,5 +1,7 @@
 import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
+import type { ReactNode } from "react";
+import React from "react";
 import { afterEach, vi } from "vitest";
 
 // Cleanup after each test
@@ -36,27 +38,26 @@ vi.mock("next/navigation", () => ({
 
 // Mock Next.js Image component
 vi.mock("next/image", () => ({
-  default: ({ src, alt, ...props }: Record<string, unknown>) => ({
-    type: "img",
-    props: { src, alt, ...props },
-  }),
+  default: ({ src, alt, ...props }: Record<string, unknown>) =>
+    React.createElement("img", { src, alt, ...props }),
 }));
 
 // Mock Framer Motion with reduced motion (React 19+ compatible - no forwardRef needed)
 vi.mock("framer-motion", () => {
-  const mockComponent = (props: Record<string, unknown>) => ({
-    type: "div",
-    props,
-  });
+  const mockComponent = ({
+    children,
+    ...props
+  }: Record<string, unknown> & { children?: ReactNode }) =>
+    React.createElement("div", props, children);
 
   return {
     motion: new Proxy(
       {},
       {
-        get: (_, prop) => mockComponent,
+        get: (_, _prop) => mockComponent,
       },
     ),
-    AnimatePresence: ({ children }: { children: unknown }) => children,
+    AnimatePresence: ({ children }: { children: ReactNode }) => children,
     useInView: () => true,
     useAnimation: () => ({
       start: vi.fn(),
@@ -68,12 +69,12 @@ vi.mock("framer-motion", () => {
       scrollYProgress: { current: 0 },
     }),
     useTransform: (value: unknown) => value,
-    LazyMotion: ({ children }: { children: unknown }) => children,
+    LazyMotion: ({ children }: { children: ReactNode }) => children,
     domAnimation: {},
     m: new Proxy(
       {},
       {
-        get: (_, prop) => mockComponent,
+        get: (_, _prop) => mockComponent,
       },
     ),
   };

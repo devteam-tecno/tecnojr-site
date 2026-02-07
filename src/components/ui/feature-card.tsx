@@ -1,7 +1,7 @@
 "use client";
 
 import type { IconComponentProps } from "@/lib/types";
-import { BaseCard } from "./base-card";
+import { BaseCard } from "./cards/base-card";
 
 /**
  * Feature card component displaying company features/differentiators.

@@ -30,15 +30,16 @@ test.describe("Home Page", () => {
 
   test("should have functional navigation links", async ({ page }) => {
     // Navigation links for unimplemented pages should be disabled
-    const sobreLink = page
-      .getByRole("banner")
-      .getByRole("link", { name: /sobre/i });
-    await expect(sobreLink).toHaveAttribute("aria-disabled", "true");
-
     const projetosLink = page
       .getByRole("banner")
       .getByRole("link", { name: /projetos/i });
     await expect(projetosLink).toHaveAttribute("aria-disabled", "true");
+
+    // Sobre link should be enabled and working
+    const sobreLink = page
+      .getByRole("banner")
+      .getByRole("link", { name: /sobre/i });
+    await expect(sobreLink).not.toHaveAttribute("aria-disabled", "true");
   });
 
   test("should have working CTA button", async ({ page }) => {
