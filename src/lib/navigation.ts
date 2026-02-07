@@ -14,7 +14,7 @@ export const navigationLinks = [
   { url: "/", text: "Início" },
   { url: "/sobre", text: "Sobre" },
   { url: "/projetos", text: "Projetos" },
-  { url: "/press-kit", text: "Press Kit", disabled: true },
+  { url: "/press-kit", text: "Press Kit" },
   { url: "/prosel", text: "Processo Seletivo", align: "right", disabled: true },
 ] as const satisfies readonly NavigationLink[];
 
