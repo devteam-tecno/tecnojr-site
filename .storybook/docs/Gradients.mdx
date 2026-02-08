@@ -1,14 +1,26 @@
-# TecnoJR Gradient System
+# Gradientes
 
-The TecnoJR design system uses gradient-first styling for a modern, dynamic appearance.
+> **📖 Documentação Completa**: [Style System - Gradientes](../../docs/architecture/STYLING.md#cores-principais-oklch)
 
-## Gradient Philosophy
+## Sistema de Gradientes
 
-Gradients provide:
-- **Visual Interest**: More engaging than flat colors
-- **Brand Identity**: Purple-to-blue creates signature look
-- **Depth**: Adds dimension to flat design
-- **Motion**: Animated gradients guide user attention
+O design TecnoJr usa gradientes para criar identidade visual moderna.
+
+## Gradientes Principais
+
+### 1. Gradiente Primário (Roxo → Azul)
+```css
+background: linear-gradient(135deg, 
+  oklch(69% 0.19 290) 0%,    /* Purple */
+  oklch(65% 0.18 250) 100%   /* Blue */
+);
+```
+
+### 2. Gradiente Animado
+Usado em CTAs principais com animação de shift.
+
+### 3. Text Gradient
+Aplicado a textos com `background-clip: text`.
 
 ## Available Gradients
 

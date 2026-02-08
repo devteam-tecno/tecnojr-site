@@ -2,28 +2,25 @@ import { Meta } from "@storybook/blocks";
 
 <Meta title="Documentation/Testing" />
 
-# Testing Strategy
+# Testes
 
-Comprehensive testing approach for the TecnoJr website ensuring quality, reliability, and maintainability.
+> **📖 Documentação Completa**: [Testing Guide](../../docs/development/testing.md)
 
-## Testing Stack
+## Stack de Testes
 
-### Unit & Integration Tests - Vitest
-- **Framework**: Vitest 3.2.4 (Vite-native testing)
-- **Coverage Target**: 85% minimum for statements, branches, functions, lines
-- **Test Location**: Co-located with components as `*.test.tsx`
-- **Run**: `npm test` or `npm run test:watch`
+### Vitest (Unit & Integration)
+- Testes co-localizados com componentes (`*.test.tsx`)
+- Coverage mínimo: 85%
+- Comando: `npm test`
 
-### End-to-End Tests - Playwright
-- **Framework**: Playwright 1.58.1
-- **Browsers**: Chromium, Firefox, WebKit (cross-browser)
-- **Location**: `tests/` directory
-- **Run**: `npm run test:e2e`
+### Playwright (E2E)
+- Testes em `e2e/` directory
+- Cross-browser (Chromium, Firefox, WebKit)
+- Comando: `npm run test:e2e`
 
-### Component Tests - Storybook
-- **Framework**: Storybook 10.2.7 with addon-interactions
-- **Purpose**: Visual regression and interaction testing
-- **Run**: `npm run docs:test`
+### Storybook (Visual)
+- Interaction tests com addon-interactions
+- Comando: `npm run storybook`
 
 ## Test Organization
 

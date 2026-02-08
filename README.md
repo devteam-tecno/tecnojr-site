@@ -1,318 +1,480 @@
-# TecnoJR Website
+# Site TecnoJr
 
 [![Tests](https://github.com/YOUR_ORG/tecnojr-site/actions/workflows/test.yml/badge.svg)](https://github.com/YOUR_ORG/tecnojr-site/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/YOUR_ORG/tecnojr-site/branch/main/graph/badge.svg)](https://codecov.io/gh/YOUR_ORG/tecnojr-site)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> Modern, responsive website for TecnoJR built with Next.js 15, React 19, TypeScript, and Tailwind CSS.
+> Site moderno e responsivo da TecnoJr construído com Next.js 16, React 19, TypeScript e Tailwind CSS.
 
-## 🚀 Tech Stack
+## 🚀 Stack Tecnológica
 
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
-- **UI Library**: [React 19](https://react.dev/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **UI Components**: [Shadcn UI](https://ui.shadcn.com/)
-- **Forms**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Biblioteca UI**: [React 19](https://react.dev/)
+- **Linguagem**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
+- **Estilização**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animações**: [Framer Motion](https://www.framer.com/motion/)
+- **Componentes UI**: [Shadcn UI](https://ui.shadcn.com/)
+- **Formulários**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
 - **Email**: [Resend](https://resend.com/)
 - **Linting**: [Biome](https://biomejs.dev/)
-- **Testing**: [Vitest](https://vitest.dev/), [React Testing Library](https://testing-library.com/), [Playwright](https://playwright.dev/)
+- **Testes**: [Vitest](https://vitest.dev/), [React Testing Library](https://testing-library.com/), [Playwright](https://playwright.dev/)
+- **Documentação**: [Storybook](https://storybook.js.org/)
 
-## 📦 Installation
+## 📦 Instalação
 
 ```bash
-# Clone the repository
+# Clone o repositório
 git clone https://github.com/ORG/tecnojr-site.git
 cd tecnojr-site/tecnojr-site
 
-# Install dependencies
+# Instale as dependências
 npm install
 
-# Set up environment variables
+# Configure as variáveis de ambiente
 cp .env.example .env.local
-# Edit .env.local with your values
+# Edite .env.local com seus valores
 ```
 
-## � Documentation
+## 📚 Documentação
 
-Comprehensive documentation for developers working on the TecnoJR website:
+Documentação completa para desenvolvedores trabalhando no site da TecnoJr:
 
-### Interactive Component Documentation
-- **[Storybook](http://localhost:6006)**: Visual component library with live examples
+### Documentação Interativa de Componentes
+- **[Storybook](http://localhost:6006)**: Biblioteca visual de componentes com exemplos ao vivo
   ```bash
-  npm run storybook  # Start Storybook on port 6006
+  npm run storybook  # Inicia o Storybook na porta 6006
   ```
 
-### Design System
-- **[Style Guide](./docs/development/style-guide.md)**: Complete design system documentation
-  - OKLCH color system (tecno-purple, tecno-blue, tecno-black)
-  - Gradient utilities and applications
-  - Component styling patterns
-  - Tailwind CSS v4 conventions
+### Sistema de Design
+- **[Guia de Estilos](./docs/development/style-guide.md)**: Documentação completa do sistema de design
+  - Sistema de cores OKLCH (tecno-purple, tecno-blue, tecno-black)
+  - Utilitários de gradiente e aplicações
+  - Padrões de estilização de componentes
+  - Convenções do Tailwind CSS v4
 
-- **[Button System](./docs/development/button-system.md)**: Button component deep dive
-  - 8 variants (gradient-primary, gradient-whatsapp, outline-gradient, etc.)
-  - Size specifications
-  - Usage guidelines and examples
+- **[Sistema de Botões](./docs/development/button-system.md)**: Análise profunda do componente de botão
+  - 8 variantes (gradient-primary, gradient-whatsapp, outline-gradient, etc.)
+  - Especificações de tamanhos
+  - Diretrizes e exemplos de uso
 
-### Development Guides
-- **[Testing Guide](./docs/development/testing.md)**: Testing strategy and patterns
-  - Unit testing with Vitest
-  - E2E testing with Playwright
-  - Coverage requirements
-  - Best practices
+### Guias de Desenvolvimento
 
-- **[Library Directory](./docs/development/lib-directory.md)**: Lib folder organization
-  - Data modules (projects, services, features, members)
-  - Utility functions (styles, animations, utils)
-  - Type definitions
+- **[Índice de Componentes](./docs/development/component-index.md)**: Catálogo completo de componentes
+  - Todos os componentes UI, layout e seções
+  - Exemplos de uso e padrões
+  - Props e variantes
 
-### AI Assistant Context
-- **[.github/copilot-instructions.md](./.github/copilot-instructions.md)**: GitHub Copilot instructions
-  - Code patterns and conventions
-  - Design system usage
-  - Common tasks and examples
-  - Do's and don'ts
+- **[Diretório Lib](./docs/development/lib-directory.md)**: Organização da pasta lib/
+  - **lib/config/**: Configurações da empresa (company.ts, stats.ts, social.ts, etc)
+  - **lib/data/**: Dados estruturados (projects, services, features, members, ideals, press-kit)
+  - **lib/hooks/**: React hooks customizados (use-reduced-motion)
+  - **lib/utils/**: Funções utilitárias (styles, animations, navigation, icons, metadata)
+  - **lib/types/**: Definições de tipos TypeScript
+  - **lib/animation/**: Sistema de animações com Framer Motion
 
-### Architecture
-- **App Router**: Next.js 16 with React Server Components
-- **Server-first**: Components are server-rendered by default
-- **Dynamic imports**: Client components loaded only when needed
-- **API Routes**: RESTful endpoints in `src/app/api/`
+- **[Guia de Testes](./docs/development/testing.md)**: Estratégia e padrões de testes
+  - Testes unitários com Vitest
+  - Testes E2E com Playwright
+  - Requisitos de cobertura (85%+)
+  - Melhores práticas
 
-## �🛠️ Development
+- **[Guia de Animações](./docs/development/animations-guide.md)**: Sistema completo de animações
+  - Hooks customizados de animação
+  - Variantes reutilizáveis
+  - Acessibilidade (prefers-reduced-motion)
+  - Performance e otimizações
+
+- **[Criação de Componentes](./docs/development/component-creation.md)**: Como criar novos componentes
+  - Estrutura de arquivos (component + stories + test)
+  - Padrões de nomenclatura
+  - JSDoc e documentação
+  - Integração com Storybook
+
+- **[Gerenciamento de Dados](./docs/development/data-management.md)**: Padrões de dados
+  - lib/data/ vs lib/config/
+  - Single Source of Truth
+  - Type safety patterns
+  - Como adicionar novos dados
+
+### Arquitetura
+
+- **[Decisões de Arquitetura](./docs/architecture/DECISIONS.md)**: Por que escolhemos cada tecnologia
+  - Next.js 16 App Router
+  - React 19
+  - Tailwind CSS v4
+  - OKLCH color space
+  - Biome vs ESLint
+  - E mais...
+
+- **App Router**: Next.js 16 com React Server Components
+- **Server-first**: Componentes são renderizados no servidor por padrão
+- **Imports dinâmicos**: Componentes cliente carregados apenas quando necessário
+- **Rotas de API**: Endpoints RESTful em `src/app/api/`
+
+### Contexto para Assistentes de IA
+- **[.github/copilot-instructions.md](./.github/copilot-instructions.md)**: Instruções para GitHub Copilot
+  - Padrões de código e convenções
+  - Uso do sistema de design
+  - Tarefas comuns e exemplos
+  - O que fazer e o que evitar
+
+## 🛠️ Desenvolvimento
 
 ```bash
-# Start development server
+# Inicie o servidor de desenvolvimento
 npm run dev
 
-# Run linter
+# Execute o linter
 npm run lint
 
-# Fix linting issues
+# Corrija problemas de linting
 npm run lint:fix
 
-# Type check
+# Verificação de tipos
 npm run typecheck
 
-# Format code
+# Formate o código
 npm run format
 
-# Run all checks (lint + typecheck)
+# Execute todas as verificações (lint + typecheck)
 npm run check
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site.
+Abra [http://localhost:3000](http://localhost:3000) para visualizar o site.
 
-## 🧪 Testing
+## 🧪 Testes
 
-### Unit & Integration Tests
+### Testes Unitários e de Integração
 
 ```bash
-# Run tests in watch mode
+# Execute testes em modo watch
 npm test
 
-# Run tests once
+# Execute testes uma vez
 npm run test:run
 
-# Run tests with UI
+# Execute testes com interface
 npm run test:ui
 
-# Generate coverage report
+# Gere relatório de cobertura
 npm run test:coverage
 ```
 
-**Coverage Thresholds**: 
-- Lines: 85%
-- Functions: 85%
+**Limites de Cobertura**: 
+- Linhas: 85%
+- Funções: 85%
 - Branches: 80%
-- Statements: 85%
+- Declarações: 85%
 
-### E2E Tests
+### Testes E2E
 
 ```bash
-# Run E2E tests (headless)
+# Execute testes E2E (headless)
 npm run test:e2e
 
-# Run E2E tests with UI
+# Execute testes E2E com interface
 npm run test:e2e:ui
 
-# Run E2E tests in headed mode
+# Execute testes E2E em modo headed
 npm run test:e2e:headed
 
-# Debug E2E tests
+# Debug de testes E2E
 npm run test:e2e:debug
 ```
 
-### Test Structure
+### Estrutura de Testes
 
 ```
 tecnojr-site/
-├── e2e/                    # Playwright E2E tests
+├── e2e/                    # Testes E2E Playwright
 │   ├── home.spec.ts
 │   ├── navigation.spec.ts
 │   ├── projects.spec.ts
+│   ├── sobre.spec.ts
 │   └── contact.spec.ts
 ├── src/
 │   ├── lib/
-│   │   ├── utils.ts
-│   │   └── utils.test.ts   # Co-located unit tests
+│   │   ├── utils/
+│   │   │   ├── utils.ts
+│   │   │   └── utils.test.ts   # Testes unitários co-localizados
+│   │   ├── animation/
+│   │   │   ├── animations.ts
+│   │   │   └── animations.test.ts
+│   │   └── types/
+│   │       ├── types.ts
+│   │       └── types.test.ts
 │   ├── components/
 │   │   └── ui/
-│   │       ├── button.tsx
-│   │       └── button.test.tsx
+│   │       ├── buttons/
+│   │       │   ├── button.tsx
+│   │       │   ├── button.test.tsx
+│   │       │   └── button.stories.tsx
+│   │       └── cards/
+│   │           ├── feature-card.tsx
+│   │           ├── feature-card.test.tsx
+│   │           └── feature-card.stories.tsx
 │   └── app/
 │       └── api/
 │           └── contact/
 │               ├── route.ts
 │               └── route.test.ts
 └── tests/
-    ├── setup.ts            # Global test setup
-    ├── test-utils.tsx      # Custom render utilities
-    └── mocks/              # Shared mocks
+    ├── setup.ts            # Configuração global de testes
+    ├── test-utils.tsx      # Utilitários de render customizados
+    └── mocks/              # Mocks compartilhados
 ```
 
-See [TESTING.md](./TESTING.md) for detailed testing documentation.
+Consulte [docs/development/testing.md](./docs/development/testing.md) para documentação detalhada de testes.
 
-## 📁 Project Structure
+## 📁 Estrutura do Projeto
 
 ```
 tecnojr-site/
-├── public/                 # Static assets
-│   └── assets/            # Images, icons, logos
+├── public/                 # Assets estáticos
+│   └── assets/            # Imagens, ícones, logos
+│       ├── logo/          # Logos da TecnoJr (variações)
+│       ├── icon/          # Ícones da marca
+│       ├── typo/          # Tipografias
+│       ├── members/       # Fotos dos membros
+│       └── projects/      # Imagens de projetos
 ├── src/
 │   ├── app/               # Next.js App Router
 │   │   ├── layout.tsx
-│   │   ├── page.tsx
-│   │   └── api/          # API routes
-│   ├── components/        # React components
-│   │   ├── animated/     # Animation components
-│   │   ├── layout/       # Layout components
-│   │   ├── sections/     # Page sections
-│   │   └── ui/           # Reusable UI components
-│   ├── lib/              # Utilities & constants
-│   │   ├── animations.ts
-│   │   ├── constants.ts
-│   │   ├── features.ts
-│   │   ├── icons.ts
-│   │   ├── members.ts
-│   │   ├── metadata.ts
-│   │   ├── navigation.ts
-│   │   ├── projects.ts
-│   │   ├── services.ts
-│   │   ├── styles.ts
-│   │   ├── types.ts
-│   │   └── utils.ts
-│   └── assets/           # Source assets
-├── e2e/                  # E2E tests
-├── tests/                # Test utilities
-└── docs/                 # Documentation
-    ├── TESTING.md
-    ├── STYLE_GUIDE.md
-    ├── BUTTON_SYSTEM.md
-    └── LIB_DIRECTORY.md
+│   │   ├── page.tsx       # Homepage
+│   │   ├── sobre/         # Página "Sobre"
+│   │   ├── projetos/      # Página de projetos
+│   │   ├── press-kit/     # Página de press kit
+│   │   └── api/           # Rotas de API
+│   │       └── contact/   # Endpoint de contato
+│   ├── components/        # Componentes React
+│   │   ├── animated/      # Componentes de animação
+│   │   ├── layout/        # Componentes de layout
+│   │   │   ├── header/    # Header e navegação
+│   │   │   ├── footer/    # Footer
+│   │   │   ├── max-width-wrapper.tsx
+│   │   │   ├── section-wrapper.tsx
+│   │   │   ├── section.tsx
+│   │   │   ├── section-container.tsx
+│   │   │   ├── content-container.tsx
+│   │   │   └── responsive-grid.tsx
+│   │   ├── sections/      # Seções de página
+│   │   │   ├── hero/      # Variantes de hero (home, about, projects, etc)
+│   │   │   ├── budget/    # Componentes da seção de orçamento
+│   │   │   ├── press-kit/ # Seções do press kit
+│   │   │   ├── features-section.tsx
+│   │   │   ├── services-section.tsx
+│   │   │   ├── projects-section.tsx
+│   │   │   ├── ideals-section.tsx
+│   │   │   ├── members-section.tsx
+│   │   │   └── about-section.tsx
+│   │   └── ui/            # Componentes UI reutilizáveis
+│   │       ├── buttons/   # Sistema de botões
+│   │       ├── cards/     # Tipos de cards (base, feature, service, project, member, etc)
+│   │       ├── form/      # Componentes de formulário
+│   │       ├── feedback/  # Componentes de feedback
+│   │       ├── navigation/# Componentes de navegação
+│   │       ├── primitives/# Primitivos base (card, separator, etc)
+│   │       └── typography/# Sistema de tipografia
+│   ├── lib/               # Utilitários e constantes
+│   │   ├── animation/     # Sistema de animações
+│   │   │   ├── animations.ts
+│   │   │   ├── animations.test.ts
+│   │   │   └── animation-variants.ts
+│   │   ├── config/        # Configurações da empresa
+│   │   │   ├── company.ts     # Informações da empresa
+│   │   │   ├── contact.ts     # Dados de contato
+│   │   │   ├── content.ts     # Conteúdo textual
+│   │   │   ├── social.ts      # Redes sociais
+│   │   │   ├── stats.ts       # Estatísticas
+│   │   │   └── index.ts
+│   │   ├── data/          # Dados estruturados
+│   │   │   ├── features.ts    # Diferenciais
+│   │   │   ├── ideals.ts      # Missão, visão, valores
+│   │   │   ├── members.ts     # Membros da equipe
+│   │   │   ├── press-kit.ts   # Material de marca
+│   │   │   ├── projects.ts    # Projetos
+│   │   │   ├── services.ts    # Serviços
+│   │   │   └── index.ts
+│   │   ├── hooks/         # React hooks customizados
+│   │   │   ├── use-reduced-motion.ts
+│   │   │   └── index.ts
+│   │   ├── types/         # Tipos TypeScript
+│   │   │   ├── types.ts
+│   │   │   ├── types.test.ts
+│   │   │   └── index.ts
+│   │   ├── utils/         # Funções utilitárias
+│   │   │   ├── icons.ts       # Mapeamento de ícones
+│   │   │   ├── metadata.ts    # Helpers de SEO
+│   │   │   ├── navigation.ts  # Sistema de navegação
+│   │   │   ├── styles.ts      # Utilitários de estilo
+│   │   │   ├── styles.test.ts
+│   │   │   ├── utils.ts       # Funções gerais (cn, etc)
+│   │   │   └── utils.test.ts
+│   │   └── constants.ts   # Constantes globais
+│   └── assets/            # Assets de origem
+├── e2e/                   # Testes E2E
+├── tests/                 # Utilitários de teste
+├── .storybook/            # Configuração do Storybook
+│   └── docs/              # Documentação do Storybook
+└── docs/                  # Documentação do projeto
+    ├── development/       # Guias de desenvolvimento
+    ├── architecture/      # Documentação de arquitetura
+    ├── deployment/        # Guias de deployment
+    ├── getting-started/   # Getting started
+    └── storybook/         # Guia do Storybook
 ```
 
 ## 🏗️ Build
 
 ```bash
-# Create production build
+# Crie build de produção
 npm run build
 
-# Start production server
+# Inicie servidor de produção
 npm start
 ```
 
-The build generates:
-- Optimized static pages
-- Server-rendered pages
-- API routes
-- Static assets
+O build gera:
+- Páginas estáticas otimizadas
+- Páginas renderizadas no servidor
+- Rotas de API
+- Assets estáticos
 
-## 🚢 Deployment
+## 🚢 Deploy
 
-### Vercel (Recommended)
+### Vercel (Recomendado)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YOUR_ORG/tecnojr-site)
 
-1. Connect your repository to Vercel
-2. Configure environment variables
-3. Deploy automatically on push to `main`
+1. Conecte seu repositório à Vercel
+2. Configure as variáveis de ambiente
+3. Deploy automático ao fazer push para `main`
 
-### Manual Deployment
+### Deploy Manual
 
-1. Build the application: `npm run build`
-2. Set up environment variables
-3. Deploy the `.next` directory
+1. Construa a aplicação: `npm run build`
+2. Configure as variáveis de ambiente
+3. Faça deploy do diretório `.next`
 
-## 🔑 Environment Variables
+## 🔑 Variáveis de Ambiente
 
 ```bash
 # Email (Resend)
-RESEND_API_KEY=your_resend_api_key
+RESEND_API_KEY=sua_chave_api_resend
 EMAIL_FROM=noreply@tecnojr.com.br
-EMAIL_TO=contact@tecnojr.com.br
+EMAIL_TO=contato@tecnojr.com.br
 
-# Analytics (optional)
+# Analytics (opcional)
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 ```
 
-## 📝 Scripts Reference
+## 📝 Referência de Scripts
 
-| Script | Description |
-|--------|-------------|
-| `dev` | Start development server |
-| `build` | Create production build |
-| `start` | Start production server |
-| `lint` | Run Biome linter |
-| `lint:fix` | Fix linting issues |
-| `format` | Format code with Biome |
-| `typecheck` | Run TypeScript type checking |
-| `check` | Run typecheck + lint |
-| `test` | Run unit tests (watch mode) |
-| `test:run` | Run unit tests once |
-| `test:ui` | Run unit tests with UI |
-| `test:coverage` | Generate coverage report |
-| `test:e2e` | Run E2E tests |
-| `test:e2e:ui` | Run E2E tests with UI |
-| `test:e2e:headed` | Run E2E tests in headed mode |
-| `test:e2e:debug` | Debug E2E tests |
+| Script | Descrição |
+|--------|-----------|
+| `dev` | Inicia servidor de desenvolvimento |
+| `build` | Cria build de produção |
+| `start` | Inicia servidor de produção |
+| `lint` | Executa linter Biome |
+| `lint:fix` | Corrige problemas de linting |
+| `format` | Formata código com Biome |
+| `typecheck` | Executa verificação de tipos TypeScript |
+| `check` | Executa typecheck + lint |
+| `test` | Executa testes unitários (modo watch) |
+| `test:run` | Executa testes unitários uma vez |
+| `test:ui` | Executa testes unitários com interface |
+| `test:coverage` | Gera relatório de cobertura |
+| `test:e2e` | Executa testes E2E |
+| `test:e2e:ui` | Executa testes E2E com interface |
+| `test:e2e:headed` | Executa testes E2E em modo headed |
+| `test:e2e:debug` | Debug de testes E2E |
+| `storybook` | Inicia Storybook |
+| `build-storybook` | Constrói Storybook estático |
 
-## 🤝 Contributing
+## 🤝 Contribuindo
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+1. Faça fork do repositório
+2. Crie uma branch de feature: `git checkout -b feature/funcionalidade-incrivel`
+3. Commit suas mudanças: `git commit -m 'Adiciona funcionalidade incrível'`
+4. Push para a branch: `git push origin feature/funcionalidade-incrivel`
+5. Abra um Pull Request
 
-### PR Checklist
+### Checklist de PR
 
-- [ ] Tests pass (`npm run test:run`)
-- [ ] E2E tests pass (`npm run test:e2e`)
-- [ ] Linting passes (`npm run lint`)
-- [ ] Type checking passes (`npm run typecheck`)
-- [ ] Build succeeds (`npm run build`)
-- [ ] Coverage maintained above 85%
-- [ ] Documentation updated
+- [ ] Testes passam (`npm run test:run`)
+- [ ] Testes E2E passam (`npm run test:e2e`)
+- [ ] Linting passa (`npm run lint`)
+- [ ] Verificação de tipos passa (`npm run typecheck`)
+- [ ] Build sucede (`npm run build`)
+- [ ] Cobertura mantida acima de 85%
+- [ ] Documentação atualizada
+- [ ] Stories do Storybook criadas (para novos componentes UI)
 
-## 📚 Documentation
+## 📚 Índice de Documentação
 
-- [Documentation Index](./docs/README.md) - Full documentation index
-- [Testing Guide](./docs/development/testing.md) - Complete testing documentation
-- [Style Guide](./docs/development/style-guide.md) - Code style and conventions
-- [Button System](./docs/development/button-system.md) - Button component documentation
-- [Lib Directory](./docs/development/lib-directory.md) - Utilities reference
+### 🚀 Primeiros Passos
+- [Guia de Setup](./docs/getting-started/setup.md) - Configuração do ambiente
+- [Guia de Contribuição](./docs/getting-started/contributing.md) - Como contribuir
+- [Estrutura do Projeto](./docs/getting-started/project-structure.md) - Organização de arquivos
 
-## 📄 License
+### 💻 Desenvolvimento
+- [Índice de Componentes](./docs/development/component-index.md) - Catálogo completo
+- [Criação de Componentes](./docs/development/component-creation.md) - Como criar componentes
+- [Diretório Lib](./docs/development/lib-directory.md) - Organização lib/
+- [Gerenciamento de Dados](./docs/development/data-management.md) - Padrões de dados
+- [Guia de Estilos](./docs/development/style-guide.md) - Sistema de design
+- [Sistema de Botões](./docs/development/button-system.md) - Documentação de botões
+- [Guia de Animações](./docs/development/animations-guide.md) - Sistema de animações
+- [Guia de Testes](./docs/development/testing.md) - Estratégia de testes
+- [Rotas de API](./docs/development/api-routes.md) - Endpoints e padrões
+- [Formulários e Validação](./docs/development/forms-validation.md) - React Hook Form + Zod
 
-MIT License - see [LICENSE](./LICENSE) for details
+### 🏛️ Arquitetura
+- [Decisões de Arquitetura](./docs/architecture/DECISIONS.md) - ADRs
+- [Estrutura do Projeto](./docs/architecture/STRUCTURE.md) - Organização e padrões
+- [Estilização](./docs/architecture/STYLING.md) - Tailwind v4 e OKLCH
 
-## 👥 Team
+### 🚢 Deploy
+- [Guia de Deploy](./docs/deployment/deployment.md) - Produção
 
-Built with ❤️ by [TecnoJR](https://tecnojr.com.br)
+### 📖 Storybook
+- [Guia do Storybook](./docs/storybook/guide.md) - Como usar
+- [Escrevendo Stories](./docs/storybook/writing-stories.md) - Padrões de stories
+
+## 🎨 Design System
+
+Nosso sistema de design utiliza:
+- **Cores OKLCH**: Espaço de cores perceptualmente uniforme
+- **Tailwind CSS v4**: Com diretiva `@theme` para customização
+- **Gradientes**: Sistema de gradientes roxo-azul da marca
+- **Tipografia**: Sistema tipográfico completo
+- **Componentes**: Biblioteca completa documentada no Storybook
+
+📚 [Ver Guia Completo de Estilos →](./docs/development/style-guide.md)
+
+## ♿ Acessibilidade
+
+O site segue as diretrizes WCAG 2.1 AA:
+- Navegação por teclado completa
+- Skip links para conteúdo principal
+- Suporte a `prefers-reduced-motion`
+- Contraste de cores adequado
+- ARIA labels e roles apropriados
+- Testes automatizados de acessibilidade
+
+📚 [Ver Guia de Verificação →](./docs/VERIFICATION-GUIDE.md)
+
+## 📄 Licença
+
+Licença MIT - veja [LICENSE](./LICENSE) para detalhes
+
+## 👥 Equipe
+
+Construído com ❤️ pela [TecnoJr](https://tecnojr.com.br)
+
+**Empresa Júnior de Computação da UESC**  
+Transformando ideias em projetos de qualidade desde 2002
 
 ---
 
-**Need help?** Contact us at contato@tecnojr.com.br
+**Precisa de ajuda?** Entre em contato: contato@tecnojr.com.br

@@ -1,428 +1,747 @@
 import { Meta } from "@storybook/blocks";
 
-<Meta title="Documentation/Components" />
+<Meta title="Documentação/Componentes" />
 
-# Component Catalog
+# Catálogo de Componentes
 
-Complete reference of all components in the TecnoJr design system.
+Referência visual de todos os componentes do sistema de design TecnoJr. Para documentação técnica detalhada, consulte [docs/development/component-index.md](../../docs/development/component-index.md).
 
-## Component Architecture
+---
 
-### Organization Structure
+## Arquitetura de Componentes
+
+### Estrutura de Organização
 ```
 src/components/
-├── ui/              # Reusable UI primitives
-├── layout/          # Layout components (Header, Footer)
-├── sections/        # Page sections (Hero, Features, etc.)
-└── animated/        # Animation wrappers and effects
+├── ui/              # Primitivos de UI reutilizáveis
+│   ├── buttons/     # Sistema de botões com variantes
+│   ├── cards/       # Tipos de cards (base, feature, project, etc)
+│   ├── form/        # Componentes de formulário (input, textarea, etc)
+│   ├── feedback/    # Feedback visual (loading, alerts, etc)
+│   ├── navigation/  # Componentes de navegação (tabs, pills, etc)
+│   ├── primitives/  # Primitivos básicos (card, separator, etc)
+│   └── typography/  # Sistema de tipografia
+├── layout/          # Componentes de layout (Header, Footer, wrappers)
+├── sections/        # Seções de página completas
+│   ├── hero/        # Variantes de Hero para diferentes páginas
+│   ├── budget/      # Componentes da seção de orçamento
+│   └── press-kit/   # Seções do press kit
+└── animated/        # Wrappers de animação e efeitos
 ```
 
-### Design Principles
-1. **Single Responsibility** - Each component does one thing well
-2. **Composability** - Components build on primitives
-3. **Consistency** - Shared design tokens and patterns
-4. **Accessibility** - WCAG 2.1 AA compliance
-5. **Performance** - Optimized rendering and animations
+### Princípios de Design
+1. **Responsabilidade Única** - Cada componente faz uma coisa bem feita
+2. **Composição** - Componentes constroem sobre primitivos
+3. **Consistência** - Tokens de design e padrões compartilhados
+4. **Acessibilidade** - Conformidade WCAG 2.1 AA
+5. **Performance** - Renderização e animações otimizadas
 
 ---
 
-## UI Components
+## 🎨 Componentes UI
 
-### Buttons
-**Location**: `src/components/ui/button.tsx`
+### Botões (`ui/buttons/`)
 
-8 variants for different use cases:
-- `gradient-primary` - Hero CTAs, primary actions
-- `gradient-whatsapp` - WhatsApp contact only
-- `gradient-secondary` - Secondary CTAs, email links
-- `outline-gradient` - Filters, tabs, toggles
-- `ghost-gradient` - Navigation, subtle actions
-- `default`, `outline`, `secondary`, `ghost`, `destructive`, `link`
+**Localização**: `src/components/ui/buttons/button.tsx`
 
-5 sizes: `xs`, `sm`, `default`, `lg`, `xl`
+Sistema completo de botões com 8 variantes:
+- `gradient-primary` - CTAs principais, ações primárias (hero)
+- `gradient-whatsapp` - Exclusivo para contato WhatsApp
+- `gradient-secondary` - CTAs secundários, links de email
+- `outline-gradient` - Filtros, abas, toggles
+- `ghost-gradient` - Navegação, ações sutis
+- `default` - Botão padrão
+- `outline` - Botão com borda
+- `destructive` - Ações destrutivas
+- `ghost` - Botão fantasma
+- `link` - Botão estilo link
 
-[View Button Stories →](/?path=/story/ui-button--gradient-primary)
+**5 tamanhos**: `xs`, `sm`, `default`, `lg`, `xl`
 
-### Cards
+**Arquivos relacionados**:
+- `button.tsx` - Componente principal com CVA
+- `button.test.tsx` - Testes unitários completos
+- `button.stories.tsx` - Stories do Storybook
+- `button-showcase.tsx` - Showcase de todas as variantes
+
+[Ver Stories de Botões →](/?path=/story/ui-button--gradient-primary)
+
+📚 **Documentação detalhada**: [docs/development/button-system.md](../../docs/development/button-system.md)
+
+---
+
+### Cards (`ui/cards/`)
 
 #### BaseCard
-**Location**: `src/components/ui/base-card.tsx`
+**Localização**: `src/components/ui/cards/base-card.tsx`
 
-Foundation for FeatureCard, ServiceCard, StatItem. Features:
-- Configurable icon with gradients
-- Glow effects on hover
-- Icon rotation animations
-- Two layouts: default, centered
+Fundação para FeatureCard, ServiceCard, StatItem.
+
+**Recursos**:
+- Ícone configurável com gradientes
+- Efeitos de brilho ao hover
+- Animações de rotação do ícone
+- Dois layouts: default, centered
+
+**Uso**: Base para composição de outros cards
+
+---
 
 #### FeatureCard
-**Location**: `src/components/ui/feature-card.tsx`
+**Localização**: `src/components/ui/cards/feature-card.tsx`
 
-For features section. Data from `@/lib/features`.
-- Left-aligned layout
-- Icon in gradient circle
-- Title + description
+Para seção de diferenciais.
 
-[View FeatureCard Stories →](/?path=/story/ui-featurecard--default)
+**Características**:
+- Layout alinhado à esquerda
+- Ícone em círculo com gradiente
+- Título + descrição
+- Dados de `@/lib/data/features`
+
+[Ver Stories →](/?path=/story/ui-featurecard--default)
+
+---
 
 #### ServiceCard
-**Location**: `src/components/ui/service-card.tsx`
+**Localização**: `src/components/ui/cards/service-card.tsx`
 
-For services section. Data from `@/lib/services`.
-- Centered layout
-- Icon rotation on hover
-- Title + description
+Para seção de serviços.
 
-[View ServiceCard Stories →](/?path=/story/ui-servicecard--default)
+**Características**:
+- Layout centralizado
+- Rotação do ícone ao hover
+- Título + descrição
+- Dados de `@/lib/data/services`
+
+[Ver Stories →](/?path=/story/ui-servicecard--default)
+
+---
 
 #### ProjectCard
-**Location**: `src/components/ui/project-card.tsx`
+**Localização**: `src/components/ui/cards/project-card.tsx`
 
-For projects showcase. Data from `@/lib/projects`.
-- Image with gradient overlay
-- External/Internal badge
-- Hover lift effect
+Para showcase de projetos.
 
-[View ProjectCard Stories →](/?path=/story/ui-projectcard--external-project)
+**Características**:
+- Imagem com overlay de gradiente
+- Badge External/Internal
+- Efeito de elevação ao hover
+- Dados de `@/lib/data/projects`
 
-### Form Components
+[Ver Stories →](/?path=/story/ui-projectcard--external-project)
+
+---
+
+#### MemberCard
+**Localização**: `src/components/ui/cards/member-card.tsx`
+
+Para exibição de membros da equipe.
+
+**Características**:
+- Foto do membro com bordas arredondadas
+- Nome e cargo
+- Links sociais (GitHub, LinkedIn, etc)
+- Dados de `@/lib/data/members`
+
+**Uso**: Página "Sobre" (/sobre)
+
+---
+
+#### AssetCard
+**Localização**: `src/components/ui/cards/asset-card.tsx`
+
+Para assets do press kit (logos, ícones).
+
+**Características**:
+- Preview do asset (SVG/PNG)
+- Suporta fundo invertido
+- Nome do asset
+- Botões de download
+
+**Uso**: Página Press Kit (/press-kit)
+
+---
+
+#### ColorCard
+**Localização**: `src/components/ui/cards/color-card.tsx`
+
+Para exibição de cores da marca.
+
+**Características**:
+- Preview da cor
+- Nome da cor
+- Valores HEX e RGB
+- Botão de copiar código
+
+**Uso**: Página Press Kit (/press-kit)
+
+---
+
+### Formulários (`ui/form/`)
 
 #### Input
-**Location**: `src/components/ui/input.tsx`
+**Localização**: `src/components/ui/form/input.tsx`
 
-Text input with validation states.
-- Focus rings with brand colors
-- aria-invalid styling
-- React Hook Form integration
+Campo de texto com estados de validação.
 
-[View Input Stories →](/?path=/story/ui-input--default)
+**Recursos**:
+- Focus rings com cores da marca
+- Estilo aria-invalid
+- Integração React Hook Form
+- Suporte a type (text, email, tel, etc)
+
+[Ver Stories →](/?path=/story/ui-input--default)
+
+---
 
 #### Textarea
-**Location**: `src/components/ui/textarea.tsx`
+**Localização**: `src/components/ui/form/textarea.tsx`
 
-Multi-line input with auto-expand.
-- field-sizing-content
-- Same validation states as Input
+Campo de texto multi-linha com auto-expansão.
 
-[View Textarea Stories →](/?path=/story/ui-textarea--default)
+**Recursos**:
+- `field-sizing: content` (CSS)
+- Mesmos estados de validação do Input
+- Integração React Hook Form
 
-### Navigation
+[Ver Stories →](/?path=/story/ui-textarea--default)
+
+---
+
+### Navegação (`ui/navigation/`)
 
 #### Tabs
-**Location**: `src/components/ui/tabs.tsx`
+**Localização**: `src/components/ui/navigation/tabs.tsx`
 
-Radix UI-based tabs with 2 variants.
-- `default` - Solid background pill
-- `line` - Underline indicator
+Tabs baseado em Radix UI com 2 variantes.
 
-Supports horizontal/vertical orientation.
+**Variantes**:
+- `default` - Pílula com fundo sólido
+- `line` - Indicador de sublinhado
 
-[View Tabs Stories →](/?path=/story/ui-tabs--default)
+**Recursos**:
+- Orientação horizontal/vertical
+- Acessibilidade completa (ARIA)
+- Animações suaves
+
+[Ver Stories →](/?path=/story/ui-tabs--default)
+
+---
 
 #### FilterPill
-**Location**: `src/components/ui/filter-pill.tsx`
+**Localização**: `src/components/ui/navigation/filter-pill.tsx`
 
-For category filters and tags.
-- Active state with gradient
-- Outline variant for reset
-- Click handler for state management
+Para filtros de categoria e tags.
 
-[View FilterPill Stories →](/?path=/story/ui-filterpill--filter-group)
+**Características**:
+- Estado ativo com gradiente
+- Variante outline para reset
+- Click handler para gerenciamento de estado
 
-### Typography
+[Ver Stories →](/?path=/story/ui-filterpill--filter-group)
+
+---
+
+### Tipografia (`ui/typography/`)
 
 #### SectionTitle
-**Location**: `src/components/ui/section-title.tsx`
+**Localização**: `src/components/ui/typography/section-title.tsx`
 
-Responsive section headings.
-- 3 sizes: sm, md, lg
-- 3 alignments: left, center, right
-- Semantic HTML: h1-h4
-- text-balance for optimal wrapping
+Títulos de seção responsivos.
 
-[View SectionTitle Stories →](/?path=/story/ui-sectiontitle--default)
+**Tamanhos**: `sm`, `md`, `lg`  
+**Alinhamentos**: `left`, `center`, `right`  
+**Tags HTML**: `h1`, `h2`, `h3`, `h4`
+
+**Recursos**:
+- `text-balance` para quebras otimizadas
+- Espaçamento consistente
+- Gradientes opcionais
+
+[Ver Stories →](/?path=/story/ui-sectiontitle--default)
+
+---
+
+#### GradientText
+**Localização**: `src/components/ui/typography/gradient-text.tsx`
+
+Texto com gradiente da marca.
+
+**Uso**:
+```tsx
+<GradientText>TecnoJr</GradientText>
+```
+
+**Característica**: Gradiente roxo-azul com `background-clip: text`
+
+---
+
+#### InlineHighlight
+**Localização**: `src/components/ui/typography/inline-highlight.tsx`
+
+Destaque inline para texto.
+
+**Variantes**:
+- `gradient` - Fundo com gradiente
+- `underline` - Sublinhado animado
+- `box` - Caixa com fundo
+
+---
+
+#### LeadParagraph
+**Localização**: `src/components/ui/typography/lead-paragraph.tsx`
+
+Parágrafo de entrada maior.
+
+**Uso**: Primeiros parágrafos de seções importantes
+
+---
+
+#### Text
+**Localização**: `src/components/ui/typography/text.tsx`
+
+Componente de texto genérico com variantes.
+
+**Variantes**: `body`, `small`, `large`, `muted`
+
+---
 
 #### CodeText
-**Location**: `src/components/ui/code-text.tsx`
+**Localização**: `src/components/ui/typography/code-text.tsx`
 
-Inline code snippets.
-- Monospace font
-- Muted background
-- Rounded corners
+Para snippets de código inline.
 
-[View CodeText Stories →](/?path=/story/ui-codetext--default)
+**Recursos**:
+- Fonte monospace
+- Fundo muted
+- Bordas arredondadas
 
-### Primitives
+[Ver Stories →](/?path=/story/ui-codetext--default)
+
+---
+
+### Feedback (`ui/feedback/`)
+
+Componentes de feedback visual (spinners, alerts, etc) - **documentação a ser expandida**.
+
+---
+
+### Primitivos (`ui/primitives/`)
 
 #### Card
-**Location**: `src/components/ui/card.tsx`
+**Localização**: `src/components/ui/primitives/card.tsx`
 
-Base card with sub-components:
-- `Card` - Container
-- `CardHeader` - Header section
-- `CardTitle` - Title text
-- `CardDescription` - Subtitle
-- `CardContent` - Body content
-- `CardAction` - Action button area
+Card base do Shadcn UI com sub-componentes:
+- `Card` - Container principal
+- `CardHeader` - Seção do cabeçalho
+- `CardTitle` - Texto do título
+- `CardDescription` - Subtítulo/descrição
+- `CardContent` - Conteúdo principal
+- `CardFooter` - Rodapé/ações
+
+---
 
 #### Separator
-**Location**: `src/components/ui/separator.tsx`
+**Localização**: `src/components/ui/primitives/separator.tsx`
 
-Radix UI separator.
-- Horizontal/vertical orientation
-- Decorative or semantic
+Separador visual baseado em Radix UI.
 
-#### StatItem
-**Location**: `src/components/ui/stat-item.tsx`
-
-For stats/benefits display.
-- Icon in gradient circle
-- Label + optional value
-- Fade-in animation
+**Orientações**: horizontal, vertical  
+**Tipos**: decorativo, semântico
 
 ---
 
-## Layout Components
+#### Badge
+**Localização**: `src/components/ui/badge.tsx`
 
-### Header
-**Location**: `src/components/layout/header/`
+Badges para categorização.
 
-Fixed header with scroll detection.
-- Desktop: Center/right navigation
-- Mobile: Hamburger menu + drawer
-- Active link indicators
-- Backdrop blur on scroll
+**Variantes**: `default`, `secondary`, `outline`, `destructive`
 
-**Sub-components**:
-- `DesktopNavigation` - Desktop nav links
-- `MobileNavigation` - Mobile drawer
+---
 
-[View Header Stories →](/?path=/story/layout-header--default)
+### Outros Componentes UI
 
-### Footer
-**Location**: `src/components/layout/footer/`
+#### IconContainer
+**Localização**: `src/components/ui/icon-container.tsx`
 
-4-column footer (responsive).
-- Logo + description + social
-- Quick links
-- Contact info
-- Copyright
+Container para ícones com fundo e gradiente.
 
-**Sub-components**:
-- `Description` - Logo, mission, social
-- `QuickLinks` - Navigation links
-- `ContactInfo` - Email, address, phone
-- `Copyright` - Dynamic year
+**Uso**: Centraliza estilo de ícones em cards e seções
 
-[View Footer Stories →](/?path=/story/layout-footer--default)
+---
 
-### Wrappers
+#### TecnoJrLogo
+**Localização**: `src/components/ui/tecnojr-logo.tsx`
+
+Logo da TecnoJr com variantes (branco, preto, colorido).
+
+**Uso**: Header, Footer, Press Kit
+
+---
+
+#### SkipLink
+**Localização**: `src/components/ui/skip-link.tsx`
+
+Link de acessibilidade para pular navegação.
+
+**Recurso**: Visível apenas ao focar com teclado (WCAG 2.4.1)
+
+---
+
+## 🏗️ Componentes de Layout
+
+### Header (`layout/header/`)
+
+**Localização**: `src/components/layout/header/`
+
+Header fixo com detecção de scroll.
+
+**Características**:
+- Desktop: Navegação centralizada e à direita
+- Mobile: Menu hambúrguer + drawer
+- Indicadores de link ativo
+- Blur no backdrop ao scrollar
+- Esconde em rotas específicas (press-kit)
+
+**Sub-componentes**:
+- `DesktopNavigation` - Links de navegação desktop
+- `MobileNavigation` - Drawer mobile
+- `ThemeToggle` - Toggle de tema (se implementado)
+
+[Ver Stories →](/?path=/story/layout-header--default)
+
+---
+
+### Footer (`layout/footer/`)
+
+**Localização**: `src/components/layout/footer/`
+
+Footer com 4 colunas responsivas.
+
+**Seções**:
+1. Logo + descrição + redes sociais
+2. Links rápidos
+3. Informações de contato
+4. Copyright dinâmico
+
+**Sub-componentes**:
+- `Description` - Logo, missão, social
+- `QuickLinks` - Links de navegação
+- `ContactInfo` - Email, endereço, telefone
+- `Copyright` - Ano dinâmico
+
+[Ver Stories →](/?path=/story/layout-footer--default)
+
+---
+
+### Wrappers de Layout
 
 #### MaxWidthWrapper
-**Location**: `src/components/layout/max-width-wrapper.tsx`
+**Localização**: `src/components/layout/max-width-wrapper.tsx`
 
-Centers content with max-width.
-- Responsive padding
-- 6 max-width options
+Centraliza conteúdo com largura máxima.
+
+**Características**:
+- Padding responsivo
+- 6 opções de largura máxima
+- Container centralizado
+
+---
 
 #### SectionWrapper
-**Location**: `src/components/layout/section-wrapper.tsx`
+**Localização**: `src/components/layout/section-wrapper.tsx`
 
-Consistent section spacing.
-- Responsive vertical padding
-- Optional section ID for anchors
+Espaçamento consistente de seções.
 
----
-
-## Section Components
-
-### HeroSection
-**Location**: `src/components/sections/hero-section.tsx`
-
-Full-screen hero with animations.
-- Background image + gradient overlay
-- Staggered text animations
-- Gradient heading text
-- CTA button
-- Background shapes
-
-### FeaturesSection
-**Location**: `src/components/sections/features-section.tsx`
-
-2-column features grid.
-- Data from `@/lib/features`
-- Staggered fade-up animations
-- Pattern overlay
-
-### ServicesSection
-**Location**: `src/components/sections/services-section.tsx`
-
-3-column services grid.
-- Data from `@/lib/services`
-- Centered cards
-- Section ID: #services
-
-### AboutSection
-**Location**: `src/components/sections/about-section.tsx`
-
-Two-column about layout.
-- Image placeholder
-- Overlapping text card
-- Floating orb animation
-
-### ProjectsSection
-**Location**: `src/components/sections/projects-section.tsx`
-
-Projects with tabs.
-- External/Internal tabs
-- 3-column grid
-- Section ID: #projects
-
-### BudgetSection
-**Location**: `src/components/sections/budget-section.tsx`
-
-Contact CTA with form.
-- Benefits list
-- WhatsApp CTA
-- Contact form
-- Animated gradient orbs
+**Características**:
+- Padding vertical responsivo
+- ID opcional para âncoras
 
 ---
 
-## Animated Components
+#### Section
+**Localização**: `src/components/layout/section.tsx`
+
+Componente de seção semântica com padding e max-width.
+
+---
+
+#### SectionContainer
+**Localização**: `src/components/layout/section-container.tsx`
+
+Container de seção com variantes de espaçamento.
+
+---
+
+#### ContentContainer
+**Localização**: `src/components/layout/content-container.tsx`
+
+Container para conteúdo com largura controlada.
+
+---
+
+#### ResponsiveGrid
+**Localização**: `src/components/layout/responsive-grid.tsx`
+
+Grid responsivo com número de colunas configurável.
+
+**Colunas**: 1-4 (responsivo)
+
+---
+
+## 📄 Componentes de Seção
+
+### Hero (`sections/hero/`)
+
+Sistema modular de hero para diferentes páginas.
+
+#### HeroBase
+**Localização**: `src/components/sections/hero/hero-base.tsx`
+
+Hero base reutilizável.
+
+#### HeroHome
+**Localização**: `src/components/sections/hero/hero-home.tsx`
+
+Hero da homepage.
+
+**Características**:
+- Imagem de fundo + overlay de gradiente
+- Animações escalonadas de texto
+- Texto de título com gradiente
+- Botão CTA
+- Formas de fundo decorativas
+
+#### HeroAbout
+**Localização**: `src/components/sections/hero/hero-about.tsx`
+
+Hero da página "Sobre".
+
+#### HeroProjects
+**Localização**: `src/components/sections/hero/hero-projects.tsx`
+
+Hero da página de projetos.
+
+#### HeroPressKit
+**Localização**: `src/components/sections/hero/hero-press-kit.tsx`
+
+Hero da página press kit.
+
+#### HeroStats
+**Localização**: `src/components/sections/hero/hero-stats.tsx`
+
+Hero com estatísticas da empresa.
+
+#### HeroHeading
+**Localização**: `src/components/sections/hero/hero-heading.tsx`
+
+Componente de heading reutilizável para heros.
+
+---
+
+### Seções de Conteúdo
+
+#### FeaturesSection
+**Localização**: `src/components/sections/features-section.tsx`
+
+Grid de 2 colunas com diferenciais.
+
+**Dados**: `@/lib/data/features`  
+**Animações**: Fade-up escalonado  
+**ID**: `#features`
+
+---
+
+#### ServicesSection
+**Localização**: `src/components/sections/services-section.tsx`
+
+Grid de 3 colunas com serviços.
+
+**Dados**: `@/lib/data/services`  
+**Layout**: Cards centralizados  
+**ID**: `#services`
+
+---
+
+#### AboutSection
+**Localização**: `src/components/sections/about-section.tsx`
+
+Layout de duas colunas sobre a empresa.
+
+**Características**:
+- Placeholder de imagem
+- Card de texto sobreposto
+- Animação de orbe flutuante
+
+---
+
+#### IdealsSection
+**Localização**: `src/components/sections/ideals-section.tsx`
+
+Seção de Missão, Visão e Valores.
+
+**Dados**: `@/lib/data/ideals`  
+**Layout**: 3 cards com ícones e gradientes  
+**Uso**: Página "Sobre"
+
+---
+
+#### MembersSection
+**Localização**: `src/components/sections/members-section.tsx`
+
+Exibição de membros da equipe.
+
+**Dados**: `@/lib/data/members`  
+**Recursos**:
+- Filtro por cargo
+- Grid responsivo
+- MemberCards com fotos e links sociais
+
+---
+
+#### MembersSectionWrapper
+**Localização**: `src/components/sections/members-section-wrapper.tsx`
+
+Wrapper da seção de membros com lógica de filtro.
+
+---
+
+#### ProjectsSection
+**Localização**: `src/components/sections/projects-section.tsx`
+
+Projetos com tabs.
+
+**Características**:
+- Tabs External/Internal
+- Grid de 3 colunas
+- ProjectCards
+- **ID**: `#projects`
+
+---
+
+#### ProjectsFullSection
+**Localização**: `src/components/sections/projects-full-section.tsx`
+
+Versão expandida da seção de projetos para página dedicada.
+
+---
+
+#### BudgetSection
+**Localização**: `src/components/sections/budget-section.tsx`
+
+CTA de contato com formulário.
+
+**Sub-componentes em `sections/budget/`**:
+- `BenefitsList` - Lista de benefícios de contratar
+- `ContactFormCard` - Card com formulário de contato
+
+**Recursos**:
+- Lista de benefícios
+- CTA WhatsApp
+- Formulário de contato
+- Orbes animados com gradiente
+
+---
+
+### Press Kit (`sections/press-kit/`)
+
+Seções especializadas para a página de press kit.
+
+#### LogosSection
+**Localização**: `src/components/sections/press-kit/logos-section.tsx`
+
+Exibição e download de logos.
+
+**Dados**: `@/lib/data/press-kit` (fullLogos, icons, typos)
+
+#### ColorsSection
+**Localização**: `src/components/sections/press-kit/colors-section.tsx`
+
+Paleta de cores da marca.
+
+**Dados**: `@/lib/data/press-kit` (colors)
+
+#### AlternativesSection
+**Localização**: `src/components/sections/press-kit/alternatives-section.tsx`
+
+Alternativas de uso da marca.
+
+#### DriveSection
+**Localização**: `src/components/sections/press-kit/drive-section.tsx`
+
+Link para Google Drive com todos os assets.
+
+---
+
+## 🎬 Componentes Animados
 
 ### Motion Wrappers
-**Location**: `src/components/animated/motion-wrappers.tsx`
+**Localização**: `src/components/animated/motion-wrappers.tsx`
 
-Reusable Framer Motion wrappers:
-- `FadeUp` - Fade + slide up
-- `FadeDown` - Fade + slide down
-- `FadeLeft` - Fade + slide left
-- `FadeRight` - Fade + slide right
-- `FadeIn` - Simple fade
-- `ScaleIn` - Scale + fade
-- `StaggerFadeUp` - Progressive fade-up with index
+Wrappers reutilizáveis de Framer Motion:
+- `FadeUp` - Fade + deslize para cima
+- `FadeDown` - Fade + deslize para baixo
+- `FadeLeft` - Fade + deslize da esquerda
+- `FadeRight` - Fade + deslize da direita
+- `ScaleIn` - Animação de escala
+- `StaggerContainer` - Container para animações escalonadas
 
-### FloatingOrb
-**Location**: `src/components/animated/floating-orb.tsx`
-
-Floating background decoration.
-- Smooth looping animation
-- Configurable size, color, duration
-- Blur effect
-
-### BackgroundShapes
-**Location**: `src/components/animated/background-shapes.tsx`
-
-Multiple orbs + geometric shapes.
-- 4 animated orbs
-- 1 rotating square
-- Used in HeroSection
-
-### ScrollIndicator
-**Location**: `src/components/animated/scroll-indicator.tsx`
-
-Bouncing scroll hint.
-- ChevronDown icon
-- "Role para baixo" text
-- Fade in after delay
-
-### PageTransition
-**Location**: `src/components/animated/page-transition.tsx`
-
-Page transition wrapper.
-- Fade + slide animation
-- For Next.js page components
-
----
-
-## Usage Patterns
-
-### Composing Sections
+**Uso**:
 ```tsx
-export default function HomePage() {
-  return (
-    <>
-      <HeroSection />
-      <FeaturesSection />
-      <ServicesSection />
-      <AboutSection />
-      <ProjectsSection />
-      <BudgetSection />
-    </>
-  );
-}
-```
-
-### Building Forms
-```tsx
-<form onSubmit={handleSubmit}>
-  <Input
-    type="email"
-    placeholder="Email"
-    {...register("email")}
-    aria-invalid={!!errors.email}
-  />
-  <Textarea
-    placeholder="Message"
-    {...register("message")}
-  />
-  <Button type="submit" variant="gradient-primary">
-    Send
-  </Button>
-</form>
-```
-
-### Adding Animations
-```tsx
-import { FadeUp, StaggerFadeUp } from "@/components/animated/motion-wrappers";
+import { FadeUp } from '@/components/animated/motion-wrappers';
 
 <FadeUp>
-  <SectionTitle>Heading</SectionTitle>
+  <YourComponent />
 </FadeUp>
-
-{items.map((item, index) => (
-  <StaggerFadeUp key={item.id} index={index}>
-    <Card>{item.content}</Card>
-  </StaggerFadeUp>
-))}
 ```
 
----
-
-## Component Guidelines
-
-### When to Create a New Component
-- Code is reused in 2+ places
-- Logic is complex enough to deserve isolation
-- Component serves a clear, single purpose
-- Variations can be controlled via props
-
-### Component Checklist
-- [ ] TypeScript types for props
-- [ ] JSDoc documentation with examples
-- [ ] Storybook story with variants
-- [ ] Unit tests (if logic is complex)
-- [ ] Accessibility attributes (ARIA)
-- [ ] Responsive design (mobile-first)
-- [ ] Performance optimizations (memo if needed)
-
-### Naming Conventions
-- **PascalCase** for component files: `Button.tsx`
-- **kebab-case** for utility files: `create-fade-up.ts`
-- **camelCase** for functions: `getFeaturesData()`
-- **SCREAMING_SNAKE_CASE** for constants: `ANIMATION_DURATION`
+📚 **Documentação de animações**: [docs/development/animations-guide.md](../../docs/development/animations-guide.md)
 
 ---
 
-## Resources
+## 🧪 Testes
 
-- [Colors Documentation →](/?path=/docs/documentation-colors--docs)
-- [Gradients Documentation →](/?path=/docs/documentation-gradients--docs)
-- [Animations Documentation →](/?path=/docs/documentation-animations--docs)
-- [Testing Documentation →](/?path=/docs/documentation-testing--docs)
-- [STYLE_GUIDE.md](https://github.com/tecnojr/website/blob/main/STYLE_GUIDE.md) - Complete style guide
-- [BUTTON_SYSTEM.md](https://github.com/tecnojr/website/blob/main/BUTTON_SYSTEM.md) - Button variants deep dive
+Muitos componentes têm testes co-localizados:
+- `*.test.tsx` - Testes unitários com Vitest + React Testing Library
+- `*.stories.tsx` - Stories do Storybook para documentação visual
+
+**Exemplo**: `button.test.tsx`, `feature-card.test.tsx`, `member-card.test.tsx`
+
+[Ver Guia de Testes →](/?path=/docs/documentação-testes--docs)
 
 ---
 
-**Component Philosophy**: Build once, use everywhere. Keep components focused, composable, and well-documented.
+## 📋 Índice Completo de Componentes
+
+Para lista completa com detalhes técnicos, exemplos de código e padrões de uso, consulte:
+
+📚 **[Índice Completo de Componentes](../../docs/development/component-index.md)**
+
+---
+
+## 🎨 Design System
+
+Para informações sobre o sistema de design (cores, tipografia, espaçamento, etc):
+
+📚 **[Guia de Estilos](../../docs/development/style-guide.md)**
+
+---
+
+## 🚀 Criando Novos Componentes
+
+Para aprender a criar seus próprios componentes seguindo os padrões do projeto:
+
+📚 **[Guia de Criação de Componentes](../../docs/development/component-creation.md)**
+
+---
+
+## 🔍 Busca Rápida
+
+Use a busca do Storybook (Ctrl+K / Cmd+K) para encontrar rapidamente qualquer componente ou story.
+
+Ou navegue pelas categorias na sidebar:
+- **UI** - Componentes de interface
+- **Layout** - Componentes de estrutura
+- **Sections** - Seções de página
+- **Animated** - Wrappers de animação

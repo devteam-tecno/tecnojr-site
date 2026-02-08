@@ -686,6 +686,580 @@ If you need to convert hex to OKLCH:
 
 ---
 
+## Layout Components & Utilities
+
+### Section & SectionContainer
+
+Standardized section wrappers that eliminate duplicate className patterns.
+
+#### Section Component
+
+Outer wrapper with background gradients and consistent spacing.
+
+```tsx
+import { Section } from "@/components/layout/section";
+import { SectionContainer } from "@/components/layout/section-container";
+
+// Default gradient (gray-900/50 to tecno-black-800)
+<Section>
+  <SectionContainer>
+    <SectionTitle>Features</SectionTitle>
+  </SectionContainer>
+</Section>
+
+// Reversed gradient
+<Section variant="reversed">
+  <SectionContainer>
+    <Content />
+  </SectionContainer>
+</Section>
+
+// Brand gradient for hero sections
+<Section variant="brand" spacing="large">
+  <SectionContainer maxWidth="5xl">
+    <HeroContent />
+  </SectionContainer>
+</Section>
+```
+
+**Variants:**
+- `default` - Gray-900/50 to Tecno-Black-800 gradient
+- `reversed` - Tecno-Black-800 to Gray-900/50 gradient  
+- `dark` - Tecno-Black-900 to Tecno-Black-800 gradient
+- `brand` - Brand-Dark to Tecno-Black-900 gradient
+
+**Spacing:**
+- `normal` - py-32 (default)
+- `large` - py-24 lg:py-32
+- `compact` - py-24
+
+#### SectionContainer Component
+
+Inner content container with responsive padding and max-width.
+
+```tsx
+// Default 7xl width
+<SectionContainer>
+  <h1>Content here</h1>
+</SectionContainer>
+
+// Narrower content (e.g., forms)
+<SectionContainer maxWidth="4xl">
+  <ContactForm />
+</SectionContainer>
+```
+
+**Max Width Options:** `2xl`, `4xl`, `5xl`, `7xl` (default)
+
+### IconContainer Component
+
+Reusable icon wrapper with consistent sizing and styling.
+
+```tsx
+import { IconContainer } from "@/components/ui/icon-container";
+
+// Small circular icon for social links
+<IconContainer size="sm" shape="circle">
+  <TwitterIcon className="h-5 w-5" />
+</IconContainer>
+
+// Medium rounded icon with gradient
+<IconContainer size="md" shape="rounded" gradient>
+  <ChartIcon className="h-6 w-6 text-white" />
+</IconContainer>
+
+// Large icon for hero sections
+<IconContainer 
+  size="xl" 
+  shape="rounded" 
+  className="mb-6 shadow-lg shadow-tecno-purple-500/25"
+>
+  <MessageIcon className="h-10 w-10 text-white" />
+</IconContainer>
+```
+
+**Sizes:** `sm` (h-10 w-10), `md` (h-12 w-12), `lg` (h-16 w-16), `xl` (h-20 w-20)  
+**Shapes:** `circle` (rounded-full), `rounded` (rounded-lg/2xl), `square` (no rounding)  
+**Gradient:** Boolean flag for purple-to-blue gradient background
+
+### Badge Component
+
+Reusable badge/pill for labels, tags, and status indicators.
+
+```tsx
+import { Badge } from "@/components/ui/badge";
+
+// Info badge with icon
+<Badge variant="info" animated>
+  <span className="mr-2 h-2 w-2 animate-pulse rounded-full bg-brand-secondary" />
+  Contato
+</Badge>
+
+// Role badge
+<Badge variant="role" size="sm">
+  Desenvolvedor
+</Badge>
+
+// Status badge
+<Badge variant="status" size="sm">
+  Em Desenvolvimento
+</Badge>
+
+// Primary badge for section headers
+<Badge variant="primary">
+  <Rocket className="mr-2 h-4 w-4" />
+  Nosso Portfolio
+</Badge>
+```
+
+**Variants:** `default`, `info`, `status`, `role`, `primary`, `secondary`  
+**Sizes:** `sm`, `md`, `lg`  
+**Animated:** Optional pulsing dot indicator
+
+### CSS Utility Classes
+
+#### Grid Utilities
+
+```css
+/* 3-column responsive grid */
+.grid-responsive-3 {
+  @apply grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3;
+}
+
+/* 4-column responsive grid */
+.grid-responsive-4 {
+  @apply grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+}
+
+/* Services grid (2-col on md, 3-col on xl) */
+.grid-services {
+  @apply grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3;
+}
+```
+
+#### Flex Utilities
+
+```css
+/* Centered flex with gap-4 */
+.flex-center-gap-4 {
+  @apply flex items-center gap-4;
+}
+
+/* Row flex with wrap and gap-4 */
+.flex-row-gap-4 {
+  @apply flex flex-wrap gap-4;
+}
+
+/* Column flex with gap-4 */
+.flex-col-gap-4 {
+  @apply flex flex-col gap-4;
+}
+
+/* Centered flex with gap-2 */
+.flex-center-gap-2 {
+  @apply flex items-center gap-2;
+}
+```
+
+#### Container Width Utilities
+
+```css
+/* Narrow content (forms, text-heavy) */
+.content-narrow {
+  @apply mx-auto max-w-2xl;
+}
+
+/* Medium content */
+.content-medium {
+  @apply mx-auto max-w-4xl;
+}
+
+/* Wide content (hero sections) */
+.content-wide {
+  @apply mx-auto max-w-5xl;
+}
+```
+
+### Button Tab Variant
+
+A new `tab` variant has been added to the Button component for tab navigation.
+
+```tsx
+import { Button } from "@/components/ui/buttons/button";
+
+<Button variant="tab" data-state={isActive ? "active" : "inactive"}>
+  External Projects
+</Button>
+```
+
+**Features:**
+- Rounded-full shape with glassmorphic background
+- Active state with gradient and shadow
+- Smooth transitions on hover and state changes
+
+---
+
+## Typography System
+
+### Overview
+
+The TecnoJR design system includes a comprehensive typography component library that consolidates **130+ duplicate className patterns** across the codebase. These components provide semantic meaning, improve maintainability, and ensure visual consistency.
+
+### Typography Hierarchy
+
+```
+HeroHeading (h1)         → text-4xl...xl:text-8xl
+  ↓
+SectionHeading (h2)      → text-3xl...lg:text-5xl  
+  ↓
+LeadParagraph (p)        → text-lg...lg:text-2xl
+  ↓
+Text body (p)            → text-base
+  ↓
+Text muted (span)        → text-sm text-gray-400
+```
+
+---
+
+### HeroHeading Component
+
+**Purpose:** Large, bold headings for hero sections  
+**Replaces:** `text-4xl font-bold leading-tight! sm:text-5xl lg:text-7xl xl:text-8xl` (4 occurrences)
+
+```tsx
+import { HeroHeading } from "@/components/sections/hero/hero-heading";
+import { FadeFromLeft, FadeFromRight } from "@/components/animated";
+
+// Basic usage with composable lines
+<HeroHeading size="xl">
+  <FadeFromLeft delay={0.6}>
+    <HeroHeading.Line className="pt-16">Quem é a</HeroHeading.Line>
+  </FadeFromLeft>
+  <FadeFromRight delay={0.8}>
+    <HeroHeading.GradientLine>TecnoJr?</HeroHeading.GradientLine>
+  </FadeFromRight>
+</HeroHeading>
+
+// Three-line heading with custom gradient variant
+<HeroHeading size="lg" centered>
+  <HeroHeading.Line>Sites e Sistemas</HeroHeading.Line>
+  <HeroHeading.GradientLine variant="primary">
+    que Transformam
+  </HeroHeading.GradientLine>
+  <HeroHeading.Line>Negócios</HeroHeading.Line>
+</HeroHeading>
+```
+
+**Props:**
+- `size`: `'lg'` | `'xl'` | `'2xl'` (default: `'xl'`)
+- `centered`: boolean (default: false)
+- `className`: additional classes
+
+**Subcomponents:**
+- `HeroHeading.Line` - White text line
+- `HeroHeading.GradientLine` - Gradient text with variants (`'tecno'` | `'primary'` | `'secondary'`)
+
+**Context:** Hero sections only (About, Projects, Press Kit, Home)
+
+---
+
+### LeadParagraph Component
+
+**Purpose:** Prominent introductory text for hero sections and major content blocks  
+**Replaces:** `text-lg leading-relaxed text-gray-300 sm:text-xl lg:text-2xl` (8+ occurrences)
+
+```tsx
+import { LeadParagraph } from "@/components/ui/typography/lead-paragraph";
+
+// Responsive paragraph with highlights
+<LeadParagraph responsive maxWidth="5xl">
+  Fundada em{" "}
+  <LeadParagraph.Highlight color="secondary">2002</LeadParagraph.Highlight>, a{" "}
+  <LeadParagraph.Highlight color="primary">Empresa TecnoJr</LeadParagraph.Highlight>{" "}
+  foi criada como um projeto de extensão...
+</LeadParagraph>
+
+// Non-responsive for smaller sections
+<LeadParagraph responsive={false} maxWidth="3xl">
+  Simple lead text without responsive scaling.
+</LeadParagraph>
+```
+
+**Props:**
+- `responsive`: boolean (default: true) - Enables responsive text sizing
+- `maxWidth`: `'2xl'` | `'3xl'` | `'4xl'` | `'5xl'` (default: `'5xl'`)
+- `className`: additional classes
+
+**Subcomponents:**
+- `LeadParagraph.Highlight` - Inline emphasis with colors (`'primary'` | `'secondary'` | `'white'`)
+
+**Context:** Hero sections, section introductions, key messaging
+
+---
+
+### InlineHighlight Component
+
+**Purpose:** Semantic emphasis for key terms and phrases within paragraphs  
+**Replaces:** `relative font-semibold text-brand-{color}` + animated underline (6+ occurrences)
+
+```tsx
+import { InlineHighlight } from "@/components/ui/typography/inline-highlight";
+
+// Basic highlight
+<p>
+  Fundada em <InlineHighlight color="secondary">2002</InlineHighlight>, a{" "}
+  <InlineHighlight color="primary">Empresa TecnoJr</InlineHighlight> foi criada...
+</p>
+
+// With animated underline (auto-matches color)
+<LeadParagraph>
+  A <InlineHighlight color="primary" underline underlineDelay={1.5}>
+    Empresa TecnoJr
+  </InlineHighlight> é especializada em tecnologia.
+</LeadParagraph>
+
+// Custom underline color
+<p>
+  <InlineHighlight color="white" underline="secondary">
+    Ciência da Computação da UESC
+  </InlineHighlight>
+</p>
+```
+
+**Props:**
+- `color`: `'primary'` | `'secondary'` | `'white'` (default: `'primary'`)
+- `underline`: boolean | `'primary'` | `'secondary'` | `'none'` (default: false)
+- `underlineDelay`: number (default: 0) - Animation delay in seconds
+- `className`: additional classes
+
+**Context:** Universal - paragraphs, hero sections, marketing copy
+
+---
+
+### Text Component
+
+**Purpose:** Universal text utility for body text, labels, and descriptions  
+**Replaces:** `text-sm text-gray-400` (50+ occurrences)
+
+```tsx
+import { Text } from "@/components/ui/typography/text";
+
+// Muted text (most common)
+<Text variant="muted" size="sm">
+  Last updated: 2 hours ago
+</Text>
+
+// Body text with custom element
+<Text variant="body" as="span">
+  Standard body text content
+</Text>
+
+// Lead text (larger, prominent)
+<Text variant="lead" size="lg">
+  Important introductory text
+</Text>
+
+// Extra small labels
+<Text variant="xs">
+  Metadata or helper text
+</Text>
+```
+
+**Props:**
+- `variant`: `'body'` | `'muted'` | `'lead'` | `'small'` | `'xs'` (default: `'body'`)
+- `size`: `'xs'` | `'sm'` | `'base'` | `'lg'` | `'xl'` (overrides variant default)
+- `as`: `ElementType` (default: `'p'`) - Render as different HTML element
+- `className`: additional classes
+
+**Variant Defaults:**
+| Variant | Color | Default Size |
+|---------|-------|--------------|
+| body | gray-300 | base |
+| muted | gray-400 | sm |
+| lead | gray-300 | lg |
+| small | gray-400 | sm |
+| xs | gray-400 | xs |
+
+**Context:** Universal - labels, descriptions, body content, metadata
+
+---
+
+### GradientText Component
+
+**Purpose:** Semantic wrapper for brand gradient text  
+**Replaces:** `text-gradient-tecno` utility (10+ occurrences)
+
+```tsx
+import { GradientText } from "@/components/ui/typography/gradient-text";
+
+// Default tecno gradient
+<h1>
+  Quem é a <GradientText>TecnoJr</GradientText>?
+</h1>
+
+// As heading element
+<GradientText as="h2" variant="primary">
+  Featured Section
+</GradientText>
+
+// Within paragraph
+<p>
+  Somos especializados em{" "}
+  <GradientText as="span">desenvolvimento de software</GradientText>
+</p>
+```
+
+**Props:**
+- `variant`: `'tecno'` | `'primary'` | `'secondary'` (default: `'tecno'`)
+- `as`: `ElementType` (default: `'span'`)
+- `className`: additional classes
+
+**Context:** Universal - headings, highlights, brand emphasis
+
+---
+
+### ContentContainer Component
+
+**Purpose:** Content width constraints with vertical spacing  
+**Replaces:** `mx-auto max-w-{width} space-y-{spacing}` (19+ occurrences)
+
+```tsx
+import { ContentContainer } from "@/components/layout/content-container";
+
+// Standard hero content with vertical spacing
+<ContentContainer maxWidth="5xl" spacing="md">
+  <LeadParagraph>First paragraph</LeadParagraph>
+  <LeadParagraph>Second paragraph</LeadParagraph>
+</ContentContainer>
+
+// Centered form content
+<ContentContainer maxWidth="2xl" spacing="lg" centered>
+  <ContactForm />
+</ContentContainer>
+
+// No spacing (manual control)
+<ContentContainer maxWidth="4xl" spacing="none">
+  <CustomLayout />
+</ContentContainer>
+```
+
+**Props:**
+- `maxWidth`: `'2xl'` | `'3xl'` | `'4xl'` | `'5xl'` | `'6xl'` | `'7xl'` (default: `'5xl'`)
+- `spacing`: `'none'` | `'sm'` | `'md'` | `'lg'` | `'xl'` (default: `'md'`)
+- `centered`: boolean (default: true) - Adds `mx-auto`
+- `className`: additional classes
+
+**Spacing Scale:**
+| Spacing | Gap Class | Usage |
+|---------|-----------|-------|
+| none | - | Manual control |
+| sm | space-y-4 | Compact content |
+| md | space-y-6 | Standard (default) |
+| lg | space-y-8 | Generous |
+| xl | space-y-12 | Extra generous |
+
+**Context:** Hero sections, section descriptions, content blocks
+
+**Note:** Complements `SectionContainer` (page-level padding). Use `ContentContainer` for inner content width constraints.
+
+---
+
+### Typography Decision Tree
+
+**When to use each component:**
+
+```
+Is it in a hero section AND a main heading?
+  └─ Yes → HeroHeading
+
+Is it prominent introductory text (hero/section intro)?
+  └─ Yes → LeadParagraph
+  
+Is it inline emphasis within a paragraph?
+  └─ Yes → InlineHighlight
+  
+Is it a gradient brand element?
+  └─ Yes → GradientText
+  
+Is it standard body text or labels?
+  └─ Yes → Text (variant: body/muted/small)
+  
+Is it a section heading?
+  └─ Yes → SectionTitle (existing component)
+```
+
+---
+
+### Composition Patterns
+
+**Pattern 1: Hero Section Typography**
+```tsx
+<HeroHeading size="xl">
+  <HeroHeading.Line>First line</HeroHeading.Line>
+  <HeroHeading.GradientLine>Accent line</HeroHeading.GradientLine>
+</HeroHeading>
+
+<ContentContainer maxWidth="5xl" spacing="md">
+  <LeadParagraph responsive>
+    First paragraph with{" "}
+    <LeadParagraph.Highlight color="primary">highlight</LeadParagraph.Highlight>.
+  </LeadParagraph>
+  
+  <LeadParagraph responsive>
+    Second paragraph.
+  </LeadParagraph>
+</ContentContainer>
+```
+
+**Pattern 2: Section Introduction**
+```tsx
+<SectionTitle 
+  firstLine="Nossos"
+  secondLine="Serviços"
+  subtitle="Description text"
+/>
+
+<LeadParagraph responsive={false} maxWidth="3xl">
+  Section introduction with <InlineHighlight color="primary">emphasis</InlineHighlight>.
+</LeadParagraph>
+```
+
+**Pattern 3: Card Content**
+```tsx
+<CardTitle>
+  <GradientText>Feature Name</GradientText>
+</CardTitle>
+<CardDescription>
+  <Text variant="body">
+    Standard body text describing the feature.
+  </Text>
+</CardDescription>
+<Text variant="muted" size="sm">
+  Last updated: Today
+</Text>
+```
+
+---
+
+### Accessibility Notes
+
+**Semantic HTML:**
+- HeroHeading renders `<h1>` - one per page
+- Use `as` prop on Text/GradientText for appropriate HTML elements
+- Maintain heading hierarchy (h1 → h2 → h3)
+
+**Color Contrast:**
+- All text components meet WCAG AA standards
+- `text-gray-300`: 7.1:1 contrast ratio (AAA)
+- `text-gray-400`: 4.8:1 contrast ratio (AA)
+- Brand colors: 4.5:1+ contrast ratio
+
+**Animation:**
+- Animated underlines respect `prefers-reduced-motion`
+- All animations have appropriate delays for readability
+
+---
+
 ## Questions or Issues?
 
 If you encounter any inconsistencies or have suggestions for this style guide:

@@ -1,14 +1,27 @@
-# TecnoJR Animation System
+# Animações
 
-The TecnoJR animation system uses **Framer Motion** with centralized configurations for consistent, performant animations.
+> **📖 Documentação Completa**: [Animation Guide](../../docs/development/animations-guide.md)
 
-## Philosophy
+## Visão Geral
 
-Animations should be:
-- **Purposeful**: Guide attention, provide feedback
-- **Subtle**: Enhance, don't distract
-- **Performant**: 60fps on all devices
-- **Accessible**: Respect reduced motion preferences
+O sistema de animações do TecnoJr usa **Framer Motion** com componentes reutilizáveis em `src/components/animated/`.
+
+### Componentes Principais
+
+- `FadeUp`, `FadeDown`, `FadeLeft`, `FadeRight` - Animações de entrada
+- `ScaleIn` - Animação de escala
+- `StaggerContainer` - Container para animações sequenciais
+- `AnimatedCard`, `AnimatedButton` - Componentes especializados
+
+### Exemplo Rápido
+
+```tsx
+import { FadeUp } from '@/components/animated';
+
+<FadeUp>
+  <Card />
+</FadeUp>
+```
 
 ## Animation Constants
 
