@@ -50,7 +50,7 @@ export const HeroProjects = memo(function HeroProjects() {
 
         {/* Description */}
         <FadeUp delay={1}>
-          <LeadParagraph responsive maxWidth="5xl">
+          <LeadParagraph responsive maxWidth="5xl" className="mx-auto">
             A{" "}
             <InlineHighlight color="primary" underline underlineDelay={1.5}>
               TecnoJr

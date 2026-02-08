@@ -23,6 +23,7 @@ export default function RootLayout({
     <html lang="pt-BR" className="dark">
       <body
         className={`${montserrat.variable} bg-tecno-black-800 font-sans text-white antialiased`}
+        suppressHydrationWarning
       >
         <SkipLink />
         <Header />

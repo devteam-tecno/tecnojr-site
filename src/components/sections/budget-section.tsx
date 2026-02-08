@@ -60,9 +60,9 @@ export const BudgetSection = memo(function BudgetSection() {
                 ))}
               </div>
               <Text variant="muted" size="sm">
-                <div className="font-semibold text-white">
+                <span className="font-semibold text-white">
                   50+ Clientes Satisfeitos
-                </div>
+                </span>
               </Text>
             </FadeUp>
           </FadeFromLeft>

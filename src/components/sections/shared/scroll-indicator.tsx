@@ -38,7 +38,7 @@ export function ScrollIndicator({
         type="button"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
-        className="group flex flex-col items-center border-none bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-tecno-black-800 rounded-lg"
+        className="group flex flex-col items-center border-none bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-tecno-black-800 rounded-lg m-auto cursor-pointer"
         onClick={handleClick}
         aria-label={targetId ? `Rolar para ${targetId}` : "Rolar para baixo"}
       >

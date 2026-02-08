@@ -39,7 +39,7 @@ export const HeroPressKit = memo(function HeroPressKit() {
 
         {/* Description */}
         <FadeUp delay={1}>
-          <LeadParagraph responsive maxWidth="3xl">
+          <LeadParagraph responsive maxWidth="3xl" className="mx-auto">
             Kit de impressão com todos os recursos visuais da marca TecnoJr.
             <br />
             Logos, ícones, tipografia e cores para utilização em materiais
