@@ -12,8 +12,8 @@ import {
   getCardBackgroundClass,
   getGlowEffectClass,
   getIconWrapperClass,
-} from "@/lib/styles";
-import { cn } from "@/lib/utils";
+} from "@/lib/utils/styles";
+import { cn } from "@/lib/utils/utils";
 import {
   Card,
   CardContent,
@@ -27,6 +27,8 @@ import {
 // ============================================================================
 
 export interface BaseCardProps {
+  /** Semantic HTML element to render as (default: 'article') */
+  as?: React.ElementType;
   /** Icon component from lucide-react */
   icon: LucideIcon;
   /** Card title */
@@ -74,6 +76,7 @@ export interface BaseCardProps {
  * ```
  */
 export function BaseCard({
+  as: Component = "article",
   icon: Icon,
   title,
   description,
@@ -91,7 +94,7 @@ export function BaseCard({
   const isCentered = variant === "centered";
 
   return (
-    <div className={cn("group relative h-full", className)}>
+    <Component className={cn("group relative h-full", className)}>
       {/* Gradient Glow Border Effect on Hover */}
       {glowEffect && (
         <div
@@ -161,7 +164,7 @@ export function BaseCard({
           <div className="pointer-events-none absolute inset-0 rounded-xl bg-linear-to-br from-brand-primary/5 to-brand-secondary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         )}
       </Card>
-    </div>
+    </Component>
   );
 }
 

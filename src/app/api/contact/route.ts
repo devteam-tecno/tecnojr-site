@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
+import { CONTACT_INFO } from "@/lib/config/contact";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -20,8 +21,8 @@ export async function POST(request: NextRequest) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || "contato@tecnojr.com.br",
-      to: process.env.CONTACT_EMAIL || "contato@tecnojr.com.br",
+      from: process.env.RESEND_FROM_EMAIL || CONTACT_INFO.email.contact,
+      to: process.env.CONTACT_EMAIL || CONTACT_INFO.email.contact,
       replyTo: validatedData.email,
       subject: `Novo contato de ${validatedData.name}`,
       html: `

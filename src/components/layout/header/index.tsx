@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { navigationLinks, ROUTES_WITHOUT_HEADER } from "@/lib/navigation";
-import { cn } from "@/lib/utils";
+import { navigationLinks, ROUTES_WITHOUT_HEADER } from "@/lib/utils/navigation";
+import { cn } from "@/lib/utils/utils";
 import { TecnoJrLogo } from "../../ui/primitives/tecnojr-logo";
 import { DesktopNavigation } from "./desktop-navigation";
 import { MobileNavigation } from "./mobile-navigation";
@@ -96,6 +96,7 @@ export function Header() {
                 : "bg-zinc-900/40 text-white backdrop-blur-sm hover:bg-brand-primary/20 hover:text-brand-primary",
             )}
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
               <X className="h-6 w-6" />

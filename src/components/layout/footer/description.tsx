@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { TecnoJrLogo } from "@/components/ui/primitives/tecnojr-logo";
+import { Text } from "@/components/ui/typography";
+import { FOOTER_CONTENT } from "@/lib/config/content";
 import { SocialLinks } from "./social-links";
 
 /**
@@ -33,10 +35,9 @@ export function Description() {
         <div className="mb-6">
           <TecnoJrLogo size="lg" />
         </div>
-        <p className="mb-6 text-sm leading-relaxed text-gray-300">
-          Transformando ideias em projetos de qualidade. Nossa missão é oferecer
-          soluções tecnológicas seguras e práticas.
-        </p>
+        <Text variant="body" size="sm" className="mb-6 leading-relaxed">
+          {FOOTER_CONTENT.description}
+        </Text>
         <SocialLinks />
       </motion.div>
     </div>

@@ -2,7 +2,7 @@
 
 import { Separator as SeparatorPrimitive } from "radix-ui";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/utils";
 
 /**
  * Accessible separator component built on Radix UI.

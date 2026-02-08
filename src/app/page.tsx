@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { HeroSection } from "@/components/sections/hero-section";
+import { HeroHome } from "@/components/sections/hero";
 
 // Dynamic imports for below-the-fold sections to reduce initial bundle size
 const AboutSection = dynamic(
@@ -44,13 +44,13 @@ const BudgetSection = dynamic(
 
 export default function HomePage() {
   return (
-    <>
-      <HeroSection />
+    <main id="main-content">
+      <HeroHome />
       <AboutSection />
       <FeaturesSection />
       <ServicesSection />
       <ProjectsSection />
       <BudgetSection />
-    </>
+    </main>
   );
 }

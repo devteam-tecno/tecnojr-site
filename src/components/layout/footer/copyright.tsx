@@ -1,3 +1,5 @@
+import { Text } from "@/components/ui/typography";
+
 /**
  * Footer copyright notice with current year.
  *
@@ -11,9 +13,9 @@
 export function Copyright() {
   return (
     <div className="mt-8 border-t border-purple-500/20 pt-8 text-center">
-      <p className="text-sm text-gray-400">
+      <Text variant="muted" size="sm">
         ©{new Date().getFullYear()} TecnoJr - Todos os direitos reservados.
-      </p>
+      </Text>
     </div>
   );
 }

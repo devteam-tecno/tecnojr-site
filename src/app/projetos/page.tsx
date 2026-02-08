@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { HeroProjectsSection } from "@/components/sections/hero-projects-section";
+import { HeroProjects } from "@/components/sections/hero";
+import { pageMetadata } from "@/lib/utils/metadata";
 
 // Dynamic imports for below-the-fold sections to reduce initial bundle size
 const ProjectsFullSection = dynamic(
@@ -12,31 +12,7 @@ const ProjectsFullSection = dynamic(
 );
 
 // Metadata for SEO
-export const metadata: Metadata = {
-  title: "Projetos | TecnoJr",
-  description:
-    "Confira os projetos desenvolvidos pela TecnoJr - Empresa Júnior de Computação da UESC. Websites, sistemas e aplicações desenvolvidos com qualidade e inovação desde 2002.",
-  keywords: [
-    "TecnoJr",
-    "Projetos",
-    "Portfolio",
-    "Desenvolvimento Web",
-    "Sistemas",
-    "Websites",
-    "UESC",
-    "Empresa Júnior",
-    "Computação",
-    "Tecnologia",
-    "Ilhéus",
-    "Bahia",
-  ],
-  openGraph: {
-    title: "Projetos | TecnoJr",
-    description:
-      "Conheça nossos projetos desenvolvidos com paixão e inovação. Websites, sistemas e aplicações que transformam ideias em realidade.",
-    type: "website",
-  },
-};
+export const metadata = pageMetadata.projects();
 
 /**
  * Projects page showcasing all external and internal projects
@@ -75,8 +51,8 @@ export const metadata: Metadata = {
  */
 export default function ProjectsPage() {
   return (
-    <main>
-      <HeroProjectsSection />
+    <main id="main-content">
+      <HeroProjects />
       <ProjectsFullSection />
     </main>
   );

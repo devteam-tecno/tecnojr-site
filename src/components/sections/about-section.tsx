@@ -6,7 +6,9 @@ import {
   FadeFromRight,
   FadeUp,
 } from "@/components/animated/motion-wrappers";
-import { infiniteAnimations } from "@/lib/animations";
+import { Section } from "@/components/layout/section";
+import { SectionContainer } from "@/components/layout/section-container";
+import { infiniteAnimations } from "@/lib/animation/animations";
 
 /**
  * About section with two-column layout and overlapping card design.
@@ -45,10 +47,7 @@ import { infiniteAnimations } from "@/lib/animations";
  */
 export function AboutSection() {
   return (
-    <section
-      id="about"
-      className="relative overflow-hidden bg-linear-to-b from-tecno-black-800 to-gray-900/50 py-32"
-    >
+    <Section id="about" variant="reversed">
       {/* Background Effects - Refactored */}
       <div className="absolute inset-0">
         <motion.div
@@ -61,7 +60,7 @@ export function AboutSection() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionContainer>
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Left Content - Image Area - Refactored */}
           <FadeFromLeft className="relative">
@@ -85,15 +84,9 @@ export function AboutSection() {
 
               <div className="relative">
                 <h2 className="text-3xl font-bold leading-tight! sm:text-3xl lg:text-3xl xl:text-3xl">
-                  <motion.span
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    viewport={{ once: true }}
-                    className="block text-white"
-                  >
+                  <FadeFromLeft delay={0.3} className="block text-white">
                     Quem somos?
-                  </motion.span>
+                  </FadeFromLeft>
                 </h2>
 
                 {/* Main Text - Refactored */}
@@ -124,7 +117,7 @@ export function AboutSection() {
             </div>
           </FadeFromRight>
         </div>
-      </div>
-    </section>
+      </SectionContainer>
+    </Section>
   );
 }

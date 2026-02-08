@@ -410,4 +410,103 @@
     border: 1px solid
       color-mix(in oklch, var(--color-brand-primary) 20%, transparent);
   }
+
+  /* ===================================
+   * Grid Utilities
+   * Responsive grid layouts for common patterns
+   * ===================================
+   */
+
+  /* 3-column responsive grid (ideals, logos, project tabs) */
+  .grid-responsive-3 {
+    @apply grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  /* 4-column responsive grid (members section) */
+  .grid-responsive-4 {
+    @apply grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  /* Services grid (2-col on md, 3-col on xl) */
+  .grid-services {
+    @apply grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3;
+  }
+
+  /* ===================================
+   * Flex Utilities
+   * Common flex patterns with gaps
+   * ===================================
+   */
+
+  /* Centered flex with gap-4 */
+  .flex-center-gap-4 {
+    @apply flex items-center gap-4;
+  }
+
+  /* Row flex with wrap and gap-4 */
+  .flex-row-gap-4 {
+    @apply flex flex-wrap gap-4;
+  }
+
+  /* Column flex with gap-4 */
+  .flex-col-gap-4 {
+    @apply flex flex-col gap-4;
+  }
+
+  /* Centered flex with gap-2 */
+  .flex-center-gap-2 {
+    @apply flex items-center gap-2;
+  }
+
+  /* ===================================
+   * Container Width Utilities
+   * Common max-width containers
+   * ===================================
+   */
+
+  /* Narrow content (forms, text-heavy) */
+  .content-narrow {
+    @apply mx-auto max-w-2xl;
+  }
+
+  /* Medium content */
+  .content-medium {
+    @apply mx-auto max-w-4xl;
+  }
+
+  /* Wide content (hero sections) */
+  .content-wide {
+    @apply mx-auto max-w-5xl;
+  }
+
+  /* Screen reader only - visible only when focused */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .sr-only:focus,
+  .sr-only:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Grid pattern background for sections */
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(rgba(145, 85, 235, 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(66, 117, 249, 0.3) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
 }

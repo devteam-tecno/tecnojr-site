@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import type { NavigationLink } from "@/lib/navigation";
-import { cn } from "@/lib/utils";
+import type { NavigationLink } from "@/lib/utils/navigation";
+import { cn } from "@/lib/utils/utils";
 
 /**
  * Props for the DesktopNavigation component.
@@ -53,7 +53,10 @@ export function DesktopNavigation({
     <div className="ml-8 hidden flex-1 items-center justify-between lg:flex">
       {/* Center Navigation */}
       <div className="flex flex-1 justify-center">
-        <nav className="flex items-center space-x-8">
+        <nav
+          className="flex items-center space-x-8"
+          aria-label="Navegação principal"
+        >
           {centerLinks.map((link) => {
             const isDisabled = link.disabled;
             return (
@@ -70,6 +73,9 @@ export function DesktopNavigation({
                       : "text-gray-300 hover:text-white",
                 )}
                 aria-disabled={isDisabled}
+                aria-current={
+                  pathname === link.url && !isDisabled ? "page" : undefined
+                }
               >
                 {link.text}
                 {pathname === link.url && !isDisabled && (
@@ -92,7 +98,10 @@ export function DesktopNavigation({
 
       {/* Right Navigation */}
       {rightLinks.length > 0 && (
-        <nav className="flex items-center space-x-6">
+        <nav
+          className="flex items-center space-x-6"
+          aria-label="Navegação secundária"
+        >
           {rightLinks.map((link) => {
             const isDisabled = link.disabled;
             return (
@@ -109,6 +118,9 @@ export function DesktopNavigation({
                       : "text-gray-300 hover:text-white",
                 )}
                 aria-disabled={isDisabled}
+                aria-current={
+                  pathname === link.url && !isDisabled ? "page" : undefined
+                }
               >
                 {link.text}
               </Link>

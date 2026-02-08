@@ -2,7 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "radix-ui";
 import type * as React from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/utils";
 
 /**
  * Button component variants using class-variance-authority.
@@ -34,6 +34,8 @@ const buttonVariants = cva(
 
         "ghost-gradient":
           "rounded-md text-gray-300 hover:bg-linear-to-r hover:from-brand-primary/10 hover:to-brand-secondary/10 hover:text-white transition-all duration-300",
+
+        tab: "rounded-full border border-gray-700/50 bg-gray-900/50 text-gray-300 font-medium backdrop-blur-sm transition-all data-[state=active]:border-transparent data-[state=active]:gradient-tecno-secondary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-brand-secondary/20 hover:border-brand-secondary/40 hover:bg-gray-800/60 hover:text-white",
 
         destructive:
           "rounded-md bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",

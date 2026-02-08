@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { navigationLinks } from "@/lib/navigation";
-import { cn } from "@/lib/utils";
+import { navigationLinks } from "@/lib/utils/navigation";
+import { cn } from "@/lib/utils/utils";
 
 /**
  * Props for the MobileNavigation component.
@@ -91,7 +91,10 @@ export function MobileNavigation({
               </div>
 
               {/* Mobile Menu Items */}
-              <nav className="flex-1 bg-zinc-900 px-6 py-8">
+              <nav
+                className="flex-1 bg-zinc-900 px-6 py-8"
+                aria-label="Menu mobile"
+              >
                 <div className="space-y-6">
                   {navigationLinks.map((link, index) => {
                     const isDisabled = "disabled" in link && link.disabled;
@@ -118,6 +121,11 @@ export function MobileNavigation({
                                 ? "text-brand-primary"
                                 : "text-gray-300 hover:text-white",
                           )}
+                          aria-current={
+                            pathname === link.url && !isDisabled
+                              ? "page"
+                              : undefined
+                          }
                         >
                           {link.text}
                         </Link>

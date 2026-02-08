@@ -8,9 +8,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { getIcon } from "@/lib/icons";
-import type { Member } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Text } from "@/components/ui/typography";
+import type { Member, SocialLink } from "@/lib/types";
+import { getIcon } from "@/lib/utils/icons";
+import { cn } from "@/lib/utils/utils";
 import { Card, CardContent } from "./card";
 
 // ============================================================================
@@ -44,6 +46,7 @@ export function MemberCard({ member, className }: MemberCardProps) {
 
   return (
     <Card
+      as="article"
       className={cn(
         "group glass-card card-interactive",
         "transition-all duration-300",
@@ -80,20 +83,20 @@ export function MemberCard({ member, className }: MemberCardProps) {
           </h3>
 
           {/* Role */}
-          <p className="text-sm text-gray-400">{role}</p>
+          <Text variant="muted" size="sm">
+            {role}
+          </Text>
 
           {/* Active Status Badge */}
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/20">
-            <span className="text-xs font-medium text-brand-primary">
-              Ativo
-            </span>
-          </div>
+          <Badge variant="role" size="sm">
+            Ativo
+          </Badge>
         </div>
 
         {/* Social Links */}
         {links.length > 0 && (
           <div className="flex items-center justify-center gap-2 pt-2">
-            {links.map((link) => {
+            {links.map((link: SocialLink) => {
               const Icon = getIcon(link.icon);
               return (
                 <Link

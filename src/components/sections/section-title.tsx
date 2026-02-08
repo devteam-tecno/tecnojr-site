@@ -8,14 +8,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { DEFAULT_VIEWPORT, sectionTitleVariants } from "@/lib/animations";
-import { cn } from "@/lib/utils";
+import {
+  DEFAULT_VIEWPORT,
+  sectionTitleVariants,
+} from "@/lib/animation/animations";
+import { cn } from "@/lib/utils/utils";
 
 // ============================================================================
 // TYPES
 // ============================================================================
 
 export interface SectionTitleProps {
+  /** Heading level to render as (default: 'h2') */
+  as?: "h1" | "h2" | "h3";
   /** First line of the title (usually in white) */
   firstLine: string;
   /** Second line of the title (usually with gradient) */
@@ -51,6 +56,7 @@ export interface SectionTitleProps {
  * ```
  */
 export function SectionTitle({
+  as: HeadingTag = "h2",
   firstLine,
   secondLine,
   subtitle,
@@ -74,7 +80,7 @@ export function SectionTitle({
       viewport={DEFAULT_VIEWPORT}
       className={cn("mb-20", alignClass, className)}
     >
-      <h2 className="mb-6 text-3xl font-bold sm:text-4xl lg:text-5xl">
+      <HeadingTag className="mb-6 text-3xl font-bold sm:text-4xl lg:text-5xl">
         <motion.span
           initial={sectionTitleVariants.firstLine.initial}
           whileInView={sectionTitleVariants.firstLine.animate}
@@ -93,7 +99,7 @@ export function SectionTitle({
         >
           {secondLine}
         </motion.span>
-      </h2>
+      </HeadingTag>
 
       {subtitle && (
         <motion.p

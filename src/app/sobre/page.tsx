@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { HeroAboutSection } from "@/components/sections/hero-about-section";
+import { HeroAbout } from "@/components/sections/hero";
 import { MembersSectionWrapper } from "@/components/sections/members-section-wrapper";
+import { pageMetadata } from "@/lib/utils/metadata";
 
 // Dynamic imports for below-the-fold sections to reduce initial bundle size
 const IdealsSection = dynamic(
@@ -13,29 +13,7 @@ const IdealsSection = dynamic(
 );
 
 // Metadata for SEO
-export const metadata: Metadata = {
-  title: "Sobre | TecnoJr",
-  description:
-    "Conheça a TecnoJr - Empresa Júnior de Computação da UESC. Fundada em 2002, formamos jovens empreendedores e desenvolvemos projetos de tecnologia de qualidade.",
-  keywords: [
-    "TecnoJr",
-    "Empresa Júnior",
-    "UESC",
-    "Computação",
-    "Tecnologia",
-    "Sobre",
-    "Missão",
-    "Visão",
-    "Valores",
-    "Equipe",
-  ],
-  openGraph: {
-    title: "Sobre | TecnoJr",
-    description:
-      "Conheça nossa história, missão, visão, valores e equipe. A TecnoJr é a Empresa Júnior de Computação da UESC desde 2002.",
-    type: "website",
-  },
-};
+export const metadata = pageMetadata.about();
 
 /**
  * About page showcasing company history, ideals, and team members
@@ -61,8 +39,8 @@ export const metadata: Metadata = {
  */
 export default function AboutPage() {
   return (
-    <main>
-      <HeroAboutSection />
+    <main id="main-content">
+      <HeroAbout />
       <IdealsSection />
       <MembersSectionWrapper />
     </main>

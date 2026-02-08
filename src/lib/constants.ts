@@ -26,3 +26,11 @@ export type SocialIconType =
   | "globe"
   | "envelope"
   | "lattes";
+
+/**
+ * Animation constants for consistent motion across the app
+ */
+export const ANIMATION_VIEWPORT_CONFIG = { once: true } as const;
+export const ANIMATION_STAGGER_DELAY = 0.1;
+export const ANIMATION_DURATION_DEFAULT = 0.4;
+export const ANIMATION_DURATION_SLOW = 0.8;

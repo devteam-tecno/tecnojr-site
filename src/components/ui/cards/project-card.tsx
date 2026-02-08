@@ -95,7 +95,7 @@ export function ProjectCard({
   isInternal = false,
 }: ProjectCardProps) {
   const cardContent = (
-    <div className="group relative h-full">
+    <article className="group relative h-full">
       {/* Gradient Glow Border Effect on Hover */}
       <div className="absolute -inset-px rounded-2xl gradient-tecno-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
@@ -139,7 +139,7 @@ export function ProjectCard({
           </CardDescription>
         </CardContent>
       </Card>
-    </div>
+    </article>
   );
 
   if (link && !isInternal) {

@@ -1,7 +1,7 @@
 "use client";
 
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/utils";
 
 /**
  * Interactive pill-shaped button component for filtering or categorization.
@@ -76,6 +76,7 @@ export function FilterPill({
       type="button"
       onClick={onClick}
       className={cn(filterPillVariants({ variant: appliedVariant }), className)}
+      aria-pressed={active}
     >
       {children}
     </button>

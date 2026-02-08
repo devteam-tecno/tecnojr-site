@@ -1,6 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { cn } from "@/lib/utils/utils";
 
 /**
  * AssetCard component for displaying downloadable brand assets
@@ -67,10 +68,13 @@ export function AssetCard({ name, path, inverted = false }: AssetCardProps) {
       )}
     >
       {/* Asset Image */}
-      <img
+      <Image
         src={`${path}.png`}
         alt={name}
+        width={280}
+        height={120}
         className="max-h-30 max-w-70 object-contain"
+        loading="lazy"
       />
 
       {/* Download Links */}

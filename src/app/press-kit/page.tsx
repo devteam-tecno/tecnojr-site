@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { HeroPressKitSection } from "@/components/sections/hero-press-kit-section";
+import { HeroPressKit } from "@/components/sections/hero";
+import { pageMetadata } from "@/lib/utils/metadata";
 
 // Dynamic imports for below-the-fold sections to reduce initial bundle size
 const LogosSection = dynamic(
   () =>
-    import("@/components/sections/logos-section").then((m) => ({
+    import("@/components/sections/press-kit").then((m) => ({
       default: m.LogosSection,
     })),
   { ssr: true },
@@ -13,7 +13,7 @@ const LogosSection = dynamic(
 
 const AlternativesSection = dynamic(
   () =>
-    import("@/components/sections/alternatives-section").then((m) => ({
+    import("@/components/sections/press-kit").then((m) => ({
       default: m.AlternativesSection,
     })),
   { ssr: true },
@@ -21,7 +21,7 @@ const AlternativesSection = dynamic(
 
 const ColorsSection = dynamic(
   () =>
-    import("@/components/sections/colors-section").then((m) => ({
+    import("@/components/sections/press-kit").then((m) => ({
       default: m.ColorsSection,
     })),
   { ssr: true },
@@ -29,36 +29,14 @@ const ColorsSection = dynamic(
 
 const DriveSection = dynamic(
   () =>
-    import("@/components/sections/drive-section").then((m) => ({
+    import("@/components/sections/press-kit").then((m) => ({
       default: m.DriveSection,
     })),
   { ssr: true },
 );
 
 // Metadata for SEO
-export const metadata: Metadata = {
-  title: "Press Kit | TecnoJr",
-  description:
-    "Kit de imprensa da TecnoJr com logos, ícones, tipografia e cores da marca. Recursos oficiais para materiais institucionais e de comunicação.",
-  keywords: [
-    "TecnoJr",
-    "Press Kit",
-    "Logo",
-    "Brand Assets",
-    "Identidade Visual",
-    "Marca",
-    "Download",
-    "Assets",
-    "Cores",
-    "Tipografia",
-  ],
-  openGraph: {
-    title: "Press Kit | TecnoJr",
-    description:
-      "Acesse todos os recursos visuais da marca TecnoJr: logos, ícones, tipografia e paleta de cores oficial.",
-    type: "website",
-  },
-};
+export const metadata = pageMetadata.pressKit();
 
 /**
  * Press Kit page with brand assets and resources
@@ -83,8 +61,8 @@ export const metadata: Metadata = {
  */
 export default function PressKitPage() {
   return (
-    <main>
-      <HeroPressKitSection />
+    <main id="main-content">
+      <HeroPressKit />
       <LogosSection />
       <AlternativesSection />
       <ColorsSection />

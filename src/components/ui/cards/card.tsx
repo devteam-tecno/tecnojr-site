@@ -1,6 +1,6 @@
 import type * as React from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/utils";
 
 /**
  * Primitive card container for building custom card layouts.
@@ -19,9 +19,13 @@ import { cn } from "@/lib/utils";
  * @example
  * Card with action: Use CardAction within CardHeader for buttons or links.
  */
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+function Card({
+  as: Component = "div",
+  className,
+  ...props
+}: React.ComponentProps<"div"> & { as?: React.ElementType }) {
   return (
-    <div
+    <Component
       data-slot="card"
       className={cn(
         "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",

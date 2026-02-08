@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { navigationLinks } from "@/lib/navigation";
+import { navigationLinks } from "@/lib/utils/navigation";
 
 /**
  * Footer quick links section with site navigation.
@@ -26,7 +26,10 @@ export function QuickLinks() {
   );
 
   return (
-    <div className="hidden lg:col-span-1 lg:block">
+    <nav
+      className="hidden lg:col-span-1 lg:block"
+      aria-label="Links rápidos do rodapé"
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -52,6 +55,6 @@ export function QuickLinks() {
           })}
         </ul>
       </motion.div>
-    </div>
+    </nav>
   );
 }

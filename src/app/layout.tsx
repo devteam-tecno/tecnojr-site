@@ -3,6 +3,8 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { SkipLink } from "@/components/ui/skip-link";
+import { generateRootMetadata } from "@/lib/utils/metadata";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -10,39 +12,7 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "TecnoJr | Empresa Júnior de Computação UESC",
-    template: "%s | TecnoJr",
-  },
-  description:
-    "A TecnoJr é a empresa júnior do curso de Ciência da Computação da UESC. Desenvolvemos soluções tecnológicas inovadoras com qualidade e profissionalismo.",
-  keywords: [
-    "TecnoJr",
-    "Empresa Júnior",
-    "UESC",
-    "Desenvolvimento Web",
-    "Tecnologia",
-    "Ilhéus",
-  ],
-  authors: [{ name: "TecnoJr" }],
-  creator: "TecnoJr",
-  openGraph: {
-    type: "website",
-    locale: "pt_BR",
-    url: "https://tecnojr.com.br",
-    title: "TecnoJr | Empresa Júnior de Computação UESC",
-    description:
-      "A TecnoJr é a empresa júnior do curso de Ciência da Computação da UESC. Desenvolvemos soluções tecnológicas inovadoras.",
-    siteName: "TecnoJr",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "TecnoJr - Empresa Júnior de Computação UESC",
-    description:
-      "A TecnoJr é a empresa júnior do curso de Ciência da Computação da UESC.",
-  },
-};
+export const metadata: Metadata = generateRootMetadata();
 
 export default function RootLayout({
   children,
@@ -54,6 +24,7 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} bg-tecno-black-800 font-sans text-white antialiased`}
       >
+        <SkipLink />
         <Header />
         {children}
         <Footer />
