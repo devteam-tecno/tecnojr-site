@@ -7,5 +7,4 @@
  * @module lib/types
  */
 
-export * from "../constants";
 export * from "./types";

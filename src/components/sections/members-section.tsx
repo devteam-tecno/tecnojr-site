@@ -15,8 +15,8 @@ import { BackgroundPattern } from "@/components/sections/shared/background-patte
 import { CTASection } from "@/components/sections/shared/cta-section";
 import { MemberCard } from "@/components/ui/cards/member-card";
 import { FilterPill } from "@/components/ui/filter-pill";
-import { type ROLE_ID, ROLE_LABELS } from "@/lib/constants";
 import { getAllRoles, getMembersByRole, memberList } from "@/lib/data/members";
+import { type ROLE_ID, ROLE_LABELS } from "@/lib/types";
 import { SectionTitle } from "./section-title";
 
 /**

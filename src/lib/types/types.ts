@@ -1,5 +1,46 @@
 import type { LucideIcon } from "lucide-react";
-import type { ROLE_ID, SocialIconType } from "../constants";
+
+// ============================================================================
+// ROLE & SOCIAL TYPES
+// ============================================================================
+
+/**
+ * Role IDs for team members
+ * Defines hierarchy and roles within the organization
+ */
+export enum ROLE_ID {
+  Trainee = 0,
+  Membro = 1,
+  Assessor = 2,
+  Diretor = 3,
+  Conselheiro = 4,
+  Coordenador = 5,
+}
+
+/**
+ * Role labels mapping
+ * Maps role IDs to human-readable labels
+ */
+export const ROLE_LABELS: Record<ROLE_ID, string> = {
+  [ROLE_ID.Trainee]: "Trainee",
+  [ROLE_ID.Membro]: "Membro",
+  [ROLE_ID.Assessor]: "Assessor",
+  [ROLE_ID.Diretor]: "Diretor",
+  [ROLE_ID.Conselheiro]: "Conselheiro",
+  [ROLE_ID.Coordenador]: "Coordenador",
+};
+
+/**
+ * Social media icon types
+ * Supported social media platforms for member profiles
+ */
+export type SocialIconType =
+  | "linkedin"
+  | "github"
+  | "instagram"
+  | "globe"
+  | "envelope"
+  | "lattes";
 
 // ============================================================================
 // COMMON COMPONENT PROPS

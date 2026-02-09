@@ -1,7 +1,7 @@
 import { Award, Code, Palette, Zap } from "lucide-react";
-import { ROLE_ID } from "@/lib/constants";
 import type { Feature, Service } from "@/lib/data";
 import type { ExternalProject, InternalProject, Member } from "@/lib/types";
+import { ROLE_ID } from "@/lib/types";
 
 // Mock member data for testing
 export const mockMembers: Member[] = [

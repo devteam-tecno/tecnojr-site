@@ -63,9 +63,7 @@ export function generateMetadata({
   keywords = [],
   type = "website",
 }: MetadataParams = {}): Metadata {
-  const metaTitle = title
-    ? `${title} | ${COMPANY_INFO.name}`
-    : defaultMetadata.title;
+  const metaTitle = title ? `${title}` : defaultMetadata.title;
   const metaDescription = description || defaultMetadata.description;
   const metaImage = image || defaultMetadata.image;
   const metaUrl = url || defaultMetadata.url;

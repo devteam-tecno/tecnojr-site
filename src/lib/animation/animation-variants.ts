@@ -1,8 +1,5 @@
 import type { Variants } from "framer-motion";
-import {
-  ANIMATION_DURATION_DEFAULT,
-  ANIMATION_STAGGER_DELAY,
-} from "../constants";
+import { DELAYS, DURATIONS } from "./animations";
 
 /**
  * Reusable animation variants for Framer Motion
@@ -49,7 +46,7 @@ export const staggerContainer: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: ANIMATION_STAGGER_DELAY,
+      staggerChildren: DELAYS.short,
       delayChildren: 0.1,
     },
   },
@@ -75,9 +72,7 @@ export function createFadeIn(
 /**
  * Helper to create staggered animation with custom delay
  */
-export function createStaggerContainer(
-  staggerDelay = ANIMATION_STAGGER_DELAY,
-): Variants {
+export function createStaggerContainer(staggerDelay = DELAYS.short): Variants {
   return {
     hidden: { opacity: 0 },
     visible: {
@@ -94,6 +89,6 @@ export function createStaggerContainer(
  * Default transition configuration
  */
 export const defaultTransition = {
-  duration: ANIMATION_DURATION_DEFAULT,
+  duration: DURATIONS.fast,
   ease: "easeOut",
 };

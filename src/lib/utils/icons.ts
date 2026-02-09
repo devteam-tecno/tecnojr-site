@@ -12,7 +12,7 @@ import {
   type LucideIcon,
   Mail,
 } from "lucide-react";
-import type { SocialIconType } from "../constants";
+import type { SocialIconType } from "../types/types";
 
 // Mapping FontAwesome icons to Lucide React icons
 export const iconMap: Record<SocialIconType, LucideIcon> = {

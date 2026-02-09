@@ -5,8 +5,8 @@
 
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { ROLE_ID } from "@/lib/constants";
 import type { Member } from "@/lib/types";
+import { ROLE_ID } from "@/lib/types";
 import { MemberCard } from "./member-card";
 
 // ============================================================================
