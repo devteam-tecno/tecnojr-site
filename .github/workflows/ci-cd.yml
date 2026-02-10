@@ -82,9 +82,13 @@ jobs:
       
       - name: Build application
         run: npm run build
+        env:
+          RESEND_API_KEY: dummy_key_for_build
       
       - name: Run E2E tests
         run: npm run test:e2e
+        env:
+          RESEND_API_KEY: dummy_key_for_e2e
       
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
@@ -115,6 +119,7 @@ jobs:
         run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY || 'dummy_key_for_build' }}
       
       - name: Upload build artifact
         uses: actions/upload-artifact@v4

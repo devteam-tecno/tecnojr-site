@@ -65,6 +65,8 @@ jobs:
         
       - name: Run Vitest tests
         run: npm run test:run
+        env:
+          RESEND_API_KEY: dummy_key_for_tests
         
       - name: Generate coverage report
         run: npm run test:coverage
@@ -116,6 +118,7 @@ jobs:
         run: npm run test:e2e
         env:
           CI: true
+          RESEND_API_KEY: dummy_key_for_e2e
           
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
@@ -150,6 +153,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
+          RESEND_API_KEY: dummy_key_for_build
           
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
