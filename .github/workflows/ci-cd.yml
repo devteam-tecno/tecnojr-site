@@ -51,6 +51,8 @@ jobs:
       
       - name: Run tests with coverage
         run: npm run test:coverage
+        env:
+          RESEND_API_KEY: dummy_key_for_tests
       
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4

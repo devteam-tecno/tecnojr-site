@@ -64,12 +64,14 @@ jobs:
         run: npm ci
         
       - name: Run Vitest tests
-        run: npm run test:run
+        run: npm run test:unit:run
         env:
           RESEND_API_KEY: dummy_key_for_tests
         
       - name: Generate coverage report
         run: npm run test:coverage
+        env:
+          RESEND_API_KEY: dummy_key_for_tests
         continue-on-error: true
         
       - name: Upload coverage to Codecov
