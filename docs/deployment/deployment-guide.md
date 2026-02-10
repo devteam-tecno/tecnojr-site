@@ -297,28 +297,6 @@ npx chromatic --project-token=<SEU_TOKEN>
 - Histórico de versões
 - Compartilhamento fácil
 
-#### CI com Chromatic
-
-```yaml
-# .github/workflows/chromatic.yml
-name: Chromatic
-
-on: push
-
-jobs:
-  chromatic:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Histórico completo para Chromatic
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-```
-
 ---
 
 ### GitHub Pages
@@ -353,123 +331,7 @@ vercel --prod
 
 ---
 
-## 🔄 CI/CD com GitHub Actions
-
-### Workflow Principal
-
-```yaml
-# .github/workflows/deploy.yml
-name: CI/CD
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-jobs:
-  # Job 1: Lint & TypeCheck
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Run Biome
-        run: npm run lint
-      
-      - name: TypeScript check
-        run: npm run typecheck
-
-  # Job 2: Testes
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-      
-      - run: npm ci
-      
-      - name: Unit tests
-        run: npm test
-      
-      - name: E2E tests
-        run: npm run test:e2e
-      
-      - name: Upload coverage
-        uses: codecov/codecov-action@v4
-        with:
-          files: ./coverage/coverage-final.json
-
-  # Job 3: Build
-  build:
-    runs-on: ubuntu-latest
-    needs: [lint, test]
-    steps:
-      - uses: actions/checkout@v4
-      
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-      
-      - run: npm ci
-      
-      - name: Build Next.js
-        run: npm run build
-      
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: .next
-
-  # Job 4: Deploy (apenas main branch)
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v4
-      
-      - uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: .next
-      
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
-```
-
-### Verificar Secrets
-
-Em GitHub: **Settings → Secrets and variables → Actions**
-
-Adicione:
-- `VERCEL_TOKEN` (obtido em vercel.com/account/tokens)
-- `VERCEL_ORG_ID` (em .vercel/project.json após primeiro deploy)
-- `VERCEL_PROJECT_ID` (em .vercel/project.json)
-- `CHROMATIC_PROJECT_TOKEN` (se usar Chromatic)
-
----
-
-## 📊 Otimização de Build
+##  Otimização de Build
 
 ### Analisar Bundle Size
 
@@ -737,7 +599,7 @@ npx lighthouse https://tecnojr.com.br --view
 > "Automatize tudo, teste completamente, monitore continuamente. Todo deploy deve ser seguro, rápido e reversível."
 
 **Princípios**:
-1. **Automação**: CI/CD elimina erros humanos
+1. **Automação**: Testes automatizados eliminam erros
 2. **Testes**: Nunca pule testes antes de deploy
 3. **Monitoramento**: Saiba quando algo quebra
 4. **Rollback**: Sempre tenha um plano B

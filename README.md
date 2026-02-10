@@ -1,8 +1,9 @@
 # Site TecnoJr
 
-[![Tests](https://github.com/YOUR_ORG/tecnojr-site/actions/workflows/test.yml/badge.svg)](https://github.com/YOUR_ORG/tecnojr-site/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/YOUR_ORG/tecnojr-site/branch/main/graph/badge.svg)](https://codecov.io/gh/YOUR_ORG/tecnojr-site)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/tecnojr/tecnojr-site/workflows/CI/badge.svg)](https://github.com/tecnojr/tecnojr-site/actions/workflows/ci.yml)
+[![E2E Tests](https://github.com/tecnojr/tecnojr-site/workflows/E2E%20Tests/badge.svg)](https://github.com/tecnojr/tecnojr-site/actions/workflows/e2e.yml)
+[![Deploy Storybook](https://github.com/tecnojr/tecnojr-site/workflows/Deploy%20Storybook/badge.svg)](https://github.com/tecnojr/tecnojr-site/actions/workflows/storybook-deploy.yml)
 
 > Site moderno e responsivo da TecnoJr construído com Next.js 16, React 19, TypeScript e Tailwind CSS.
 
@@ -83,6 +84,13 @@ Documentação completa para desenvolvedores trabalhando no site da TecnoJr:
   - Variantes reutilizáveis
   - Acessibilidade (prefers-reduced-motion)
   - Performance e otimizações
+
+- **[GitHub Actions](./docs/development/github-actions.md)**: CI/CD e automação
+  - Workflows de CI (lint, test, build)
+  - Testes E2E automatizados
+  - Deploy do Storybook
+  - Dependabot e atualizações automáticas
+  - Troubleshooting e manutenção
 
 - **[Criação de Componentes](./docs/development/component-creation.md)**: Como criar novos componentes
   - Estrutura de arquivos (component + stories + test)
@@ -375,21 +383,28 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 | `dev` | Inicia servidor de desenvolvimento |
 | `build` | Cria build de produção |
 | `start` | Inicia servidor de produção |
+| `analyze` | Analisa bundle size (ANALYZE=true) |
 | `lint` | Executa linter Biome |
 | `lint:fix` | Corrige problemas de linting |
 | `format` | Formata código com Biome |
 | `typecheck` | Executa verificação de tipos TypeScript |
 | `check` | Executa typecheck + lint |
+| `fix` | Executa lint:fix + format |
 | `test` | Executa testes unitários (modo watch) |
-| `test:run` | Executa testes unitários uma vez |
+| `test:run` | Executa testes unitários uma vez (projeto unit) |
 | `test:ui` | Executa testes unitários com interface |
-| `test:coverage` | Gera relatório de cobertura |
+| `test:coverage` | Gera relatório de cobertura (projeto unit) |
+| `test:unit` | Executa testes unitários (projeto unit) |
+| `test:unit:run` | Executa testes unitários uma vez |
 | `test:e2e` | Executa testes E2E |
 | `test:e2e:ui` | Executa testes E2E com interface |
 | `test:e2e:headed` | Executa testes E2E em modo headed |
 | `test:e2e:debug` | Debug de testes E2E |
 | `storybook` | Inicia Storybook |
 | `build-storybook` | Constrói Storybook estático |
+| `docs` | Alias para storybook |
+| `docs:build` | Alias para build-storybook |
+| `docs:test` | Testa stories do Storybook |
 
 ## 🤝 Contribuindo
 

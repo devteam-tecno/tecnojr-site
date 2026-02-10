@@ -372,35 +372,6 @@ screen.debug()
 screen.debug(screen.getByRole('button'))
 ```
 
-## CI/CD Integration
-
-### GitHub Actions (Planejado)
-
-```yaml
-# .github/workflows/test.yml
-name: Tests
-
-on: [push, pull_request]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 20
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Run tests
-        run: npm run test:run
-      
-      - name: Coverage
-        run: npm run test:coverage
-```
-
 ## Testing Checklist
 
 Ao criar novos componentes/features:
