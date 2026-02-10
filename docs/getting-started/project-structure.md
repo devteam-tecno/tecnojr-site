@@ -9,8 +9,7 @@ Guia completo da organização de arquivos e diretórios do site TecnoJr.
 ```
 tecnojr-site/
 ├── 📁 .github/                    # Configurações do GitHub
-│   ├── copilot-instructions.md    # Instruções para GitHub Copilot
-│   └── workflows/                 # GitHub Actions (CI/CD)
+│   └── copilot-instructions.md    # Instruções para GitHub Copilot
 ├── 📁 .storybook/                 # Configuração do Storybook
 │   ├── docs/                      # Documentação MDX do Storybook
 │   │   ├── Introduction.mdx

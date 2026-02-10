@@ -24,8 +24,7 @@ Documentação completa de deploy e CI/CD (~3000 linhas).
 - Environment-specific configs
 
 #### 🔄 CI/CD
-- GitHub Actions workflows
-- Testes automatizados no PR
+- Testes automatizados
 - Preview deployments
 - Production deployment
 - Rollback automático
@@ -239,7 +238,6 @@ API routes têm rate limiting:
 - [Google Search Console](https://search.google.com/search-console)
 
 ### CI/CD
-- [GitHub Actions](https://docs.github.com/actions)
 - [Chromatic](https://www.chromatic.com/)
 
 ---

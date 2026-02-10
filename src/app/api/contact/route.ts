@@ -3,7 +3,16 @@ import { Resend } from "resend";
 import { z } from "zod";
 import { CONTACT_INFO } from "@/lib/config/contact";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy initialization - only instantiate Resend when needed (runtime, not build time)
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error(
+      "RESEND_API_KEY não configurada. Configure a variável de ambiente para enviar emails.",
+    );
+  }
+  return new Resend(apiKey);
+}
 
 // Validation schema
 const contactSchema = z.object({
@@ -18,6 +27,9 @@ export async function POST(request: NextRequest) {
     // Parse and validate request body
     const body = await request.json();
     const validatedData = contactSchema.parse(body);
+
+    // Get Resend client (lazy initialization)
+    const resend = getResendClient();
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({

@@ -73,10 +73,9 @@ Bem-vindo à documentação completa do site da TecnoJr! Este diretório contém
   - Vercel (recomendado)
   - Netlify
   - Docker/self-hosted
-  - CI/CD com GitHub Actions
   - Monitoramento
 
-**Use se**: Vai fazer deploy para produção ou configurar CI/CD.
+**Use se**: Vai fazer deploy para produção.
 
 ---
 

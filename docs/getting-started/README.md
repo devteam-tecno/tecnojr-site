@@ -75,12 +75,34 @@ npm run storybook        # Abre Storybook (http://localhost:6006)
 # Build
 npm run build            # Build de produção
 npm start                # Preview do build
+npm run analyze          # Analisa bundle size (ANALYZE=true)
 
 # Quality
 npm run lint             # Rodar Biome
+npm run lint:fix         # Corrigir problemas automaticamente
+npm run format           # Formatar código
 npm run typecheck        # Verificar tipos TypeScript
-npm test                 # Testes unitários
-npm run test:e2e         # Testes end-to-end
+npm run check            # Lint + typecheck
+npm run fix              # Lint:fix + format
+
+# Testes
+npm test                 # Testes unitários (watch mode)
+npm run test:run         # Testes unitários (run once)
+npm run test:unit        # Testes unitários (projeto unit)
+npm run test:unit:run    # Testes unitários run (projeto unit)
+npm run test:ui          # Testes com interface
+npm run test:coverage    # Gerar relatório de cobertura
+
+# Testes E2E
+npm run test:e2e         # Rodar testes E2E
+npm run test:e2e:ui      # Testes E2E com interface
+npm run test:e2e:headed  # Testes E2E em modo headed
+npm run test:e2e:debug   # Debug testes E2E
+
+# Documentação
+npm run docs             # Alias para storybook
+npm run docs:build       # Build do Storybook
+npm run docs:test        # Testar stories
 ```
 
 ---

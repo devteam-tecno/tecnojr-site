@@ -99,7 +99,7 @@ Estratégia e guias de testes.
 **Inclui**:
 - Stack de testes (Vitest, Playwright, RTL)
 - Patterns de teste
-- Coverage requirements (85%)
+- Coverage goals (85% recomendado, não bloqueante)
 - Comandos de teste
 - Best practices
 

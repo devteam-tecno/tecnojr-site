@@ -270,11 +270,13 @@ it('has clicked state', () => {
 });
 ```
 
-### Coverage Thresholds
-- **Lines**: 85%
-- **Functions**: 85%
-- **Branches**: 80%
-- **Statements**: 85%
+### Coverage Goals (Informational, Not Enforced)
+- **Lines**: 85% (goal)
+- **Functions**: 85% (goal)
+- **Branches**: 80% (goal)
+- **Statements**: 85% (goal)
+
+**Note**: Coverage is reported but does not block CI. Aim to maintain high coverage for code quality.
 
 ### E2E Tests
 Use Playwright for critical user flows:
