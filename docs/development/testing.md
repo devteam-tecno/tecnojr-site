@@ -382,7 +382,7 @@ Ao criar novos componentes/features:
 - [ ] Testes de estados (loading, error, success)
 - [ ] Testes de acessibilidade (roles, labels)
 - [ ] Testes de edge cases
-- [ ] Coverage >85% no arquivo
+- [ ] Coverage >85% no arquivo (meta recomendada, não obrigatório)
 
 ## Common Patterns
 

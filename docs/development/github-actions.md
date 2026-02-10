@@ -59,11 +59,11 @@ npm run test:coverage # Vitest com coverage
 
 **Falha se:**
 - Qualquer teste unitário falhar
-- Cobertura não atingir thresholds:
-  - **Lines**: 85%
-  - **Functions**: 85%
-  - **Branches**: 80%
-  - **Statements**: 85%
+
+**Cobertura de código:**
+- Relatório de cobertura é gerado mas **não bloqueia o CI**
+- Thresholds configurados em vitest.config.ts (85/85/80/85) são informativos
+- Incentiva manter cobertura alta sem bloquear desenvolvimento
 
 **Artifacts gerados:**
 - `coverage-report/` (disponível por 7 dias)
@@ -273,11 +273,9 @@ Assumindo 30 dias/mês, 5 commits/dia em branches, 1 merge/dia em main:
 
 ## Troubleshooting
 
-### CI falhando: "Coverage threshold not met"
+### Visualizar relatório de cobertura
 
-**Problema**: Cobertura de testes abaixo de 85/85/80/85.
-
-**Solução**:
+**Como ver cobertura localmente**:
 ```bash
 # Rodar coverage localmente
 npm run test:coverage
@@ -287,19 +285,21 @@ open coverage/index.html  # Mac/Linux
 start coverage/index.html # Windows
 
 # Identificar código sem cobertura
-# Adicionar testes faltantes
 ```
 
-**Temporariamente** (não recomendado):
-Ajustar thresholds em [vitest.config.ts](../../vitest.config.ts):
+**Nota**: Coverage não bloqueia CI, mas thresholds em [vitest.config.ts](../../vitest.config.ts) servem como meta:
 ```ts
 coverage: {
   thresholds: {
-    lines: 80,  // Reduzir temporariamente
-    // ...
+    lines: 85,
+    functions: 85,
+    branches: 80,
+    statements: 85
   }
 }
 ```
+
+Mantenha cobertura alta para qualidade, mas não é requisito para merge.
 
 ### CI falhando: "Build failed - Module not found"
 
@@ -445,7 +445,18 @@ git push origin main
 | `CONTACT_EMAIL` | Vercel | Runtime (email) | ✅ Sim (prod) |
 | `GITHUB_TOKEN` | Auto-gerado | Storybook deploy | Auto (GitHub) |
 
-**Nota**: CI/CD **não precisa** de `RESEND_API_KEY` pois testes mockam email.
+**Note**: CI/CD **não precisa** de `RESEND_API_KEY` pois:
+- Testes mockam funcionalidade de email
+- Build não executa código de runtime da API
+- API key é necessária apenas quando a rota `/api/contact` é chamada (production)
+
+**Lazy initialization**: A rota de contato usa lazy initialization do Resend para evitar erros no build time:
+```typescript
+// Resend só é instanciado quando a API é chamada (runtime)
+function getResendClient() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
+```
 
 ### Permissions
 
@@ -714,7 +725,7 @@ npm ci
 **Decisões técnicas**:
 - Node.js 20.x LTS
 - E2E apenas em `main` (economia de recursos)
-- Coverage thresholds enforçados (85/85/80/85)
+- Coverage reporting (não bloqueante, thresholds 85/85/80/85 informativos)
 - Storybook em GitHub Pages (gratuito)
 - Vercel para deploy production (integração nativa)
 
