@@ -44,7 +44,7 @@ export const ProjectsFullSection = memo(function ProjectsFullSection() {
       <SectionContainer>
         {/* Section Header */}
         <div className="mb-20 text-center">
-          <Badge variant="primary">
+          <Badge variant="primary" className="mb-4">
             <Rocket className="mr-2 h-4 w-4 text-brand-primary" />
             Nosso Portfolio
           </Badge>

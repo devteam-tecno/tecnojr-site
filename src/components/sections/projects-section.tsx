@@ -20,7 +20,7 @@ export const ProjectsSection = memo(function ProjectsSection() {
     <Section id="projetos" variant="dark">
       <SectionContainer>
         {/* Section Header */}
-        <div className="mb-20 text-center">
+        <div className="flex flex-col items-center gap-3 mb-10 lg:mb-20 text-center">
           <Badge variant="primary">
             <svg
               aria-hidden="true"
