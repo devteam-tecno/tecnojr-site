@@ -1,57 +1,57 @@
-# Dependabot configuration for TecnoJR Site
-# Automatically creates PRs for dependency updates
-# Docs: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
+# # Dependabot configuration for TecnoJR Site
+# # Automatically creates PRs for dependency updates
+# # Docs: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
 
-version: 2
-updates:
-  # npm dependencies
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-      timezone: "America/Sao_Paulo"
-    open-pull-requests-limit: 10
-    commit-message:
-      prefix: "chore(deps)"
-      include: "scope"
-    # Group development dependencies together to reduce PR noise
-    groups:
-      dev-dependencies:
-        patterns:
-          - "@types/*"
-          - "@testing-library/*"
-          - "@storybook/*"
-          - "eslint*"
-          - "prettier"
-          - "vitest"
-          - "playwright"
-        update-types:
-          - "minor"
-          - "patch"
-    # Auto-merge minor and patch updates for dev dependencies
-    # (requires GitHub branch protection rules)
-    labels:
-      - "dependencies"
-      - "automated"
-    reviewers:
-      - "tecnojr/frontend-team"  # Update with actual team name
-    assignees:
-      - "tecnojr/frontend-team"  # Update with actual team name
+# version: 2
+# updates:
+#   # npm dependencies
+#   - package-ecosystem: "npm"
+#     directory: "/"
+#     schedule:
+#       interval: "weekly"
+#       day: "monday"
+#       time: "09:00"
+#       timezone: "America/Sao_Paulo"
+#     open-pull-requests-limit: 10
+#     commit-message:
+#       prefix: "chore(deps)"
+#       include: "scope"
+#     # Group development dependencies together to reduce PR noise
+#     groups:
+#       dev-dependencies:
+#         patterns:
+#           - "@types/*"
+#           - "@testing-library/*"
+#           - "@storybook/*"
+#           - "eslint*"
+#           - "prettier"
+#           - "vitest"
+#           - "playwright"
+#         update-types:
+#           - "minor"
+#           - "patch"
+#     # Auto-merge minor and patch updates for dev dependencies
+#     # (requires GitHub branch protection rules)
+#     labels:
+#       - "dependencies"
+#       - "automated"
+#     reviewers:
+#       - "tecnojr/frontend-team"  # Update with actual team name
+#     assignees:
+#       - "tecnojr/frontend-team"  # Update with actual team name
 
-  # GitHub Actions
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-      timezone: "America/Sao_Paulo"
-    commit-message:
-      prefix: "chore(ci)"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "ci/cd"
-      - "automated"
+#   # GitHub Actions
+#   - package-ecosystem: "github-actions"
+#     directory: "/"
+#     schedule:
+#       interval: "weekly"
+#       day: "monday"
+#       time: "09:00"
+#       timezone: "America/Sao_Paulo"
+#     commit-message:
+#       prefix: "chore(ci)"
+#       include: "scope"
+#     labels:
+#       - "dependencies"
+#       - "ci/cd"
+#       - "automated"
