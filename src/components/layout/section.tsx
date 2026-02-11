@@ -82,9 +82,9 @@ export function Section({
   };
 
   const spacingClasses: Record<SectionSpacing, string> = {
-    normal: "py-32",
+    normal: "py-16 lg:py-32",
     large: "py-24 lg:py-32",
-    compact: "py-24",
+    compact: "py-12 lg:py-24",
   };
 
   return (

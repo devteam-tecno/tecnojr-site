@@ -27,17 +27,17 @@ export function ProjectTabs({
 }: ProjectTabsProps) {
   return (
     <Tabs defaultValue="external" className="w-full">
-      <TabsList className="mx-auto mb-12 grid w-full max-w-2xl grid-cols-2 gap-4 bg-transparent p-0">
+      <TabsList className="flex flex-col mx-auto mb-12 sm:grid w-full max-w-2xl sm:grid-cols-2 gap-4 bg-transparent p-0">
         <TabsTrigger
           value="external"
-          className="rounded-full border border-gray-700/50 bg-gray-900/50 px-6 py-3 font-medium text-gray-300 backdrop-blur-sm transition-all data-[state=active]:border-transparent data-[state=active]:gradient-tecno-secondary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-brand-secondary/20 hover:border-brand-secondary/40 hover:bg-gray-800/60 hover:text-white"
+          className="w-full rounded-full border border-gray-700/50 bg-gray-900/50 px-6 py-3 font-medium text-gray-300 backdrop-blur-sm transition-all data-[state=active]:border-transparent data-[state=active]:gradient-tecno-secondary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-brand-secondary/20 hover:border-brand-secondary/40 hover:bg-gray-800/60 hover:text-white"
         >
           <Briefcase className="mr-2 h-4 w-4" />
           Projetos Externos
         </TabsTrigger>
         <TabsTrigger
           value="internal"
-          className="rounded-full border border-gray-700/50 bg-gray-900/50 px-6 py-3 font-medium text-gray-300 backdrop-blur-sm transition-all data-[state=active]:border-transparent data-[state=active]:gradient-tecno-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-brand-primary/20 hover:border-brand-primary/40 hover:bg-gray-800/60 hover:text-white"
+          className="w-full rounded-full border border-gray-700/50 bg-gray-900/50 px-6 py-3 font-medium text-gray-300 backdrop-blur-sm transition-all data-[state=active]:border-transparent data-[state=active]:gradient-tecno-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-brand-primary/20 hover:border-brand-primary/40 hover:bg-gray-800/60 hover:text-white"
         >
           <Heart className="mr-2 h-4 w-4" />
           Projetos Internos

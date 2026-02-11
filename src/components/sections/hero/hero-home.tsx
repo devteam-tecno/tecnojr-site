@@ -29,7 +29,7 @@ export const HeroHome = memo(function HeroHome() {
     >
       <HeroBase.Content>
         {/* Main Heading */}
-        <h1 className="text-4xl font-bold leading-tight! sm:text-5xl lg:text-7xl xl:text-7xl">
+        <h1 className="text-4xl font-bold leading-tight! sm:text-5xl lg:mt-4 lg:text-7xl xl:text-7xl">
           <FadeFromLeft delay={0.6} className="block text-white">
             {HERO_CONTENT.home.title.line1}
           </FadeFromLeft>

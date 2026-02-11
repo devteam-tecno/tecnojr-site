@@ -32,7 +32,10 @@ export const BudgetSection = memo(function BudgetSection() {
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Left Content */}
           <FadeFromLeft>
-            <ScaleFadeIn delay={0.2}>
+            <ScaleFadeIn
+              delay={0.2}
+              className="flex justify-center mb-4 sm:block"
+            >
               <Badge variant="info" animated>
                 Contato
               </Badge>
