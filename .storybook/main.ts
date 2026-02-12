@@ -16,10 +16,37 @@ const config: StorybookConfig = {
   framework: "@storybook/nextjs-vite",
   staticDirs: ["../public"],
   docs: {
-    autodocs: "tag",
+    defaultName: "Documentation",
   },
   core: {
     disableTelemetry: true,
+  },
+  viteFinal: async (config) => {
+    // Fix: Externalize Storybook blocks for build
+    if (config.build) {
+      config.build.rollupOptions = config.build.rollupOptions || {};
+
+      const existingExternal = config.build.rollupOptions.external;
+      const externalArray: (string | RegExp)[] = [];
+
+      if (Array.isArray(existingExternal)) {
+        externalArray.push(
+          ...existingExternal.filter(
+            (item): item is string | RegExp =>
+              typeof item === "string" || item instanceof RegExp,
+          ),
+        );
+      } else if (
+        typeof existingExternal === "string" ||
+        existingExternal instanceof RegExp
+      ) {
+        externalArray.push(existingExternal);
+      }
+
+      externalArray.push("@storybook/blocks");
+      config.build.rollupOptions.external = externalArray;
+    }
+    return config;
   },
 };
 
